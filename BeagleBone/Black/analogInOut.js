@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env nodejs
 ////////////////////////////////////////
 //	analogInOut.js
 //  Reads analog in on P9_36 and adjusts the PWM on P9_14.

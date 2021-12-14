@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env nodejs
 ////////////////////////////////////////
 //	blinkLED.js
 //      Blinks the USR LEDs and P9_14.

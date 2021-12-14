@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env nodejs
 ////////////////////////////////////////
 //	input.js
 //      Responds to changes on P8_19 via a callback.

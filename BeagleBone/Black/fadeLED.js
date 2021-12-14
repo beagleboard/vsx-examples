@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env nodejs
 ////////////////////////////////////////
 //	fade.js
 //      Fades the LED wired to P9_14 using the PWM.

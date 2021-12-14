@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env nodejs
 ////////////////////////////////////////
 //	swipeLED.js
 //      Blinks the USR LEDs in sequence.

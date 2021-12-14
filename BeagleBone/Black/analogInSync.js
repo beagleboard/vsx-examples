@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env nodejs
 ////////////////////////////////////////
 //	analogSync.js
 //  Reads analog in on P9_38 synchronously and prints it.

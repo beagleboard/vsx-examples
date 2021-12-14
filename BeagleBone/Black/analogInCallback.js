@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env nodejs
 ////////////////////////////////////////
 //	analogInCallback.js
 //  Reads analog in on P9_36 and prints it via a callback.
