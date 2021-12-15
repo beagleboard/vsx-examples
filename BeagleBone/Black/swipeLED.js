@@ -1,11 +1,13 @@
 #!/usr/bin/env nodejs
 ////////////////////////////////////////
 //	swipeLED.js
-//      Blinks the USR LEDs in sequence.
+//	Blinks the USR LEDs in sequence.
 //	Wiring:
-//	Setup:	
-//	See:	
+//	Setup:
+//	See:
 ////////////////////////////////////////
+//	Tested: rcn-ee: 2021.12.15 - BBGG - 5.15.6-bone14
+
 const fs = require('fs');
 const leds = ['/sys/class/leds/beaglebone:green:usr0/brightness',
     '/sys/class/leds/beaglebone:green:usr1/brightness',

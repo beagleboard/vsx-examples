@@ -1,11 +1,13 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # ////////////////////////////////////////
 # //	seqLED.py
-# //      Blinks the USR LEDs in sequence.
+# //	Blinks the USR LEDs in sequence.
 # //	Wiring:
-# //	Setup:	
-# //	See:	
+# //	Setup:
+# //	See:
 # ////////////////////////////////////////
+# //	Tested: rcn-ee: 2021.12.15 - BBGG - 5.15.6-bone14
+
 import Adafruit_BBIO.GPIO as GPIO
 import time
 
