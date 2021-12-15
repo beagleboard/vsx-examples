@@ -1,10 +1,12 @@
 ////////////////////////////////////////
 //	blinkLED.c
-//      Blinks the USR3 LED.
+//	Blinks the USR3 LED.
 //	Wiring:	None
-//	Setup:	
-//	See:	
+//	Setup:
+//	See:
 ////////////////////////////////////////
+//	Tested: rcn-ee: 2021.12.15 - BBGG - 5.15.6-bone14
+
 #include <stdio.h>
 #include <unistd.h>
 
@@ -14,7 +16,7 @@ int main() {
 	int on = 0;
 	
 	fprintf(trigger, "none\n");
-    
+
 	while(1) {
 		fprintf(brightness, "%d\n", on);
 		fflush(brightness);
