@@ -4,5 +4,6 @@
 
 	"workbench.startupEditor": "README.md",
 	"window.menuBarVisibility": "classic",
-	"window.autoDetectColorScheme": true
+	"window.autoDetectColorScheme": true,
+	"security.workspace.trust.untrustedFiles": "open"
 }
