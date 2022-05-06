@@ -1,6 +1,5 @@
 {
 	// https://code.visualstudio.com/docs/getstarted/settings#_default-settings
-	// Actually broken for us, till: 4.0.1: https://github.com/cdr/code-server/issues/4609
 	// On startup this is copied to: .local/share/code-server/User/settings.json before Code Server Starts...
 
 	"workbench.startupEditor": "README.md",
