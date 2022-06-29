@@ -6,20 +6,33 @@
 # //	Setup:
 # //	See:
 # ////////////////////////////////////////
-# //	Tested: rcn-ee: 2021.12.15 - BBGG - 5.15.6-bone14
+# //	Tested: may: 2022.06.29 - BBB - 5.10.109-ti-r45
 
-import Adafruit_BBIO.GPIO as GPIO
 import time
+import os
 
 LEDs=4
+LEDPATH='/sys/class/leds/beaglebone:green:usr'
 
+# Turn off triggers
 for i in range(LEDs):
-    GPIO.setup("USR%d" % i, GPIO.OUT)
+    print(LEDPATH+str(i)+"/trigger")
+    f = open(LEDPATH+str(i)+"/trigger", "w")
+    f.write("none")
+    f.close()
 
+# Open a file for each LED
+f = []
+for i in range(LEDs):
+    f.append(open(LEDPATH+str(i)+"/brightness", "w"))
+
+# Sequence
 while True:
     for i in range(LEDs):
-        GPIO.output("USR%d" % i, GPIO.HIGH)
+        f[i].seek(0)
+        f[i].write("1")
         time.sleep(0.25)
     for i in range(LEDs):
-        GPIO.output("USR%d" % i, GPIO.LOW)
+        f[i].seek(0)
+        f[i].write("0")
         time.sleep(0.25)
