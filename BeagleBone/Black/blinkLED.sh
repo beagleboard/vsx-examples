@@ -1,4 +1,5 @@
-//////////////////////////////////////
+#!/usr/bin/env bash
+# //////////////////////////////////////
 #	blink.sh
 #	Blinks one LED wired to P9_14.
 #	Wiring:	P9_14 connects to the plus lead of an LED.  The negative lead of the
