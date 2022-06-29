@@ -8,27 +8,28 @@
 //	Setup:	
 //	See:	
 ////////////////////////////////////////
-const b = require('bonescript');
+const fs = require("fs");
 
-const leds = ["USR0", "USR1", "USR2", "USR3", "P9_14"];
+// Look up P9.14 using show-pins.  gpio1.18 maps to 50
+pin="50";
 
-for(var i in leds) {
-    b.pinMode(leds[i], b.OUTPUT);
+GPIOPATH="/sys/class/gpio/";
+// Make sure pin is exported
+if(!fs.existsSync(GPIOPATH+"gpio"+pin)) {
+    fs.writeFileSync(GPIOPATH+"export", pin);
 }
+// Make it an output pin
+fs.writeFileSync(GPIOPATH+"gpio"+pin+"/direction", "out");
 
-var state = b.HIGH;
-for(var i in leds) {
-    b.digitalWrite(leds[i], state);
-}
+// Blink every 500ms
+setInterval(toggle, 500);
 
-setInterval(toggle, 250);
-
+state="1";
 function toggle() {
-    if(state == b.LOW) 
-        state = b.HIGH;
-    else
-        state = b.LOW;
-    for(var i in leds) {
-        b.digitalWrite(leds[i], state);
+    fs.writeFileSync(GPIOPATH+"gpio"+pin+"/value", state);
+    if(state == "0") {
+        state = "1";
+    } else {
+        state = "0";
     }
 }
