@@ -12,28 +12,28 @@
 import time
 import os
 
-# out = "P9_14"     Look up using show-pins
-gpio = "50"
+# Look up P9.14 using show-pins.  gpio1.18 maps to 50
+pin = "50"
  
-# GPIO.setup(out, GPIO.OUT)
-PATH='/sys/class/gpio/'
-# export gpio pin if not already
-if (not os.path.exists(PATH+"gpio"+gpio)):
-    f = open(PATH+"export", "w")
-    f.write(gpio)
+GPIOPATH='/sys/class/gpio/'
+# Make sure pin is exported
+if (not os.path.exists(GPIOPATH+"gpio"+pin)):
+    f = open(GPIOPATH+"export", "w")
+    f.write(pin)
     f.close()
-# Set direction to "out"
-f = open(PATH+"gpio"+gpio+"/direction", "w")
+
+# Make it an output pin
+f = open(GPIOPATH+"gpio"+pin+"/direction", "w")
 f.write("out")
 f.close()
  
-f = open(PATH+"gpio"+gpio+"/value", "w")
+f = open(GPIOPATH+"gpio"+pin+"/value", "w")
+# Blink
 while True:
-    # GPIO.output(out, GPIO.HIGH)
     f.seek(0)
     f.write("1")
     time.sleep(0.5)
-    # GPIO.output(out, GPIO.LOW)
+
     f.seek(0)
     f.write("0")
     time.sleep(0.5)
