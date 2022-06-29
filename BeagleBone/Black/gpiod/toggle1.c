@@ -48,7 +48,7 @@ int main(int argc, char **argv)
 			goto release_line;
 		}
 		// printf("Output %u on line #%u\n", val, line_num);
-		// usleep(100000);		// Number of microseconds to sleep
+		usleep(100000);		// Number of microseconds to sleep
 		val = !val;
 	}
 

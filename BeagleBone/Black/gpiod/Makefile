@@ -4,22 +4,22 @@
 all:	toggle1 toggle2 get getset getsetEvent toggleLED
 
 toggle1: toggle1.c
-	$(CC) $(LDFLAGS) -lgpiod -o $@ $^
+	$(CC) $(LDFLAGS) -o $@ $^ -lgpiod
 
 toggle2: toggle2.c
-	$(CC) $(LDFLAGS) -lgpiod -o $@ $^
+	$(CC) $(LDFLAGS) -o $@ $^ -lgpiod
 
 get: get.c
-	$(CC) $(LDFLAGS) -lgpiod -o $@ $^
+	$(CC) $(LDFLAGS) -o $@ $^ -lgpiod
 
 getset: getset.c
-	$(CC) $(LDFLAGS) -lgpiod -o $@ $^
+	$(CC) $(LDFLAGS) -o $@ $^ -lgpiod
 
 getsetEvent: getsetEvent.c
-	$(CC) $(LDFLAGS) -lgpiod -o $@ $^
+	$(CC) $(LDFLAGS) -o $@ $^ -lgpiod
 
 toggleLED: toggleLED.c
-	$(CC) $(LDFLAGS) -lgpiod -o $@ $^
+	$(CC) $(LDFLAGS) -o $@ $^ -lgpiod
 
 #
 # Objects

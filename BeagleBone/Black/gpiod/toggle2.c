@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 			goto release_line;
 		}
 		// printf("Output %u on line #%u\n", val, line_num);
-		// usleep(100000);
+		usleep(100000);
 		val = !val;
 	}
 
