@@ -8,7 +8,6 @@
 #	Setup:	
 #	See:	
 #//////////////////////////////////////
-# import Adafruit_BBIO.GPIO as GPIO
 import time
 import os
 
