@@ -15,7 +15,7 @@
 int main(int argc, char **argv)
 {
 	int chipnumber = 1;
-	unsigned int line_num = 18;	// GPIO Pin P9_14
+	unsigned int line_num = 18;	// GPIO Pin P9_14, run: gpioinfo | grep -i -e chip -e P9_14
 	unsigned int val;
 	struct gpiod_chip *chip;
 	struct gpiod_line *line;

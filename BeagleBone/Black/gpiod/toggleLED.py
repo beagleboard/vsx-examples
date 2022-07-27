@@ -10,7 +10,7 @@ import gpiod
 import time
 
 LED_CHIP = 'gpiochip1'
-LED_LINE_OFFSET = [21, 22, 23, 24]  # USR LEDS 1-4
+LED_LINE_OFFSET = [21, 22, 23, 24]  # USR LEDS 1-4, run: gpioinfo | grep -e chip -e led
 
 chip = gpiod.Chip(LED_CHIP)
 

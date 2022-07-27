@@ -18,7 +18,7 @@
 int main(int argc, char **argv)
 {
 	int chipnumber = 1;
-	unsigned int line_num[NUMLINES] = {21, 22, 23, 24};	// USR LEDS 1-4
+	unsigned int line_num[NUMLINES] = {21, 22, 23, 24};	// USR LEDS 1-4, run: gpioinfo | grep -e chip -e led
 	unsigned int val;
 	struct gpiod_chip *chip;
 	struct gpiod_line_bulk line[NUMLINES];

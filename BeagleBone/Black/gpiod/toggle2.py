@@ -22,7 +22,7 @@ lines = chip.get_lines(LED_LINE_OFFSET)
 lines.request(consumer='blink', type=gpiod.LINE_REQ_DIR_OUT)
 
 while True:
-    lines.set_values([0, 0])
+    lines.set_values([0, 1])
     time.sleep(0.1)
-    lines.set_values([1, 1])
+    lines.set_values([1, 0])
     time.sleep(0.1)
