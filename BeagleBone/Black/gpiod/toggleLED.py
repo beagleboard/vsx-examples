@@ -4,6 +4,7 @@
 #   Toggles the four built in USR LEDs 
 # 	They are all on chip 1 so they can be toggled together.
 # 	Setup:	sudo apt uupdate; pip3 install gpiod
+#           Run: gpioinfo | grep -i -e chip -e P9_14 to find chip and line numbers
 # 	See:	https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/tree/bindings/python/examples
 # //////////////////////////////////////
 import gpiod
@@ -15,7 +16,7 @@ LED_LINE_OFFSET = [21, 22, 23, 24]  # USR LEDS 1-4, run: gpioinfo | grep -e chip
 chip = gpiod.Chip(LED_CHIP)
 
 lines = chip.get_lines(LED_LINE_OFFSET)
-lines.request(consumer='blink LEDs', type=gpiod.LINE_REQ_DIR_OUT)
+lines.request(consumer='toggleLED.py', type=gpiod.LINE_REQ_DIR_OUT)
 
 while True:
     lines.set_values([0, 0, 0, 0])

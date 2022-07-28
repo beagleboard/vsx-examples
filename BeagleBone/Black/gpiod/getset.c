@@ -4,6 +4,7 @@
 //     P8_16 is line 14 on chip 1.  P9_14 is line 18 of chip 1.
 // 	Wiring:	Attach a switch to P8_16 and 3.3V and an LED to P9_14.
 // 	Setup:	sudo apt uupdate; sudo apt install libgpiod-dev
+//          Run: gpioinfo | grep -i -e chip -e P9_14 to find chip and line numbers
 // 	See:	https://github.com/starnight/libgpiod-example/blob/master/libgpiod-led/main.c
 // //////////////////////////////////////
 #include <gpiod.h>

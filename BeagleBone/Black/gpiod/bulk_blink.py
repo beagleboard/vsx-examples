@@ -8,6 +8,7 @@
 # 	Wiring:	Attach an oscilloscope to P9_14 and P9_16  to see the squarewave or 
 #          uncomment the sleep and attach an LED.
 # 	Setup:	sudo apt update; pip install gpiod
+#           Run: gpioinfo | grep -i -e chip -e P9_14 to find chip and line numbers
 # 	See:	https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/tree/bindings/python/examples
 # //////////////////////////////////////
 import sys

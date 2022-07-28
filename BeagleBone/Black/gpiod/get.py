@@ -4,6 +4,7 @@
 #  Get the value of P8_13. P8_13 is line 23 on chip 0.
 # 	Wiring:	Attach a switch to P8_13 and 3.3V
 # 	Setup:	sudo apt uupdate; sudo apt install libgpiod-dev
+#           Run: gpioinfo | grep -i -e chip -e P9_14 to find chip and line numbers
 # 	See:	https://github.com/starnight/libgpiod-example/blob/master/libgpiod-led/main.c
 # //////////////////////////////////////
 

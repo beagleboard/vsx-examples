@@ -20,4 +20,4 @@ File                | Description
 [getsetEvent](getset.c)    | Like **getset**, but uses events. (40 us delay in C, 75 us delay in python)
 [toggleLED](toggleLED.c)    | Toggles the four built in USR LEDs.
 
-> Tip:  Use **gpioinfo** to lookup chip and line numbers for various pins.
+> Tip:  Use **gpioinfo | grep -i -e chip -e P9_14** to lookup chip and line numbers for various pins.

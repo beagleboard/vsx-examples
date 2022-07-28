@@ -7,6 +7,7 @@
 # 	Wiring:	Attach an oscilloscope to P9_14 and P9_16  to see the squarewave or 
 #          uncomment the sleep and attach an LED.
 # 	Setup:	sudo apt update; pip install gpiod
+#           Run: gpioinfo | grep -i -e chip -e P9_14 to find chip and line numbers
 # 	See:	https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/tree/bindings/python/examples
 # //////////////////////////////////////
 
@@ -19,7 +20,7 @@ LED_LINE_OFFSET = [18, 19]  # P9_14 and P9_16
 chip = gpiod.Chip(LED_CHIP)
 
 lines = chip.get_lines(LED_LINE_OFFSET)
-lines.request(consumer='blink', type=gpiod.LINE_REQ_DIR_OUT)
+lines.request(consumer='toggle2.py', type=gpiod.LINE_REQ_DIR_OUT)
 
 while True:
     lines.set_values([0, 1])

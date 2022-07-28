@@ -3,18 +3,19 @@
 //  Get the value of P8_13. P8_13 is line 23 on chip 0.
 // 	Wiring:	Attach a switch to P8_13 and 3.3V
 // 	Setup:	sudo apt update; sudo apt install libgpiod-dev
+//          Run: gpioinfo | grep -i -e chip -e P9_14 to find chip and line numbers
 // 	See:	https://github.com/starnight/libgpiod-example/blob/master/libgpiod-led/main.c
 // //////////////////////////////////////
 #include <gpiod.h>
 #include <stdio.h>
 #include <unistd.h>
 
-#define	CONSUMER	"Consumer"
+#define	CONSUMER	"get.c"
 
 int main(int argc, char **argv)
 {
 	int chipnumber = 0;
-	unsigned int line_num = 23;	// GPIO Pin P8_13
+	unsigned int line_num = 23;	// GPIO Pin P8_13, run gpioinfo | grep -i -e chip -e P8_13
 	struct gpiod_chip *chip;
 	struct gpiod_line *line;
 	int i, ret;

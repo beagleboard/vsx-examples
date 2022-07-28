@@ -6,13 +6,14 @@
 // 	Wiring:	Attach an oscilloscope to P9_14 and P9_16  to see the squarewave or 
 //          uncomment the usleep and attach an LED.
 // 	Setup:	sudo apt uupdate; sudo apt install libgpiod-dev
+//          Run: gpioinfo | grep -i -e chip -e P9_14 to find chip and line numbers
 // 	See:	https://github.com/starnight/libgpiod-example/blob/master/libgpiod-led/main.c
 // //////////////////////////////////////
 #include <gpiod.h>
 #include <stdio.h>
 #include <unistd.h>
 
-#define	CONSUMER	"Consumer"
+#define	CONSUMER	"toggle2.c"
 #define NUMLINES 2
 
 int main(int argc, char **argv)

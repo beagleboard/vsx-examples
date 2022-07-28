@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#define	CONSUMER	"Consumer"
+#define	CONSUMER	"toggle1.c"
 
 int main(int argc, char **argv)
 {
