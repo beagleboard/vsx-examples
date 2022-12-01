@@ -15,7 +15,7 @@ LEDPATH='/sys/class/leds/beaglebone:green:usr'
 
 # Turn off triggers
 for i in range(LEDs):
-    print(LEDPATH+str(i)+"/trigger")
+    # print(LEDPATH+str(i)+"/trigger")
     f = open(LEDPATH+str(i)+"/trigger", "w")
     f.write("none")
     f.close()
