@@ -1,0 +1,9 @@
+[package]
+name = "eeprom"
+description = "Simple program to read EEPROM contents and print them to stdout."
+version = "0.1.0"
+license.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[dependencies]

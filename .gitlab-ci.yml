@@ -10,12 +10,12 @@ pb2-clippy:
     - cd PocketBeagle2
     - cargo clippy
 
-pb2-build:
+pb2-test:
   image: "rust:latest"
-  stage: build
+  stage: test
   tags:
     - docker-aarch64
   script:
     - rustc --version && cargo --version  # Print version info for debugging
     - cd PocketBeagle2
-    - cargo build --verbose
+    - cargo test --verbose

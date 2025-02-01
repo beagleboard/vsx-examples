@@ -3,6 +3,7 @@
 Rust examples for pockeatbeagle2.
 
 1. [hello_beagle](hello_beagle): Simple hello world program to test that Rust setup is working.
+2. [eeprom](eeprom): Simple program to read EEPROM contents and print them to stdout.
 
 # Run Example
 
