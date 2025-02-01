@@ -8,7 +8,7 @@ pb2-clippy:
   script:
     - rustc --version && cargo --version  # Print version info for debugging
     - cd PocketBeagle2
-    - cargo clippy
+    - cargo clippy --no-deps
 
 pb2-test:
   image: "rust:latest"
