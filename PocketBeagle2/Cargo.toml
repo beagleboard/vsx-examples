@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = [ "blinky", "eeprom","hello_beagle"]
+members = [ "blinky", "button", "eeprom","hello_beagle"]
 
 [workspace.package]
 license = "MIT"

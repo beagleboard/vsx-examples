@@ -1,0 +1,10 @@
+[package]
+name = "button"
+description = "Simple example to detect button presses"
+version = "0.1.0"
+license.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[dependencies]
+gpiod = "0.3.0"
