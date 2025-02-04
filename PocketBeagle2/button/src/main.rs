@@ -1,21 +1,18 @@
-use gpiod::{Chip, Edge, Options};
+use linux_embedded_hal::gpio_cdev::{self, EventRequestFlags, EventType, Line, LineRequestFlags};
 
 /// PIN name
 const BTN: &str = "P1_20";
 
 /// Find line by PIN Name.
-///
-/// returns (Chip, offset)
-fn find_line_by_name(name: &str) -> (Chip, u32) {
-    let chips = Chip::list_devices().expect("Failed to get line names");
+fn find_line_by_name(name: &str) -> Line {
+    let chips = gpio_cdev::chips()
+        .expect("Failed to get line names")
+        .filter_map(|x| x.ok());
 
-    for chip_path in chips {
-        let chip = Chip::new(chip_path).unwrap();
-        let num_lines = chip.num_lines();
-
-        for line in 0..num_lines {
-            match chip.line_info(line) {
-                Ok(info) if info.name == name => return (chip, line),
+    for chip in chips {
+        for line in chip.lines() {
+            match line.info() {
+                Ok(info) if info.name() == Some(name) => return line,
                 _ => {}
             }
         }
@@ -25,29 +22,25 @@ fn find_line_by_name(name: &str) -> (Chip, u32) {
 }
 
 fn main() {
-    let (chip, offset) = find_line_by_name(BTN);
+    let line = find_line_by_name(BTN);
 
-    println!("Chip: {}, offset: {}", chip, offset);
+    // let line_handle = line.request(LineRequestFlags::INPUT, 0, "button").unwrap();
+    let mut last_edge = EventType::RisingEdge;
 
-    let opts = Options::input([offset])
-        .consumer("button")
-        .bias(gpiod::Bias::PullUp)
-        .edge(gpiod::EdgeDetect::Both);
-    let pin = chip.request_lines(opts).unwrap();
-    let mut last_edge = Edge::Rising;
+    let events = line
+        .events(
+            LineRequestFlags::INPUT,
+            EventRequestFlags::BOTH_EDGES,
+            "button",
+        )
+        .unwrap()
+        .filter_map(|x| x.ok());
 
     // Iterate over events
-    for evt in pin {
-        match evt {
-            Ok(x) => {
-                // This is required since gpiod can trigger same events multiple times. Hence we
-                // want to detect event cahnges rather than events themselves.
-                if (last_edge, x.edge) == (Edge::Rising, Edge::Falling) {
-                    println!("Button pressed");
-                }
-                last_edge = x.edge;
-            }
-            Err(e) => eprintln!("Error event: {}", e),
+    for evt in events {
+        if (last_edge, evt.event_type()) == (EventType::RisingEdge, EventType::FallingEdge) {
+            println!("Button pressed");
         }
+        last_edge = evt.event_type();
     }
 }
