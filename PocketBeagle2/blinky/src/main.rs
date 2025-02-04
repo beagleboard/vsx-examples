@@ -1,23 +1,23 @@
 use std::{thread::sleep, time::Duration};
 
-use gpiod::{Chip, Options};
+use linux_embedded_hal::{
+    gpio_cdev::{self, Line, LineRequestFlags},
+    CdevPin,
+};
 
 /// PIN name
 const PIN: &str = "P1_20";
 
 /// Find line by PIN Name.
-///
-/// returns (Chip, offset)
-fn find_line_by_name(name: &str) -> (Chip, u32) {
-    let chips = Chip::list_devices().expect("Failed to get line names");
+fn find_line_by_name(name: &str) -> Line {
+    let chips = gpio_cdev::chips()
+        .expect("Failed to get line names")
+        .filter_map(|x| x.ok());
 
-    for chip_path in chips {
-        let chip = Chip::new(chip_path).unwrap();
-        let num_lines = chip.num_lines();
-
-        for line in 0..num_lines {
-            match chip.line_info(line) {
-                Ok(info) if info.name == name => return (chip, line),
+    for chip in chips {
+        for line in chip.lines() {
+            match line.info() {
+                Ok(info) if info.name() == Some(name) => return line,
                 _ => {}
             }
         }
@@ -27,16 +27,17 @@ fn find_line_by_name(name: &str) -> (Chip, u32) {
 }
 
 fn main() {
-    let (chip, offset) = find_line_by_name(PIN);
-    let opts = Options::output([offset]).consumer("blinky");
-    let pin = chip.request_lines(opts).unwrap();
+    let line = find_line_by_name(PIN);
+    let line_handle = line.request(LineRequestFlags::OUTPUT, 0, "blinky").unwrap();
+    let pin = CdevPin::new(line_handle).unwrap();
 
     loop {
         println!("ON");
-        pin.set_values([true]).unwrap();
+        pin.set_value(1).unwrap();
         sleep(Duration::from_secs(1));
+
         println!("OFF");
-        pin.set_values([false]).unwrap();
+        pin.set_value(0).unwrap();
         sleep(Duration::from_secs(1));
     }
 }
