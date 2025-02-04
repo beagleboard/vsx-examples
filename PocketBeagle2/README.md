@@ -6,6 +6,7 @@ Rust examples for pockeatbeagle2.
 2. [eeprom](eeprom): Simple program to read EEPROM contents and print them to stdout.
 3. [blinky](blinky): Simple example to toggle GPIOs
 4. [button](button): Simple example to detect button presses.
+5. [fade](fade): Simple example to fade an LED in and out using PWM.
 
 # Run Example
 

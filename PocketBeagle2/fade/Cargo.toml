@@ -1,0 +1,9 @@
+[package]
+name = "fade"
+description = "Simple example to fade an LED in and out using PWM. Also contains abstractions to use PWM using sysfs"
+version = "0.1.0"
+license.workspace = true
+authors.workspace = true
+edition.workspace = true
+
+[dependencies]
