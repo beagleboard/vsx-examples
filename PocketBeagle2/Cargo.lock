@@ -25,7 +25,7 @@ dependencies = [
 name = "button"
 version = "0.1.0"
 dependencies = [
- "gpiod",
+ "linux-embedded-hal",
 ]
 
 [[package]]
@@ -89,24 +89,6 @@ dependencies = [
  "bitflags 2.8.0",
  "libc",
  "nix 0.27.1",
-]
-
-[[package]]
-name = "gpiod"
-version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f851b1c607b36b4a493448ef80d8693bf74145712074c667a008a58264f8da49"
-dependencies = [
- "gpiod-core",
-]
-
-[[package]]
-name = "gpiod-core"
-version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "15a60e3beb5444643d049a3f8769b47ce246ec1f57e6cd1aed1e417d57a47110"
-dependencies = [
- "nix 0.26.4",
 ]
 
 [[package]]
