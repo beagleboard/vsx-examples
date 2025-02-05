@@ -1,0 +1,8 @@
+[workspace]
+resolver = "2"
+members = [ "blinky", "button", "eeprom", "fade","hello_beagle"]
+
+[workspace.package]
+license = "MIT"
+authors = ["Ayush Singh <ayush@beagleboard.org>"]
+edition = "2021"

@@ -1,0 +1,21 @@
+pb2-clippy:
+  image: "rust:latest"
+  stage: test
+  tags:
+    - docker-aarch64
+  before_script:
+    - rustup component add clippy
+  script:
+    - rustc --version && cargo --version  # Print version info for debugging
+    - cd PocketBeagle2
+    - cargo clippy --no-deps
+
+pb2-test:
+  image: "rust:latest"
+  stage: test
+  tags:
+    - docker-aarch64
+  script:
+    - rustc --version && cargo --version  # Print version info for debugging
+    - cd PocketBeagle2
+    - cargo test --verbose
