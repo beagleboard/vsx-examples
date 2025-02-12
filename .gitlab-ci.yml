@@ -7,7 +7,7 @@ pb2-clippy:
     - rustup component add clippy
   script:
     - rustc --version && cargo --version  # Print version info for debugging
-    - cd PocketBeagle2
+    - cd PocketBeagle-2
     - cargo clippy --no-deps
 
 pb2-test:
@@ -17,7 +17,7 @@ pb2-test:
     - docker-aarch64
   script:
     - rustc --version && cargo --version  # Print version info for debugging
-    - cd PocketBeagle2
+    - cd PocketBeagle-2
     - cargo test --verbose
 
 pb2-techlab-workshop:
@@ -30,7 +30,7 @@ pb2-techlab-workshop:
     - luarocks install --tree markdown.sile
     - luarocks install --tree highlighter.sile
   script:
-    - sile PocketBeagle2/TechLab/PocketBeagle-2-TechLab-Workshop-Student-Handouts.sil
+    - sile PocketBeagle-2/TechLab/PocketBeagle-2-TechLab-Workshop-Student-Handouts.sil
   artifacts:
     paths:
-      - PocketBeagle2/TechLab/PocketBeagle-2-TechLab-Workshop-Student-Handouts.pdf
+      - PocketBeagle-2/TechLab/PocketBeagle-2-TechLab-Workshop-Student-Handouts.pdf
