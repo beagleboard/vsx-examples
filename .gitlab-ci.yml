@@ -19,3 +19,18 @@ pb2-test:
     - rustc --version && cargo --version  # Print version info for debugging
     - cd PocketBeagle2
     - cargo test --verbose
+
+pb2-techlab-workshop:
+  image: "ubuntu:latest"
+  stage: test
+  before_script:
+    - add-apt-repository ppa:sile-typesetter/sile
+    - echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections
+    - DEBIAN_FRONTEND=noninteractive apt-get install -y sile luarocks ttf-mscorefonts-installer
+    - luarocks install --tree markdown.sile
+    - luarocks install --tree highlighter.sile
+  script:
+    - sile PocketBeagle2/TechLab/PocketBeagle-2-TechLab-Workshop-Student-Handouts.sil
+  artifacts:
+    paths:
+      - PocketBeagle2/TechLab/PocketBeagle-2-TechLab-Workshop-Student-Handouts.pdf
