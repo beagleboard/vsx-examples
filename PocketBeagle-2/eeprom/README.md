@@ -5,8 +5,8 @@ Read and parse EEPROM contents in Rust.
 # Usage
 
 ```shell
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle2$ cargo run -p eeprom
-   Compiling eeprom v0.1.0 (/home/ayush/vsx-examples/PocketBeagle2/eeprom)
+debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2$ cargo run -p eeprom
+   Compiling eeprom v0.1.0 (/home/ayush/vsx-examples/PocketBeagle-2/eeprom)
     Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.99s
      Running `target/debug/eeprom`
 EEPROM Data: Contents {

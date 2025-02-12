@@ -7,8 +7,8 @@ Uses `P1.36`. In case of [TechLab Cape](https://www.beagleboard.org/boards/techl
 # Usage
 
 ```sh
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle2$ cargo run -p fade -r
-   Compiling fade v0.1.0 (/home/debian/vsx-examples/PocketBeagle2/fade)
+debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2$ cargo run -p fade -r
+   Compiling fade v0.1.0 (/home/debian/vsx-examples/PocketBeagle-2/fade)
     Finished `release` profile [optimized] target(s) in 3.85s
      Running `target/release/fade`
 ```
