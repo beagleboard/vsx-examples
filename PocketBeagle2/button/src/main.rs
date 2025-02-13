@@ -1,10 +1,10 @@
-use linux_embedded_hal::gpio_cdev::{self, EventRequestFlags, EventType, Line, LineRequestFlags};
+use linux_embedded_hal::gpio_cdev;
 
 /// PIN name
 const BTN: &str = "P1_20";
 
 /// Find line by PIN Name.
-fn find_line_by_name(name: &str) -> Line {
+fn find_line_by_name(name: &str) -> gpio_cdev::Line {
     let chips = gpio_cdev::chips()
         .expect("Failed to get line names")
         .filter_map(|x| x.ok());
@@ -25,12 +25,12 @@ fn main() {
     let line = find_line_by_name(BTN);
 
     // let line_handle = line.request(LineRequestFlags::INPUT, 0, "button").unwrap();
-    let mut last_edge = EventType::RisingEdge;
+    let mut last_edge = gpio_cdev::EventType::RisingEdge;
 
     let events = line
         .events(
-            LineRequestFlags::INPUT,
-            EventRequestFlags::BOTH_EDGES,
+            gpio_cdev::LineRequestFlags::INPUT,
+            gpio_cdev::EventRequestFlags::BOTH_EDGES,
             "button",
         )
         .unwrap()
@@ -38,7 +38,12 @@ fn main() {
 
     // Iterate over events
     for evt in events {
-        if (last_edge, evt.event_type()) == (EventType::RisingEdge, EventType::FallingEdge) {
+        if (last_edge, evt.event_type())
+            == (
+                gpio_cdev::EventType::RisingEdge,
+                gpio_cdev::EventType::FallingEdge,
+            )
+        {
             println!("Button pressed");
         }
         last_edge = evt.event_type();
