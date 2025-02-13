@@ -1,5 +1,3 @@
-use linux_embedded_hal::gpio_cdev;
-
 /// PIN name
 const BTN: &str = "P1_20";
 

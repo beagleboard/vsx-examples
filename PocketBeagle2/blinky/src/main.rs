@@ -1,8 +1,6 @@
 use std::thread::sleep;
 use std::time::Duration;
 
-use linux_embedded_hal::gpio_cdev;
-
 /// PIN name
 const PIN: &str = "P1_20";
 
