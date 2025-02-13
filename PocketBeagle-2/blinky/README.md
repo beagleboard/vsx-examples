@@ -6,7 +6,7 @@ Also provides a simple helper function to find PIN by name.
 
 # Usage
 
-```shell
+```console
 debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2$ cargo run -p blinky
    Compiling blinky v0.1.0 (/home/debian/vsx-examples/PocketBeagle-2/blinky)
     Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.50s

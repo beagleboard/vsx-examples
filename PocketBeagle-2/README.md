@@ -10,10 +10,13 @@ Rust examples for PocketBeagle 2.
 
 # Run Example
 
-```sh
-cargo run <example>
+```console
+cargo run -r <example>
 ```
 
 # Rust Resources
 
 - [Rust Website](https://www.rust-lang.org/): Contains extreamly good getting started along with specilized guides for writing CLI, Webassembly, etc. Anyone wanting to learn Rust should start here.
+- [Rust by examples](https://doc.rust-lang.org/rust-by-example/): For people who like learning by doing.
+- [The Rust Book](https://doc.rust-lang.org/book/title-page.html): For people who like traditional learning.
+- [Introduction to Cargo](https://doc.rust-lang.org/cargo/): The defacto Rust build system.

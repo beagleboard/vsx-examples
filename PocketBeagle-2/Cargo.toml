@@ -1,3 +1,4 @@
+# This is a Rust Manifest as defined at https://doc.rust-lang.org/cargo/reference/manifest.html
 [workspace]
 resolver = "2"
 members = [ "blinky", "button", "eeprom", "fade","hello_beagle"]
