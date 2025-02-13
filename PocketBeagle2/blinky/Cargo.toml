@@ -8,4 +8,4 @@ authors.workspace = true
 edition.workspace = true
 
 [dependencies]
-gpio-cdev = "0.6.0"
+gpiod = "0.3.0"
