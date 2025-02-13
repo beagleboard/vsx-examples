@@ -1,4 +1,8 @@
-use std::{fs::OpenOptions, io::Write, path::PathBuf, thread::sleep, time::Duration};
+use std::fs::OpenOptions;
+use std::io::Write;
+use std::path::PathBuf;
+use std::thread::sleep;
+use std::time::Duration;
 
 #[derive(Clone)]
 struct Chip(PathBuf);
@@ -79,10 +83,7 @@ impl Channel {
 
     fn write(&self, file: &str, data: &[u8]) {
         let f_path = self.sysfs(file);
-        let mut f = OpenOptions::new()
-            .write(true)
-            .open(f_path)
-            .unwrap();
+        let mut f = OpenOptions::new().write(true).open(f_path).unwrap();
 
         f.write_all(data).unwrap();
     }
