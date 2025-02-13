@@ -32,8 +32,8 @@ pb2-techlab-workshop:
     - unzip /tmp/gotham-rounded.zip -d /usr/share/fonts/
     - fc-cache -f
     - fc-list :fontformat=TrueType -f "%{family[0]}\n" | sort | uniq | paste -s -d,
-    - luarocks install --tree markdown.sile
-    - luarocks install --tree highlighter.sile
+    - luarocks install --tree . markdown.sile
+    - luarocks install --tree . highlighter.sile
   script:
     - sile PocketBeagle-2/PocketBeagle-2-TechLab-Workshop-Student-Handouts.sil
   artifacts:
