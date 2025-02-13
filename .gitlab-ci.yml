@@ -24,13 +24,18 @@ pb2-techlab-workshop:
   image: "ubuntu:latest"
   stage: test
   before_script:
+    - apt-get update && apt-get install -y software-properties-common
     - add-apt-repository ppa:sile-typesetter/sile
     - echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections
-    - DEBIAN_FRONTEND=noninteractive apt-get install -y sile luarocks ttf-mscorefonts-installer
+    - DEBIAN_FRONTEND=noninteractive apt-get install -y sile luarocks ttf-mscorefonts-installer fonts-freefont-ttf ttf-bitstream-vera unzip curl
+    - curl https://media.fontsgeek.com/download/zip/g/o/gotham-rounded_At5Gw.zip -o /tmp/gotham-rounded.zip
+    - unzip /tmp/gotham-rounded.zip -d /usr/share/fonts/
+    - fc-cache -f
+    - fc-list :fontformat=TrueType -f "%{family[0]}\n" | sort | uniq | paste -s -d,
     - luarocks install --tree markdown.sile
     - luarocks install --tree highlighter.sile
   script:
-    - sile PocketBeagle-2/TechLab/PocketBeagle-2-TechLab-Workshop-Student-Handouts.sil
+    - sile PocketBeagle-2/PocketBeagle-2-TechLab-Workshop-Student-Handouts.sil
   artifacts:
     paths:
-      - PocketBeagle-2/TechLab/PocketBeagle-2-TechLab-Workshop-Student-Handouts.pdf
+      - PocketBeagle-2/PocketBeagle-2-TechLab-Workshop-Student-Handouts.pdf
