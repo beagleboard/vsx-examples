@@ -1,4 +1,4 @@
-# BeagleBoard Examples
+# Beagle Examples
 
 This contains many demos for the various Beagles.  Be sure to find the demos that are for the Beagle you are running.
 
