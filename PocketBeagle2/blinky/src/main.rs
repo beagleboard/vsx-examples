@@ -1,15 +1,13 @@
-use std::{thread::sleep, time::Duration};
+use std::thread::sleep;
+use std::time::Duration;
 
-use linux_embedded_hal::{
-    gpio_cdev::{self, Line, LineRequestFlags},
-    CdevPin,
-};
+use linux_embedded_hal::gpio_cdev;
 
 /// PIN name
 const PIN: &str = "P1_20";
 
 /// Find line by PIN Name.
-fn find_line_by_name(name: &str) -> Line {
+fn find_line_by_name(name: &str) -> gpio_cdev::Line {
     let chips = gpio_cdev::chips()
         .expect("Failed to get line names")
         .filter_map(|x| x.ok());
@@ -28,16 +26,17 @@ fn find_line_by_name(name: &str) -> Line {
 
 fn main() {
     let line = find_line_by_name(PIN);
-    let line_handle = line.request(LineRequestFlags::OUTPUT, 0, "blinky").unwrap();
-    let pin = CdevPin::new(line_handle).unwrap();
+    let line_handle = line
+        .request(gpio_cdev::LineRequestFlags::OUTPUT, 0, "blinky")
+        .unwrap();
 
     loop {
         println!("ON");
-        pin.set_value(1).unwrap();
+        line_handle.set_value(1).unwrap();
         sleep(Duration::from_secs(1));
 
         println!("OFF");
-        pin.set_value(0).unwrap();
+        line_handle.set_value(0).unwrap();
         sleep(Duration::from_secs(1));
     }
 }
