@@ -10,8 +10,8 @@ Rust examples for PocketBeagle 2.
 
 # Run Example
 
-```sh
-cargo run <example>
+```console
+cargo run -r <example>
 ```
 
 # Rust Resources
