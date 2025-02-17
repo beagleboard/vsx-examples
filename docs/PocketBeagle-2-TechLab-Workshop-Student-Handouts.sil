@@ -4,35 +4,8 @@
 \use[module=packages.lorem]
 \use[module=packages.image]
 \use[module=packages.svg]
-\use[module=packages.markdown]
-\use[module=packages.color]
-\use[module=packages.highlighter]
+\use[module=packages.handouts]
 \nofolios
-
-% Define a command \highlight to read a file and syntax-highlight its content
-% Mandatory parameter: src=<file name>
-% Optional parameter: language=<language> (guessed from the file extension if not specified)
-\begin{lua}
-local class = SILE.documentState.documentClass
-class:registerCommand("highlight", function (options, _)
-  -- Load the file
-  local src = SU.required(options, "src", "file name")
-  local source = SILE.resolveFile(src)
-  if not source then
-    SU.error("Can't find file " .. src)
-  end
-  local file = io.open(source, "rb")
-  if not file then
-    SU.error("Can't open file " .. src)
-  end
-  local content = file:read "*a"
-  file:close()
-  local language = options.language or pl.path.extension(src):sub(2)
-  -- Low-level HACK: pass read content as if raw
-  SILE.rawHandlers.highlight({ language = language }, { content })
-end)
-\end{lua}
-
 \begin[family=Gotham Rounded,style=Book,size=10pt]{font}
 PocketBeagle 2 TechLab Cape Hands-on Coding Workshop
 \chapter[numbering=false]{Introduction}
@@ -42,4 +15,3 @@ PocketBeagle 2 TechLab Cape Hands-on Coding Workshop
 \highlight[src=../PocketBeagle-2/blinky/src/main.rs,language=rust]
 \end{font}
 \end{document}
-
