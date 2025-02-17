@@ -1,9 +1,9 @@
 \begin[class=handouts,papersize=letter]{document}
 \begin[family=Gotham Rounded,style=Book,size=10pt]{font}
 PocketBeagle 2 TechLab Cape Hands-on Coding Workshop
-\chapter[numbering=false]{Introduction}
+\chapter{Introduction}
 \lorem[words=200]
-\chapter[numbering=false]{Lab 1: Blinky}
+\chapter{Lab 1: Blinky}
 \lorem[words=200]
 \highlight[src=../PocketBeagle-2/blinky/src/main.rs,language=rust]
 \end{font}
