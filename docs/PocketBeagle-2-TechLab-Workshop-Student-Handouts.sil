@@ -1,3 +1,4 @@
+\begin[papersize=letter,class=book]{document}
 \use[module=packages.grid]
 \use[module=packages.verbatim]
 \use[module=packages.lorem]
@@ -6,7 +7,6 @@
 \use[module=packages.markdown]
 \use[module=packages.color]
 \use[module=packages.highlighter]
-\begin[papersize=letter,class=book]{document}
 
 % Define a command \highlight to read a file and syntax-highlight its content
 % Mandatory parameter: src=<file name>
@@ -32,11 +32,11 @@ class:registerCommand("highlight", function (options, _)
 end)
 \end{lua}
 
-\begin[family=URW Gothic,style=Book,size=10pt]{font}
+\begin[family=Gotham Rounded,style=Book,size=10pt]{font}
 PocketBeagle 2 TechLab Cape Hands-on Coding Workshop
 \chapter{Introduction}
 \chapter{Lab 1: Blinky}
-\highlight[src=blinky/src/main.rs,language=rust]
+\highlight[src=../PocketBeagle-2/blinky/src/main.rs,language=rust]
 \end{font}
 \end{document}
 
