@@ -7,6 +7,7 @@
 \use[module=packages.markdown]
 \use[module=packages.color]
 \use[module=packages.highlighter]
+\nofolios
 
 % Define a command \highlight to read a file and syntax-highlight its content
 % Mandatory parameter: src=<file name>
@@ -34,8 +35,8 @@ end)
 
 \begin[family=Gotham Rounded,style=Book,size=10pt]{font}
 PocketBeagle 2 TechLab Cape Hands-on Coding Workshop
-\chapter{Introduction}
-\chapter{Lab 1: Blinky}
+\chapter[numbering=false]{Introduction}
+\chapter[numbering=false]{Lab 1: Blinky}
 \highlight[src=../PocketBeagle-2/blinky/src/main.rs,language=rust]
 \end{font}
 \end{document}
