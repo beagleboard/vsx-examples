@@ -1,11 +1,4 @@
-\begin[papersize=letter,class=book]{document}
-\use[module=packages.grid]
-\use[module=packages.verbatim]
-\use[module=packages.lorem]
-\use[module=packages.image]
-\use[module=packages.svg]
-\use[module=packages.handouts]
-\nofolios
+\begin[class=handouts,papersize=letter]{document}
 \begin[family=Gotham Rounded,style=Book,size=10pt]{font}
 PocketBeagle 2 TechLab Cape Hands-on Coding Workshop
 \chapter[numbering=false]{Introduction}
