@@ -36,7 +36,9 @@ end)
 \begin[family=Gotham Rounded,style=Book,size=10pt]{font}
 PocketBeagle 2 TechLab Cape Hands-on Coding Workshop
 \chapter[numbering=false]{Introduction}
+\lorem[words=200]
 \chapter[numbering=false]{Lab 1: Blinky}
+\lorem[words=200]
 \highlight[src=../PocketBeagle-2/blinky/src/main.rs,language=rust]
 \end{font}
 \end{document}
