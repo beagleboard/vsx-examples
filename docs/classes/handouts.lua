@@ -5,10 +5,10 @@ class._name = "handouts"
 
 class.defaultFrameset = {
 	content = {
-		left = "8.3%pw",
-		right = "86%pw",
-		top = "11.6%ph",
-		bottom = "top(footnotes)",
+		left = "5%pw",
+		right = "95%pw",
+		top = "5%ph",
+		bottom = "95%pw",
 	},
 	folio = {
 		left = "left(content)",
@@ -16,17 +16,11 @@ class.defaultFrameset = {
 		top = "bottom(footnotes)+3%ph",
 		bottom = "bottom(footnotes)+5%ph",
 	},
-	runningHead = {
-		left = "left(content)",
-		right = "right(content)",
-		top = "top(content)-8%ph",
-		bottom = "top(content)-3%ph",
-	},
 	footnotes = {
 		left = "left(content)",
 		right = "right(content)",
 		height = "0",
-		bottom = "83.3%ph",
+		bottom = "95%ph",
 	},
 }
 
@@ -38,11 +32,13 @@ function class:_init (options)
 	self:loadPackage("verbatim")
 	self:loadPackage("image")
 	self:loadPackage("svg")
+	SILE.languageSupport.loadLanguage("la")
 	self:loadPackage("lorem")
 	self:loadPackage("footnotes", {
 		insertInto = "footnotes",
 		stealFrom = { "content" },
 	})
+	SILE.call("nofolios")
 end
 
 function class:endPage ()
@@ -80,8 +76,12 @@ function class:registerCommands ()
 		local content = file:read "*a"
 		file:close()
 		local language = options.language or pl.path.extension(src):sub(2)
+		SILE.call("bigskip")
+		SILE.call("nobreak")
 		-- Low-level HACK: pass read content as if raw
 		SILE.rawHandlers.highlight({ language = language }, { content })
+		SILE.call("allowbreak")
+		SILE.call("bigskip")
 	end, "Syntax highlight externally included source")
 
 	self:registerCommand("handouts:sectioning", function (options, content)
@@ -92,6 +92,13 @@ function class:registerCommands ()
 		SILE.call("par")
 		SILE.call("noindent")
 	end, "TBD")
+
+	self:registerCommand("header", function (options, content)
+		--SILE.call("eject")
+		SILE.call("noindent")
+		SILE.call("font", { weight = 800, size = "14pt" }, content)
+		SILE.call("bigskip")
+	end, "Start a new page with a header")
 
 	self:registerCommand("chapter", function (options, content)
 		SILE.call("par")
