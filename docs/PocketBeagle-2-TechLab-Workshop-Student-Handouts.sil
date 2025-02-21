@@ -7,7 +7,7 @@ PocketBeagle 2 TechLab Cape Hands-on Coding Workshop
 \lorem[words=200]
 \eject
 \chapter{Lab 1: Blinky}
-\lorem[words=200]
+\include[src=../PocketBeagle-2/blinky/README.md]
 \highlight[src=../PocketBeagle-2/blinky/src/main.rs,language=rust]
 \end{font}
 \end{document}
