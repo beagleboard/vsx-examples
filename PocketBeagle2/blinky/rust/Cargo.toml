@@ -1,11 +1,11 @@
 # This is a Rust Manifest as defined at https://doc.rust-lang.org/cargo/reference/manifest.html
 [package]
-name = "button"
-description = "Simple example to detect button presses"
+name = "blinky"
+description = "Simple blinky example"
 version = "0.1.0"
-license.workspace = true
-authors.workspace = true
-edition.workspace = true
+license = "MIT"
+authors = ["Ayush Singh <ayush@beagleboard.org>"]
+edition = "2021"
 
 [dependencies]
 gpiod = "0.3.0"

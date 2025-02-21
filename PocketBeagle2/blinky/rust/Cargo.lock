@@ -16,25 +16,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "button"
-version = "0.1.0"
-dependencies = [
- "gpiod",
-]
-
-[[package]]
 name = "cfg-if"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
-
-[[package]]
-name = "eeprom"
-version = "0.1.0"
-
-[[package]]
-name = "fade"
-version = "0.1.0"
 
 [[package]]
 name = "gpiod"
@@ -53,10 +38,6 @@ checksum = "15a60e3beb5444643d049a3f8769b47ce246ec1f57e6cd1aed1e417d57a47110"
 dependencies = [
  "nix",
 ]
-
-[[package]]
-name = "hello_beagle"
-version = "0.1.0"
 
 [[package]]
 name = "libc"
