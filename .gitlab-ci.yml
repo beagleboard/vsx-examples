@@ -14,3 +14,12 @@ rust-exampes:
     - cargo clippy --no-deps
     - cargo build
     - cargo test
+
+python-library:
+  image: "python:alpine"
+  stage: test
+  before_script:
+    - pip install build
+  script:
+    - cd Libraries/python/beagle_linux_sdk
+    - python -m build
