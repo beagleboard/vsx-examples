@@ -1,5 +1,6 @@
 from .pin import Pin
 
+
 class Led:
     def __init__(self, pin: Pin) -> None:
         self.pin = pin.gpio_output()
