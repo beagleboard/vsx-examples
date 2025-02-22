@@ -11,6 +11,15 @@ class Pin:
             raise ValueError("Pin cannot be used as GPIO")
         chip = gpiod.Chip(self.chipset)
         led = chip.get_line(self.offset)
-        led.request(consumer="blinky-example", type=gpiod.LINE_REQ_DIR_OUT)
+        led.request(consumer="", type=gpiod.LINE_REQ_DIR_OUT)
+
+        return led
+
+    def gpio_input(self):
+        if self.chipset == None or self.offset == None:
+            raise ValueError("Pin cannot be used as GPIO")
+        chip = gpiod.Chip(self.chipset)
+        led = chip.get_line(self.offset)
+        led.request(consumer="", type=gpiod.LINE_REQ_EV_BOTH_EDGES)
 
         return led
