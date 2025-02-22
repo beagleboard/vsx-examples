@@ -6,6 +6,7 @@ rust-exampes:
       - BOARD: PocketBeagle2
         EXAMPLE:
         - blinky
+        - button
   before_script:
     - rustup component add clippy
   script:

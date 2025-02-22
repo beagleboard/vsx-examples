@@ -2,8 +2,6 @@
 
 Simple example to toggle GPIOs. Uses Pin `P1.20` by default.
 
-Also provides a simple helper function to find PIN by name.
-
 # Usage
 
 ## Rust
