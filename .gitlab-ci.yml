@@ -1,24 +1,31 @@
-pb2-clippy:
+rust-exampes:
   image: "rust:latest"
   stage: test
-  tags:
-    - docker-aarch64
+  parallel:
+    matrix:
+      - BOARD: PocketBeagle-2
+        EXAMPLE:
+        - blinky
+        - button
+        - fade
+        - eeprom
   before_script:
     - rustup component add clippy
   script:
     - rustc --version && cargo --version  # Print version info for debugging
-    - cd PocketBeagle-2
+    - cd ${BOARD}/${EXAMPLE}/rust
     - cargo clippy --no-deps
+    - cargo build
+    - cargo test
 
-pb2-test:
-  image: "rust:latest"
+python-library:
+  image: "python:alpine"
   stage: test
-  tags:
-    - docker-aarch64
+  before_script:
+    - pip install build
   script:
-    - rustc --version && cargo --version  # Print version info for debugging
-    - cd PocketBeagle-2
-    - cargo test --verbose
+    - cd Libraries/python/beagle_linux_sdk
+    - python -m build
 
 pb2-techlab-workshop:
   image: "ubuntu:latest"

@@ -1,11 +1,11 @@
 # This is a Rust Manifest as defined at https://doc.rust-lang.org/cargo/reference/manifest.html
 [package]
-name = "button"
-description = "Simple example to detect button presses"
+name = "blinky"
+description = "Simple blinky example"
 version = "0.1.0"
 license = "MIT"
 authors = ["Ayush Singh <ayush@beagleboard.org>"]
 edition = "2021"
 
 [dependencies]
-beagle_linux_sdk = { path = "../../../Libraries/rust/beagle_linux_sdk", features = ["button", "pocketbeagle2"] }
+beagle_linux_sdk = { path = "../../../Libraries/rust/beagle_linux_sdk", features = ["led", "pocketbeagle2"] }

@@ -8,6 +8,6 @@ PocketBeagle 2 TechLab Cape Hands-on Coding Workshop
 \eject
 \chapter{Lab 1: Blinky}
 \include[src=../PocketBeagle-2/blinky/README.md]
-\highlight[src=../PocketBeagle-2/blinky/src/main.rs,language=rust]
+\highlight[src=../PocketBeagle-2/blinky/rust/src/main.rs,language=rust]
 \end{font}
 \end{document}
