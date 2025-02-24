@@ -1,15 +1,39 @@
 # EEPROM Example
 
-Read and parse EEPROM contents in Rust.
+Read and parse EEPROM contents.
 
 # Usage
 
+## Python
+
 ```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2$ cargo run -p eeprom
-   Compiling eeprom v0.1.0 (/home/ayush/vsx-examples/PocketBeagle-2/eeprom)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.99s
+debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/eeprom/python$ python main.py
+BeagleEeprom(magic_number=(170, 85, 51, 238),
+             hdr1=Header(hdr_id=1, length=55),
+             hdr2=Header(hdr_id=16, length=46),
+             board_info=BoardInfo(name='POCKETBEAGL2A00G',
+                                  version='A0',
+                                  proc_number='0000',
+                                  variant='0G',
+                                  pcb_revision='A0',
+                                  schematic_bom_revision='A0',
+                                  software_revision='00',
+                                  vendor_id='01',
+                                  build_week='02',
+                                  build_year='25',
+                                  serial='PB20000183'),
+             hdr3=Header(hdr_id=17, length=2),
+             ddr_info=4776,
+             termination=254)
+```
+
+## Rust
+
+```console
+debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/eeprom/rust$ cargo run
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
      Running `target/debug/eeprom`
-EEPROM Data: Contents {
+BeagleEeprom {
     magic_number: [
         170,
         85,
@@ -33,9 +57,9 @@ EEPROM Data: Contents {
         schematic_bom_revision: "A0",
         software_revision: "00",
         vendor_id: "01",
-        build_week: "34",
-        build_year: "24",
-        serial: "PB20000001",
+        build_week: "02",
+        build_year: "25",
+        serial: "PB20000183",
     },
     hdr3: Header {
         id: 17,

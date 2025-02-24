@@ -3,8 +3,9 @@
 name = "fade"
 description = "Simple example to fade an LED in and out using PWM. Also contains abstractions to use PWM using sysfs"
 version = "0.1.0"
-license.workspace = true
-authors.workspace = true
-edition.workspace = true
+license = "MIT"
+authors = ["Ayush Singh <ayush@beagleboard.org>"]
+edition = "2021"
 
 [dependencies]
+beagle_linux_sdk = { path = "../../../Libraries/rust/beagle_linux_sdk", features = ["pwm_led", "pocketbeagle2"] }
