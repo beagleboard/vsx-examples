@@ -1,2 +1,4 @@
-*.out
-*.so
+target/
+__pycache__/
+*.egg-info
+dist/
