@@ -1,5 +1,5 @@
 import gpiod
-from .pin import Pin
+from ..pin import Pin
 
 
 class Button:

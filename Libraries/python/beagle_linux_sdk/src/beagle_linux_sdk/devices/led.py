@@ -1,4 +1,4 @@
-from .pin import Pin
+from ..pin import Pin
 
 
 class Led:
