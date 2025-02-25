@@ -17,3 +17,5 @@ pub use led::Led;
 pub use pwm_led::PwmLed;
 #[cfg(feature = "beagle_eeprom")]
 pub use beagle_eeprom::*;
+#[cfg(feature = "light_sensor")]
+pub use light_sensor::LightSensor;

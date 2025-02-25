@@ -1,5 +1,7 @@
 #![allow(dead_code)]
 
+use crate::abstractions::adc::Adc;
+
 pub(crate) struct GpioPin {
     chip: usize,
     offset: u32,
@@ -61,19 +63,25 @@ impl AdcPin {
         }
     }
 
-    pub(crate) fn adc_input(&self) {
-        todo!()
+    #[cfg(feature = "adc")]
+    pub(crate) fn adc_input(&self) -> std::io::Result<Adc> {
+        Adc::new(self.iio_device, self.channel)
     }
 }
 
 pub struct Pin {
     gpio: Option<GpioPin>,
     pwm: Option<PwmPin>,
+    adc: Option<AdcPin>,
 }
 
 impl Pin {
-    pub(crate) const fn new(gpio: Option<GpioPin>, pwm: Option<PwmPin>) -> Self {
-        Self { gpio, pwm }
+    pub(crate) const fn new(
+        gpio: Option<GpioPin>,
+        pwm: Option<PwmPin>,
+        adc: Option<AdcPin>,
+    ) -> Self {
+        Self { gpio, pwm, adc }
     }
 
     #[cfg(feature = "led")]
@@ -102,6 +110,16 @@ impl Pin {
             Some(x) => x.pwm_output(),
             None => Err(std::io::Error::other(
                 "Pin does not support PWM output functionality",
+            )),
+        }
+    }
+
+    #[cfg(feature = "adc")]
+    pub(crate) fn adc_input(&self) -> std::io::Result<Adc> {
+        match &self.adc {
+            Some(x) => x.adc_input(),
+            None => Err(std::io::Error::other(
+                "Pin does not support Analog functionality",
             )),
         }
     }
