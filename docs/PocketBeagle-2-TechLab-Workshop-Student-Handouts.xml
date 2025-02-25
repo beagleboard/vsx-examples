@@ -1,0 +1,11 @@
+<document class="handouts" papersize="letter">
+<font family="Gotham Rounded" style="Book">
+<svg src="images/beagleboard-logo.svg" width="30%pw" />
+PocketBeagle 2 TechLab Cape Hands-on Coding Workshop
+<lorem words="200" />
+<eject />
+<chapter>Lab 1: Blinky</chapter>
+<include src="../PocketBeagle-2/blinky/README.md" />
+<highlight src="../PocketBeagle-2/blinky/rust/src/main.rs" language="rust" />
+</font>
+</document>

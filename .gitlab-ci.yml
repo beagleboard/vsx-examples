@@ -43,7 +43,7 @@ pb2-techlab-workshop:
     - cd docs
     - luarocks install --tree lua_modules markdown.sile
     - luarocks install --tree lua_modules highlighter.sile
-    - sile PocketBeagle-2-TechLab-Workshop-Student-Handouts.sil
+    - sile PocketBeagle-2-TechLab-Workshop-Student-Handouts.xml
   artifacts:
     paths:
       - docs/PocketBeagle-2-TechLab-Workshop-Student-Handouts.pdf
