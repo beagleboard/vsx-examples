@@ -48,6 +48,24 @@ impl PwmPin {
     }
 }
 
+pub(crate) struct AdcPin {
+    iio_device: usize,
+    channel: usize,
+}
+
+impl AdcPin {
+    pub(crate) const fn new(iio_device: usize, channel: usize) -> Self {
+        Self {
+            iio_device,
+            channel,
+        }
+    }
+
+    pub(crate) fn adc_input(&self) {
+        todo!()
+    }
+}
+
 pub struct Pin {
     gpio: Option<GpioPin>,
     pwm: Option<PwmPin>,
