@@ -1,7 +1,5 @@
 #![allow(dead_code)]
 
-use crate::abstractions::adc::Adc;
-
 pub(crate) struct GpioPin {
     chip: usize,
     offset: u32,
@@ -64,8 +62,8 @@ impl AdcPin {
     }
 
     #[cfg(feature = "adc")]
-    pub(crate) fn adc_input(&self) -> std::io::Result<Adc> {
-        Adc::new(self.iio_device, self.channel)
+    pub(crate) fn adc_input(&self) -> std::io::Result<crate::abstractions::adc::Adc> {
+        crate::abstractions::adc::Adc::new(self.iio_device, self.channel)
     }
 }
 
@@ -115,7 +113,7 @@ impl Pin {
     }
 
     #[cfg(feature = "adc")]
-    pub(crate) fn adc_input(&self) -> std::io::Result<Adc> {
+    pub(crate) fn adc_input(&self) -> std::io::Result<crate::abstractions::adc::Adc> {
         match &self.adc {
             Some(x) => x.adc_input(),
             None => Err(std::io::Error::other(
