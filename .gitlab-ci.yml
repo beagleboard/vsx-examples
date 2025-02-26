@@ -9,6 +9,7 @@ rust-exampes:
         - button
         - fade
         - eeprom
+        - light_sensor
   before_script:
     - rustup component add clippy
   script:
