@@ -1,6 +1,7 @@
 [package]
 name = "rust"
 version = "0.1.0"
+description = "Simple example to demonstrate 2 seven segments on TechLab Cape"
 license = "MIT"
 authors = ["Ayush Singh <ayush@beagleboard.org>"]
 edition = "2021"

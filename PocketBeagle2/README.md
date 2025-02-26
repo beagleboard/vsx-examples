@@ -7,6 +7,7 @@ This folder provides multi-language examples for PocketBeagle 2. The primary lan
 3. [fade](fade): Simple example to fade an LED in and out using PWM.
 4. [eeprom](eeprom): Read and parse EEPROM contents.
 5. [light_sensor](light_sensor): Simple example logging light sensor data.
+6. [seven_segment](seven_segment): Simple example to demonstrate 2 seven segments on TechLab Cape.
 
 # Initial Prep
 
