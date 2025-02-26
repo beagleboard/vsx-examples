@@ -4,6 +4,14 @@ Simple example to demonstrate 2 seven segments on TechLab Cape. Needs root permi
 
 # Usage
 
+## Python
+
+```console
+root@pocketbeagle2:/home/debian/vsx-examples/PocketBeagle2/seven_segment/python# python main.py
+Countdown Automatic on Right
+Countdown Manual on Left
+```
+
 ## Rust
 
 ```console
