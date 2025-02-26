@@ -35,7 +35,7 @@ pb2-techlab-workshop:
     - add-apt-repository ppa:sile-typesetter/sile
     - echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections
     - DEBIAN_FRONTEND=noninteractive apt-get install -y sile luarocks ttf-mscorefonts-installer fonts-freefont-ttf ttf-bitstream-vera unzip curl git
-    - curl https://media.fontsgeek.com/download/zip/g/o/gotham-rounded_At5Gw.zip -o /tmp/gotham-rounded.zip
+    - curl https://openbeagle.org/jkridner/fonts/-/raw/main/gotham-rounded.zip?inline=false -o /tmp/gotham-rounded.zip
     - unzip /tmp/gotham-rounded.zip -d /usr/share/fonts/
     - fc-cache -f
     - fc-list :fontformat=TrueType -f "%{family[0]}\n" | sort | uniq | paste -s -d,
