@@ -8,6 +8,8 @@ pub mod pwm_led;
 pub mod beagle_eeprom;
 #[cfg(feature = "light_sensor")]
 pub mod light_sensor;
+#[cfg(feature = "seven_segment")]
+pub mod seven_segment;
 
 #[cfg(feature = "button")]
 pub use button::Button;
@@ -19,3 +21,5 @@ pub use pwm_led::PwmLed;
 pub use beagle_eeprom::*;
 #[cfg(feature = "light_sensor")]
 pub use light_sensor::LightSensor;
+#[cfg(feature = "seven_segment")]
+pub use seven_segment::SevenSegment;

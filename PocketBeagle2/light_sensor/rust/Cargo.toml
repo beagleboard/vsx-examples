@@ -1,6 +1,7 @@
 [package]
 name = "rust"
 version = "0.1.0"
+description = "Simple example logging light sensor data"
 license = "MIT"
 authors = ["Ayush Singh <ayush@beagleboard.org>"]
 edition = "2021"
