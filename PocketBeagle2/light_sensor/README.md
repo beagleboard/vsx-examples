@@ -24,9 +24,12 @@ Dark
 debian@pocketbeagle2:~/vsx-examples/PocketBeagle2/light_sensor/rust$ cargo run
     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
      Running `target/debug/rust`
-Value: true
-Value: true
-Value: true
-Value: false
-Value: false
+Light
+Light
+Light
+Light
+Dark
+Dark
+Dark
+Dark
 ```
