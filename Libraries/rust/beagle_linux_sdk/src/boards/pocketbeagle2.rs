@@ -7,3 +7,8 @@ pub const P1_36: Pin = Pin::new(None, Some(PwmPin::new(0, 0)), None);
 pub const P2_33: Pin = Pin::new(Some(GpioPin::new(2, 52)), None, None);
 
 pub const EEPROM_PATH: &str = "/sys/bus/i2c/devices/0-0050/eeprom";
+
+pub mod techlab {
+    pub const SEVEN_SEGMENT_LEFT: &str = "/sys/devices/platform/seven-segments-left/linedisp.1/";
+    pub const SEVEN_SEGMENT_RIGHT: &str = "/sys/devices/platform/seven-segments-right/linedisp.0/";
+}
