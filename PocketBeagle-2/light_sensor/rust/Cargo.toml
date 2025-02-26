@@ -1,0 +1,10 @@
+[package]
+name = "rust"
+version = "0.1.0"
+description = "Simple example logging light sensor data"
+license = "MIT"
+authors = ["Ayush Singh <ayush@beagleboard.org>"]
+edition = "2021"
+
+[dependencies]
+beagle_linux_sdk = { path = "../../../Libraries/rust/beagle_linux_sdk", features = ["light_sensor", "pocketbeagle2"] }
