@@ -4,6 +4,20 @@ Simple example logging light sensor data. Uses `P1.19` which is connected to Lig
 
 # Usage
 
+## Python
+
+```console
+debian@pocketbeagle2:~/vsx-examples/PocketBeagle2/light_sensor/python$ python main.py
+Light
+Light
+Light
+Light
+Dark
+Dark
+Dark
+Dark
+```
+
 ## Rust
 
 ```console
