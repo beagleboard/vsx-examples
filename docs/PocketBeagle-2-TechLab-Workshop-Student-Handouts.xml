@@ -1,11 +1,38 @@
 <document class="handouts" papersize="letter">
+<use module="packages.frametricks" />
 <font family="Gotham Rounded" style="Book">
-<svg src="images/beagleboard-logo.svg" width="30%pw" />
+<vbox>
+<hbox>
+<frame id="leftCol" left="5%pw" right="30%pw" top="5%pw" bottom="10%pw" />
+<frame id="rightCol" left="35%pw" right="95%pw" top="5%pw" bottom="10%pw" />
+</hbox>
+</vbox>
+<typeset-into frame="leftCol">
+<svg src="images/beagleboard-logo.svg" width="100%fw" />
+</typeset-into>
+<typeset-into frame="rightCol">
+<font size="22pt"><noindent />
 PocketBeagle 2 TechLab Cape Hands-on Coding Workshop
+</font>
+</typeset-into>
+<showframe id="leftCol" />
+<showframe id="rightCol" />
+<medskip />
 <lorem words="200" />
 <eject />
-<chapter>Lab 1: Blinky</chapter>
+<!--
+<vbox>
+<hbox>
+<frame id="leftCol" left="left(content)" right="left(gutter)" top="top(content)" bottom="20%pw" />
+<frame id="gutter" width="3%pw" />
+<frame id="rightCol" left="right(gutter)" right="right(content)" top="top(content)" bottom="20%pw" />
+</hbox>
+<typeset-into frame="leftCol">
 <include src="../PocketBeagle-2/blinky/README.md" />
+</typeset-into>
+<typeset-into frame="rightCol">
 <highlight src="../PocketBeagle-2/blinky/rust/src/main.rs" language="rust" />
+</typeset-into>
+-->
 </font>
 </document>
