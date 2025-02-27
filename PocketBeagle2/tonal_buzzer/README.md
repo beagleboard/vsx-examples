@@ -4,6 +4,13 @@ Simple example to play Harry Potter meoldy on a buzzer. Uses `P2.30`, i.e. the b
 
 # Usage
 
+## Python
+
+```console
+debian@pocketbeagle2:~/vsx-examples/PocketBeagle2/tonal_buzzer/python$ python main.py
+Start Playing
+```
+
 ## Rust
 
 ```console
