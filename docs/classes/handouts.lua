@@ -38,6 +38,7 @@ function class:_init (options)
 	SILE.languageSupport.loadLanguage("la")
 	self:loadPackage("lorem")
 	self:loadPackage("counters")
+	self:loadPackage("frametricks")
 end
 
 function class:incrementFolio (_)
@@ -165,6 +166,28 @@ function class:registerCommands ()
 		options.size = options.size or SILE.settings:get("font.size") - 3
 		SILE.call("font", options, content)
 	end)
+
+	self:registerCommand("center", function (_, content)
+		if #SILE.typesetter.state.nodes ~= 0 then
+			SU.warn([[
+				\\center environment started after other nodes in a paragraph
+
+				Content may not be centered as expected.
+			]])
+		end
+		SILE.settings:temporarily(function ()
+			local lskip = SILE.settings:get("document.lskip") or SILE.types.node.glue()
+			local rskip = SILE.settings:get("document.rskip") or SILE.types.node.glue()
+			SILE.settings:set("document.parindent", SILE.types.node.glue())
+			SILE.settings:set("current.parindent", SILE.types.node.glue())
+			SILE.settings:set("document.lskip", SILE.types.node.hfillglue(lskip.width.length))
+			SILE.settings:set("document.rskip", SILE.types.node.hfillglue(rskip.width.length))
+			SILE.settings:set("typesetter.parfillskip", SILE.types.node.glue())
+			SILE.settings:set("document.spaceskip", SILE.types.length("1spc", 0, 0))
+			SILE.process(content)
+			SILE.call("par")
+		end)
+	end, "Typeset its contents in a centered block (keeping margins).")
 
   	-- Define a command \highlight to read a file and syntax-highlight its content
 	-- Mandatory parameter: src=<file name>

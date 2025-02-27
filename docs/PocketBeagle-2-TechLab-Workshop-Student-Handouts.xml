@@ -1,34 +1,37 @@
 <document class="handouts" papersize="letter">
-<use module="packages.frametricks" />
 <font family="Gotham Rounded" style="Book">
-<frame id="leftCol" left="left(content)" right="30%pw" top="top(content)" bottom="top(content)+10%pw" />
-<frame id="rightCol" left="35%pw" right="right(content)" top="top(content)" bottom="top(content)+10%pw" />
-<typeset-into frame="leftCol">
+
+<frame id="1-1" left="5%pw" right="30%pw" top="5%pw" bottom="15%pw" />
+<typeset-into frame="1-1">
 <svg src="images/beagleboard-logo.svg" width="100%fw" />
 </typeset-into>
-<typeset-into frame="rightCol">
-<font size="22pt"><noindent />
-PocketBeagle 2 TechLab Cape Hands-on Coding Workshop
+
+<frame id="1-2" left="35%pw" right="95%pw" top="5%pw" bottom="15%pw" />
+<typeset-into frame="1-2">
+<font size="22pt">
+<noindent />
+<center>
+PocketBeagle 2 TechLab Cape<break />Hands-on Coding Workshop
+</center>
 </font>
 </typeset-into>
-<bigskip />
-<lorem words="200" />
-<!-- <showframe id="leftCol" /> -->
-<!-- <showframe id="rightCol" /> -->
+
+<frame id="1-3" left="5%pw" right="95%pw" top="18%pw" bottom="95%pw" />
+<typeset-into frame="1-3">
+<lorem words="300" />
+</typeset-into>
+
 <eject />
-<!--
-<vbox>
-<hbox>
-<frame id="leftCol" left="left(content)" right="left(gutter)" top="top(content)" bottom="20%pw" />
-<frame id="gutter" width="3%pw" />
-<frame id="rightCol" left="right(gutter)" right="right(content)" top="top(content)" bottom="20%pw" />
-</hbox>
-<typeset-into frame="leftCol">
+
+<frame id="2-1" left="5%pw" right="95%pw" top="5%pw" bottom="50%pw" />
+<typeset-into frame="2-1">
 <include src="../PocketBeagle-2/blinky/README.md" />
 </typeset-into>
-<typeset-into frame="rightCol">
+
+<frame id="2-2" left="5%pw" right="95%pw" top="55%pw" bottom="95%pw" />
+<typeset-into frame="2-2">
 <highlight src="../PocketBeagle-2/blinky/rust/src/main.rs" language="rust" />
 </typeset-into>
--->
+
 </font>
 </document>
