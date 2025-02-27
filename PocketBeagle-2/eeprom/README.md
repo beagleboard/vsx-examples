@@ -32,7 +32,7 @@ BeagleEeprom(magic_number=(170, 85, 51, 238),
 ```console
 debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/eeprom/rust$ cargo run
     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
-     Running `target/debug/eeprom`
+     Running `target/debug/rust`
 BeagleEeprom {
     magic_number: [
         170,

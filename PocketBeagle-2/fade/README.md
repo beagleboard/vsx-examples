@@ -6,11 +6,18 @@ Uses `P1.36`. In case of [TechLab Cape](https://www.beagleboard.org/boards/techl
 
 # Usage
 
+## Python
+
 ```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2$ cargo run -p fade -r
-   Compiling fade v0.1.0 (/home/debian/vsx-examples/PocketBeagle-2/fade)
+debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/python$ python main.py
+```
+
+## Rust
+
+```console
+debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/rust$ cargo run
     Finished `release` profile [optimized] target(s) in 3.85s
-     Running `target/release/fade`
+     Running `target/release/rust`
 ```
 
 # Helpful resources

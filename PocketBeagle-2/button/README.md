@@ -4,6 +4,14 @@ Simple example to detect button presses. Uses Pin `P2.33` by default.
 
 # Usage
 
+## Python
+
+```console
+debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/button/python$ python main.py
+Waiting for button press
+Button Pressed
+```
+
 ## Rust
 
 ```console
