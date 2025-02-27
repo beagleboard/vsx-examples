@@ -7,7 +7,7 @@ Read and parse EEPROM contents.
 ## Python
 
 ```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle2/eeprom/python$ python main.py
+debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/eeprom/python$ python main.py
 BeagleEeprom(magic_number=(170, 85, 51, 238),
              hdr1=Header(hdr_id=1, length=55),
              hdr2=Header(hdr_id=16, length=46),
@@ -30,9 +30,9 @@ BeagleEeprom(magic_number=(170, 85, 51, 238),
 ## Rust
 
 ```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle2/eeprom/rust$ cargo run
+debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/eeprom/rust$ cargo run
     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
-     Running `target/debug/eeprom`
+     Running `target/debug/rust`
 BeagleEeprom {
     magic_number: [
         170,
