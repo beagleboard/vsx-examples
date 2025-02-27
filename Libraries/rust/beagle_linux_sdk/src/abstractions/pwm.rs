@@ -83,6 +83,13 @@ impl PwmChannel {
         Ok(())
     }
 
+    /// Disable PWM signal on channel
+    pub(crate) fn disable(&self) -> std::io::Result<()> {
+        let mut f = OpenOptions::new().write(true).open(&self.enable)?;
+        f.write(b"0")?;
+        Ok(())
+    }
+
     /// Set the active time of the PWM signal. Value is in nanoseconds and must be less than or
     /// equal to the period.
     pub(crate) fn set_duty_cycle(&self, duty: usize) -> std::io::Result<()> {

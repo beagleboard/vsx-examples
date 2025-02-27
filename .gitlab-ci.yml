@@ -11,6 +11,7 @@ rust-exampes:
         - eeprom
         - light_sensor
         - seven_segment
+        - tonal_buzzer
   before_script:
     - rustup component add clippy
   script:

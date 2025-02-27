@@ -7,7 +7,7 @@ class PwmChannel:
     def __init__(self, chip_dir: Path, channel: int) -> None:
         self.chip_dir = chip_dir
         self.channel = channel
-        
+
         chan_dir = self.chip_dir.joinpath(f"pwm{channel}")
         if not chan_dir.is_dir():
             raise ValueError("PWM channel does not exist")
@@ -17,20 +17,24 @@ class PwmChannel:
         self.period = chan_dir.joinpath("period")
 
     def enable(self):
-        with open(self.enable_p, 'w') as f:
+        with open(self.enable_p, "w") as f:
             f.write("1")
 
+    def disable(self):
+        with open(self.enable_p, "w") as f:
+            f.write("0")
+
     def set_duty_cycle(self, duty: int):
-        with open(self.duty_cycle, 'w') as f:
+        with open(self.duty_cycle, "w") as f:
             f.write(str(duty))
 
     def set_period(self, period: int):
-        with open(self.period, 'w') as f:
+        with open(self.period, "w") as f:
             f.write(str(period))
 
     def __del__(self):
         unexport = self.chip_dir.joinpath("unexport")
-        with open(unexport, 'w') as f:
+        with open(unexport, "w") as f:
             f.write(str(self.channel))
 
 
@@ -44,7 +48,7 @@ class PwmChip:
             raise ValueError("PWM Chip does not exist")
 
     def unexport(self, channel: int):
-        with open(self.unexport_p, 'w') as f:
+        with open(self.unexport_p, "w") as f:
             f.write(str(channel))
 
     def export(self, channel: int) -> PwmChannel:
@@ -53,7 +57,7 @@ class PwmChip:
         except Exception as e:
             pass
 
-        with open(self.export_p, 'w') as f:
+        with open(self.export_p, "w") as f:
             f.write(str(channel))
 
         return PwmChannel(self.chip_dir, channel)
