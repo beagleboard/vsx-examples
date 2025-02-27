@@ -10,6 +10,8 @@ pub mod beagle_eeprom;
 pub mod light_sensor;
 #[cfg(feature = "seven_segment")]
 pub mod seven_segment;
+#[cfg(feature = "tonal_buzzer")]
+pub mod tonal_buzzer;
 
 #[cfg(feature = "button")]
 pub use button::Button;
@@ -23,3 +25,5 @@ pub use beagle_eeprom::*;
 pub use light_sensor::LightSensor;
 #[cfg(feature = "seven_segment")]
 pub use seven_segment::SevenSegment;
+#[cfg(feature = "tonal_buzzer")]
+pub use tonal_buzzer::TonalBuzzer;

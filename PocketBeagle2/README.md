@@ -8,6 +8,7 @@ This folder provides multi-language examples for PocketBeagle 2. The primary lan
 4. [eeprom](eeprom): Read and parse EEPROM contents.
 5. [light_sensor](light_sensor): Simple example logging light sensor data.
 6. [seven_segment](seven_segment): Simple example to demonstrate 2 seven segments on TechLab Cape.
+8. [tonal_buzzer](tonal_buzzer): Simple example to play Harry Potter meoldy on a buzzer.
 
 # Initial Prep
 
