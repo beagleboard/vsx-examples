@@ -7,7 +7,7 @@ Simple example logging light sensor data. Uses `P1.19` which is connected to Lig
 ## Python
 
 ```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle2/light_sensor/python$ python main.py
+debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/light_sensor/python$ python main.py
 Light
 Light
 Light
@@ -21,7 +21,7 @@ Dark
 ## Rust
 
 ```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle2/light_sensor/rust$ cargo run
+debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/light_sensor/rust$ cargo run
     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
      Running `target/debug/rust`
 Light

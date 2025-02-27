@@ -3,7 +3,7 @@ rust-exampes:
   stage: test
   parallel:
     matrix:
-      - BOARD: PocketBeagle2
+      - BOARD: PocketBeagle-2
         EXAMPLE:
         - blinky
         - button
