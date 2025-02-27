@@ -7,7 +7,7 @@ use std::{thread::sleep, time::Duration};
 use beagle_linux_sdk::{boards::pocketbeagle2::P2_30, tonal_buzzer::Tone, TonalBuzzer};
 
 // Hedwig's theme fromn the Harry Potter Movies
-// Socre from https://musescore.com/user/3811306/scores/4906610
+// Score from https://musescore.com/user/3811306/scores/4906610
 const MELODY: &[(Option<Tone>, i32)] = &[
     // Opening
     (None, 2),
