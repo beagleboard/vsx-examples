@@ -35,9 +35,10 @@ pb2-techlab-workshop:
   stage: test
   parallel:
     matrix:
-      DOC:
-      - PocketBeagle-2-TechLab-Workshop-Student-Handouts
-      - PocketBeagle-2-TechLab-Workshop-Instructor-Slides
+      - BOARD: PocketBeagle-2
+        DOC:
+        - TechLab-Workshop-Student-Handouts
+        - TechLab-Workshop-Instructor-Slides
   before_script:
     - apt-get update && apt-get install -y software-properties-common unzip curl git
     - add-apt-repository ppa:sile-typesetter/sile
@@ -49,7 +50,7 @@ pb2-techlab-workshop:
     - cd docs
     - luarocks install --tree lua_modules markdown.sile
     - luarocks install --tree lua_modules highlighter.sile
-    - sile ${DOC}.xml
+    - sile ${BOARD}-${DOC}.xml
   artifacts:
     paths:
-      - docs/${DOC}.pdf
+      - docs/${BOARD}-${DOC}.pdf
