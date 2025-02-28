@@ -1,0 +1,10 @@
+[package]
+name = "rust"
+description = "Simple example using RGB Led using the multicolor LED Linux driver"
+version = "0.1.0"
+license = "MIT"
+authors = ["Ayush Singh <ayush@beagleboard.org>"]
+edition = "2021"
+
+[dependencies]
+beagle_linux_sdk = { path = "../../../Libraries/rust/beagle_linux_sdk", features = ["rgb_led", "pocketbeagle2"] }

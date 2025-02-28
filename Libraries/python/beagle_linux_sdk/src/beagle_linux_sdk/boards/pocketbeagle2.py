@@ -12,3 +12,4 @@ EEPROM_PATH = "/sys/bus/i2c/devices/0-0050/eeprom"
 
 TECHLAB_SEVEN_SEGMENT_LEFT = Path("/sys/devices/platform/seven-segments-left/linedisp.1/")
 TECHLAB_SEVEN_SEGMENT_RIGHT = Path("/sys/devices/platform/seven-segments-right/linedisp.0/")
+TECHLAB_LED = Path("/sys/devices/platform/techlab-led/leds/multi-led/")
