@@ -33,6 +33,11 @@ python-library:
 pb2-techlab-workshop:
   image: "ubuntu:latest"
   stage: test
+  parallel:
+    matrix:
+      DOC:
+      - PocketBeagle-2-TechLab-Workshop-Student-Handouts
+      - PocketBeagle-2-TechLab-Workshop-Instructor-Slides
   before_script:
     - apt-get update && apt-get install -y software-properties-common unzip curl git
     - add-apt-repository ppa:sile-typesetter/sile
@@ -44,7 +49,7 @@ pb2-techlab-workshop:
     - cd docs
     - luarocks install --tree lua_modules markdown.sile
     - luarocks install --tree lua_modules highlighter.sile
-    - sile PocketBeagle-2-TechLab-Workshop-Student-Handouts.xml
+    - sile ${DOC}.xml
   artifacts:
     paths:
-      - docs/PocketBeagle-2-TechLab-Workshop-Student-Handouts.pdf
+      - docs/${DOC}.pdf
