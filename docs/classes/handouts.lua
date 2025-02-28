@@ -133,6 +133,12 @@ function class:registerCommands ()
 		SILE.call("penalty", { penalty = -20000 })
 	end, "Fills the page with stretchable vglue and then requests a non-negotiable page break")
 
+	self:registerCommand("em", function (_, content)
+		local style = SILE.settings:get("font.style")
+		local toggle = (style and style:lower() == "italic") and "Regular" or "Italic"
+		SILE.call("font", { style = toggle }, content)
+	end, "Emphasizes its contents by switching the font style to italic (or back to regular if already italic)")
+
 	self:registerCommand("hbox", function (_, content)
 		local hbox, hlist = SILE.typesetter:makeHbox(content)
 		SILE.typesetter:pushHbox(hbox)
@@ -229,6 +235,10 @@ function class:registerCommands ()
 		SILE.process({  " " })
 	end, "TBD")
 
+	self:registerCommand("handouts:subsection:post", function (_, _)
+		SILE.process({  " " })
+	end, "TBD")
+
 	self:registerCommand("header", function (options, content)
 		SILE.call("eject")
 		SILE.call("noindent")
@@ -285,12 +295,44 @@ function class:registerCommands ()
 		SILE.call("noindent")
 	end, "Begin a new section")
 
+	self:registerCommand("subsection", function (options, content)
+		SILE.call("par")
+		SILE.call("noindent")
+		SILE.call("medskip")
+		SILE.call("goodbreak")
+		SILE.call("handouts:subsectionfont", {}, function ()
+			SILE.call("handouts:sectioning", {
+				numbering = options.numbering,
+				toc = options.toc,
+				level = 3,
+			}, content)
+			local lang = SILE.settings:get("document.language")
+			local postcmd = "handouts:subsection:post"
+			if SILE.Commands[postcmd .. ":" .. lang] then
+				postcmd = postcmd .. ":" .. lang
+			end
+			SILE.call(postcmd)
+			SILE.process(content)
+		end)
+		SILE.call("par")
+		SILE.call("novbreak")
+		SILE.call("smallskip")
+		SILE.call("novbreak")
+		-- English typography (notably) expects the first paragraph under a section
+		-- not to be indented. Frenchies, don't use this class :)
+		SILE.call("noindent")
+   	end, "Begin a new subsection")
+
 	self:registerCommand("handouts:chapterfont", function (_, content)
 		SILE.call("font", { weight = 800, size = "22pt" }, content)
 	end, "Set font for chapter heading")
 
 	self:registerCommand("handouts:sectionfont", function (_, content)
 		SILE.call("font", { weight = 800, size = "15pt" }, content)
+	end, "Set font for section heading")
+
+	self:registerCommand("handouts:subsectionfont", function (_, content)
+		SILE.call("font", { weight = 800, size = "12pt" }, content)
 	end, "Set font for section heading")
 
 	self:registerCommand("place", function (options, content)
