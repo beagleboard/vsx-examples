@@ -4,6 +4,12 @@ Simple example using RGB Led using the multicolor LED Linux driver. Uses TechLab
 
 # Usage
 
+## Python
+
+```console
+debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/rgb_led/python$ python main.py
+```
+
 ## Rust
 
 ```console
