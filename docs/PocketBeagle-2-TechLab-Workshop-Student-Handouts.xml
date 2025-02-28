@@ -1,37 +1,32 @@
 <document class="handouts" papersize="letter">
 <font family="Gotham Rounded" style="Book">
 
-<frame id="1-1" left="5%pw" right="30%pw" top="5%pw" bottom="15%pw" />
-<typeset-into frame="1-1">
+<place left="5%pw" right="30%pw" top="5%pw" bottom="15%pw">
 <svg src="images/beagleboard-logo.svg" width="100%fw" />
-</typeset-into>
+</place>
 
-<frame id="1-2" left="35%pw" right="95%pw" top="5%pw" bottom="15%pw" />
-<typeset-into frame="1-2">
+<place left="35%pw" right="95%pw" top="5%pw" bottom="15%pw">
 <font size="22pt">
 <noindent />
 <center>
 PocketBeagle 2 TechLab Cape<break />Hands-on Coding Workshop
 </center>
 </font>
-</typeset-into>
+</place>
 
-<frame id="1-3" left="5%pw" right="95%pw" top="18%pw" bottom="95%pw" />
-<typeset-into frame="1-3">
+<place left="5%pw" right="95%pw" top="18%pw" bottom="95%pw">
 <lorem words="300" />
-</typeset-into>
+</place>
 
 <eject />
 
-<frame id="2-1" left="5%pw" right="95%pw" top="5%pw" bottom="50%pw" />
-<typeset-into frame="2-1">
+<place left="5%pw" right="95%pw" top="5%pw" bottom="50%pw">
 <include src="../PocketBeagle-2/blinky/README.md" />
-</typeset-into>
+</place>
 
-<frame id="2-2" left="5%pw" right="95%pw" top="55%pw" bottom="95%pw" />
-<typeset-into frame="2-2">
+<place left="5%pw" right="95%pw" top="55%pw" bottom="95%pw">
 <highlight src="../PocketBeagle-2/blinky/rust/src/main.rs" language="rust" />
-</typeset-into>
+</place>
 
 </font>
 </document>

@@ -39,6 +39,7 @@ function class:_init (options)
 	self:loadPackage("lorem")
 	self:loadPackage("counters")
 	self:loadPackage("frametricks")
+	SILE.scratch.counters.place = { value = 1 }
 end
 
 function class:incrementFolio (_)
@@ -291,6 +292,17 @@ function class:registerCommands ()
 	self:registerCommand("handouts:sectionfont", function (_, content)
 		SILE.call("font", { weight = 800, size = "15pt" }, content)
 	end, "Set font for section heading")
+
+	self:registerCommand("place", function (options, content)
+		local framename = "place" .. SILE.scratch.counters.place.value
+		local top = SU.required(options, "top", "place")
+		local bottom = SU.required(options, "bottom", "place")
+		local left = SU.required(options, "left", "place")
+		local right = SU.required(options, "right", "place")
+		SILE.call("frame", { id = framename, top = top, bottom = bottom, left = left, right = right }, " ")
+		SILE.call("typeset-into", { frame = framename }, content)
+		SILE.scratch.counters.place.value = SILE.scratch.counters.place.value + 1
+	end, "Put content at a specific place on a page")
 end
 
 return class
