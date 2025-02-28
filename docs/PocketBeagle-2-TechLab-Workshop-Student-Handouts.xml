@@ -1,11 +1,11 @@
 <document class="handouts" papersize="letter">
 <font family="Gotham Rounded" style="Book">
 
-<place left="5%pw" right="30%pw" top="5%pw" bottom="15%pw">
+<place left="5%pw" right="30%pw" top="5%ph" bottom="15%ph">
 <svg src="images/beagleboard-logo.svg" width="100%fw" />
 </place>
 
-<place left="35%pw" right="95%pw" top="5%pw" bottom="15%pw">
+<place left="35%pw" right="95%pw" top="5%ph" bottom="15%ph">
 <font size="22pt">
 <noindent />
 <center>
@@ -14,17 +14,17 @@ PocketBeagle 2 TechLab Cape<break />Hands-on Coding Workshop
 </font>
 </place>
 
-<place left="5%pw" right="95%pw" top="18%pw" bottom="95%pw">
+<place left="5%pw" right="95%pw" top="18%ph" bottom="95%ph">
 <lorem words="300" />
 </place>
 
 <eject />
 
-<place left="5%pw" right="95%pw" top="5%pw" bottom="50%pw">
+<place left="5%pw" right="95%pw" top="5%ph" bottom="50%ph">
 <include src="../PocketBeagle-2/blinky/README.md" />
 </place>
 
-<place left="5%pw" right="95%pw" top="55%pw" bottom="95%pw">
+<place left="5%pw" right="95%pw" top="55%ph" bottom="95%ph">
 <highlight src="../PocketBeagle-2/blinky/rust/src/main.rs" language="rust" />
 </place>
 

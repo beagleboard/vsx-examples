@@ -8,7 +8,7 @@ class.defaultFrameset = {
 		left = "5%pw",
 		right = "95%pw",
 		top = "5%ph",
-		bottom = "95%pw",
+		bottom = "95%ph",
 	},
 }
 class.firstContentFrame = "content"
@@ -294,11 +294,13 @@ function class:registerCommands ()
 	end, "Set font for section heading")
 
 	self:registerCommand("place", function (options, content)
+		---SILE.process({  " " })
 		local framename = "place" .. SILE.scratch.counters.place.value
 		local top = SU.required(options, "top", "place")
 		local bottom = SU.required(options, "bottom", "place")
 		local left = SU.required(options, "left", "place")
 		local right = SU.required(options, "right", "place")
+		io.stderr:write("Placing frame [" .. framename .. "]\n")
 		SILE.call("frame", { id = framename, top = top, bottom = bottom, left = left, right = right }, " ")
 		SILE.call("typeset-into", { frame = framename }, content)
 		SILE.scratch.counters.place.value = SILE.scratch.counters.place.value + 1
