@@ -34,14 +34,12 @@ pb2-techlab-workshop:
   image: "ubuntu:latest"
   stage: test
   before_script:
-    - apt-get update && apt-get install -y software-properties-common
+    - apt-get update && apt-get install -y software-properties-common unzip curl git
     - add-apt-repository ppa:sile-typesetter/sile
-    - echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections
-    - DEBIAN_FRONTEND=noninteractive apt-get install -y sile luarocks ttf-mscorefonts-installer fonts-freefont-ttf ttf-bitstream-vera unzip curl git
+    - DEBIAN_FRONTEND=noninteractive apt-get install -y sile luarocks
     - curl https://openbeagle.org/jkridner/fonts/-/raw/main/gotham-rounded.zip?inline=false -o /tmp/gotham-rounded.zip
     - unzip /tmp/gotham-rounded.zip -d /usr/share/fonts/
     - fc-cache -f
-    - fc-list :fontformat=TrueType -f "%{family[0]}\n" | sort | uniq | paste -s -d,
   script:
     - cd docs
     - luarocks install --tree lua_modules markdown.sile
