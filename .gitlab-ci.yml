@@ -12,6 +12,7 @@ rust-exampes:
         - light_sensor
         - seven_segment
         - tonal_buzzer
+        - rgb_led
   before_script:
     - rustup component add clippy
   script:

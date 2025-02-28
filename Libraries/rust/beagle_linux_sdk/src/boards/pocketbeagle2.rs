@@ -16,4 +16,6 @@ pub mod techlab {
     pub const SEVEN_SEGMENT_RIGHT: &str = "/sys/devices/platform/seven-segments-right/linedisp.0/";
 
     pub const BUZZER: Pin = super::P2_30;
+
+    pub const LED: &str = "/sys/devices/platform/techlab-led/leds/multi-led/";
 }
