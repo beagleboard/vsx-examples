@@ -40,11 +40,12 @@ pb2-techlab-workshop:
         - TechLab-Workshop-Student-Handouts
         - TechLab-Workshop-Instructor-Slides
   before_script:
-    - apt-get update && apt-get install -y software-properties-common unzip curl git
+    - apt-get update && apt-get install -y software-properties-common unzip curl git wget
     - add-apt-repository ppa:sile-typesetter/sile
     - DEBIAN_FRONTEND=noninteractive apt-get install -y sile luarocks
-    - curl https://openbeagle.org/jkridner/fonts/-/raw/main/gotham-rounded.zip?inline=false -o /tmp/gotham-rounded.zip
-    - unzip /tmp/gotham-rounded.zip -d /usr/share/fonts/
+    - curl https://www.beagleboard.org/app/plugins/w3-total-cache/pub/fonts/w3tc.ttf -o /usr/share/fonts/w3tc.ttf
+    - wget https://github.com/vmware-archive/clarity-city/archive/refs/tags/v1.0.0.zip
+    - unzip -d /usr/share/fonts/ v1.0.0.zip
     - fc-cache -f
   script:
     - cd docs
