@@ -30,3 +30,29 @@ python-library:
   script:
     - cd Libraries/python/beagle_linux_sdk
     - python -m build
+
+pb2-techlab-workshop:
+  image: "ubuntu:latest"
+  stage: test
+  parallel:
+    matrix:
+      - BOARD: PocketBeagle-2
+        DOC:
+        - TechLab-Workshop-Student-Handouts
+        - TechLab-Workshop-Instructor-Slides
+  before_script:
+    - apt-get update && apt-get install -y software-properties-common unzip curl git wget
+    - add-apt-repository ppa:sile-typesetter/sile
+    - DEBIAN_FRONTEND=noninteractive apt-get install -y sile luarocks
+    - curl https://www.beagleboard.org/app/plugins/w3-total-cache/pub/fonts/w3tc.ttf -o /usr/share/fonts/w3tc.ttf
+    - wget https://github.com/vmware-archive/clarity-city/archive/refs/tags/v1.0.0.zip
+    - unzip -d /usr/share/fonts/ v1.0.0.zip
+    - fc-cache -f
+  script:
+    - cd docs
+    - luarocks install --tree lua_modules markdown.sile
+    - luarocks install --tree lua_modules highlighter.sile
+    - sile ${BOARD}-${DOC}.xml
+  artifacts:
+    paths:
+      - docs/${BOARD}-${DOC}.pdf
