@@ -5,5 +5,5 @@ This contains many demos for the various Beagles.  Be sure to find the demos tha
 Demo                                 | Description
 ----                                 | -----------
 [BeagleBone/Black](BeagleBone/Black) | Demos for the Black and Green families of Bones.  This includes the wirelss versions too.
-[PocketBeagle 2](PocketBeagle2)         | Demos for the smallest of Beagles.
+[PocketBeagle 2](PocketBeagle-2)     | Demos for the smallest of Beagles.
 
