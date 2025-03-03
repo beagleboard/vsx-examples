@@ -12,6 +12,8 @@ pub mod light_sensor;
 pub mod seven_segment;
 #[cfg(feature = "tonal_buzzer")]
 pub mod tonal_buzzer;
+#[cfg(feature = "rgb_led")]
+pub mod rgb_led;
 
 #[cfg(feature = "button")]
 pub use button::Button;
@@ -27,3 +29,5 @@ pub use light_sensor::LightSensor;
 pub use seven_segment::SevenSegment;
 #[cfg(feature = "tonal_buzzer")]
 pub use tonal_buzzer::TonalBuzzer;
+#[cfg(feature = "rgb_led")]
+pub use rgb_led::RgbLed;
