@@ -1,8 +1,8 @@
 import time
 from beagle_linux_sdk import Led
-from beagle_linux_sdk.boards.pocketbeagle2 import P1_20
+from beagle_linux_sdk.boards.pocketbeagle2 import USR_LED4
 
-led = Led(P1_20)
+led = Led(USR_LED4)
 
 while True:
     print("ON")
