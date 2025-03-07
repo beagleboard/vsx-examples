@@ -1,19 +1,14 @@
-# blinky
+# LED Blink example
 
-Simple example to toggle GPIOs. Uses Pin `P1.20` by default.
+## Goal
 
-# Usage
+Blink LED (USER LED 4 by default) on PocketBeagle 2.
 
-## Rust
+## Overview
 
-```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/blinky/rust$ cargo run
-   Compiling blinky v0.1.0 (/home/debian/vsx-examples/PocketBeagle-2/blinky/rust)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.50s
-     Running `target/debug/blinky`
-ON
-OFF
-ON
-OFF
-..
-```
+Beagle Helper is a Rust and Python library customized for the Beagle family featuring familiar function calls. Here we will use it to blink an LED in PocketBeagle 2.
+
+## Challenges
+
+1. Can you modify the program to use other USER LEDs?
+2. Can you modify the program to use an LED connected to one of the on board header pins?
