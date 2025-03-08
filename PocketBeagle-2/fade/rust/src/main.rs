@@ -1,8 +1,8 @@
 use std::thread::sleep;
 use std::time::Duration;
 
-use beagle_linux_sdk::boards::pocketbeagle2::P1_36;
-use beagle_linux_sdk::PwmLed;
+use beagle_helper::boards::pocketbeagle2::P1_36;
+use beagle_helper::PwmLed;
 
 fn main() {
     const PERIOD: usize = 255;

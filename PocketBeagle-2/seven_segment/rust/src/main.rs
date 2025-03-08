@@ -1,9 +1,8 @@
-use std::{thread::sleep, time::Duration};
+use std::thread::sleep;
+use std::time::Duration;
 
-use beagle_linux_sdk::{
-    boards::pocketbeagle2::techlab::{SEVEN_SEGMENT_LEFT, SEVEN_SEGMENT_RIGHT},
-    SevenSegment,
-};
+use beagle_helper::boards::pocketbeagle2::techlab::{SEVEN_SEGMENT_LEFT, SEVEN_SEGMENT_RIGHT};
+use beagle_helper::SevenSegment;
 
 fn main() {
     let mut segment_left = SevenSegment::new(SEVEN_SEGMENT_LEFT).unwrap();

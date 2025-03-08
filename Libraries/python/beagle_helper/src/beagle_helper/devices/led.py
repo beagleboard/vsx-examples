@@ -21,7 +21,7 @@ class Led:
 class _SysfsLed:
     def __init__(self, base_dir: Path) -> None:
         if not base_dir.is_dir():
-            raise ValueError("RGB LED does not exist")
+            raise ValueError("LED does not exist")
 
         self.max_brightness = self.__read_max_brightness(base_dir)
         self.brightness = base_dir.joinpath("brightness")
