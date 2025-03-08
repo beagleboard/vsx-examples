@@ -1,25 +1,17 @@
 # Seven Segments Example
 
-Simple example to demonstrate 2 seven segments on TechLab Cape. Needs root permissions.
+## Goal
 
-# Usage
+Demonstrate 2 seven segments on TechLab Cape.
 
-## Python
+## Overview
 
-```console
-root@pocketbeagle2:/home/debian/vsx-examples/PocketBeagle-2/seven_segment/python# python main.py
-Countdown Automatic on Right
-Countdown Manual on Left
-```
+A seven-segment display is a form of electronic display device for displaying decimal numerals that is an alternative to the more complex dot matrix displays. At the most basic level, it is a collection of 7 LEDs, which can be controlled individually to produce basic letters and numerals.
 
-## Rust
+This example needs superuser permissions. 
 
-```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/seven_segment/rust$ cargo build
-   Compiling beagle_linux_sdk v0.1.0 (/home/debian/vsx-examples/Libraries/rust/beagle_linux_sdk)
-   Compiling rust v0.1.0 (/home/debian/vsx-examples/PocketBeagle2/seven_segment/rust)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.27s
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/seven_segment/rust$ sudo ./target/debug/rust
-Countdown Automatic
-Countdown Manual
-```
+## Challenges
+
+1. Can you modify the example to display your name?
+2. Can you combine the two seven segments to display 2 letters of your name at a time?
+3. Can you modify the example to display 60 second countdown?

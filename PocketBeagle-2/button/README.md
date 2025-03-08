@@ -1,24 +1,14 @@
-# Button
+# Button Example
 
-Simple example to detect button presses. Uses Pin `P2.33` by default.
+## Goal
 
-# Usage
+Wait for button press on `P2.33` (i.e. Left Button on TechLab Cape).
 
-## Python
+## Overview
 
-```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/button/python$ python main.py
-Waiting for button press
-Button Pressed
-```
+This example demonstrates using Beagle Helper library to detect button press in PocketBeagle 2.
 
-## Rust
+## Challenges
 
-```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/button/rust$ cargo run
-   Compiling button v0.1.0 (/home/debian/vsx-examples/PocketBeagle-2/button/rust)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.22s
-     Running `target/debug/button`
-Waiting for button press
-Button Pressed
-```
+1. Can you modify the example to use other button (Right button in TechLab Cape)?
+2. Can you demonstrate difference between waiting for press vs waiting for release in case of Button?

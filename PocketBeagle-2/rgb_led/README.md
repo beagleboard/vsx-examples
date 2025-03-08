@@ -1,19 +1,23 @@
 # RGB LED Example
 
-Simple example using RGB Led using the multicolor LED Linux driver. Uses TechLab RGB Led by default.
+## Goal
 
-# Usage
+Control RGB LED using PocketBeagle 2.
 
-## Python
+## Overview
 
-```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/rgb_led/python$ python main.py
-```
+An RGB LED is a combination of 3 LEDs in just one package:
 
-## Rust
+- 1x Red LED
+- 1x Green LED
+- 1x Blue LED
 
-```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/rgb_led/rust$ cargo run
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
-     Running `target/debug/rust`
-```
+You can produce almost any color by combining those three colors. Here is a simple color mixing chart:
+
+![Color Mixing Chart](assets/color_chart.jpg){width=50%}
+
+## Challenges
+
+- Can you modify the code to only produce Red, Blue and Green colors, one by one?
+- Can you modify the code to produce different brightness of each color
+- Can you modify the code to produce compound colors such as Yellow, Teal, etc?

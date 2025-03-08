@@ -1,25 +1,18 @@
 # Fade
 
-Simple example to fade an LED in and out using PWM. Also contains abstractions to use PWM using sysfs.
+## Goals
 
-Uses `P1.36`. In case of [TechLab Cape](https://www.beagleboard.org/boards/techlab), this PIN is connected to `RGB.B`
+Demonstrate fading an LED in and out using PWM.
 
-# Usage
+## Overview
 
-## Python
+[Pulse-width modulation](https://en.wikipedia.org/wiki/Pulse-width_modulation) is any method of representing a signal as a rectangular wave with a varying duty cycle. It can be used to for controlling the average power or amplitude delivered by an electric signal.
 
-```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/python$ python main.py
-```
+## Challenges
 
-## Rust
+1. Can you modify the program to drive the LED at 50% duty cycle?
+2. Can you try out using other time periods?
 
-```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/rust$ cargo run
-    Finished `release` profile [optimized] target(s) in 3.85s
-     Running `target/release/rust`
-```
-
-# Helpful resources
+## Helpful resources
 
 - [Linux Kernel PWM sysfs](https://docs.kernel.org/driver-api/pwm.html#using-pwms-with-the-sysfs-interface)
