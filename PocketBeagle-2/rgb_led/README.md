@@ -14,7 +14,7 @@ An RGB LED is a combination of 3 LEDs in just one package:
 
 You can produce almost any color by combining those three colors. Here is a simple color mixing chart:
 
-![Color Mixing Chart](assets/color_chart.jpg)
+![Color Mixing Chart](assets/color_chart.jpg){width=50%}
 
 ## Challenges
 
