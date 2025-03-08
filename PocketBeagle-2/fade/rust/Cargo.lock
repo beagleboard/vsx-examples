@@ -3,12 +3,12 @@
 version = 4
 
 [[package]]
-name = "beagle_linux_sdk"
+name = "beagle_helper"
 version = "0.1.0"
 
 [[package]]
 name = "fade"
 version = "0.1.0"
 dependencies = [
- "beagle_linux_sdk",
+ "beagle_helper",
 ]

@@ -1,6 +1,6 @@
 from time import sleep
-from beagle_linux_sdk import SevenSegment
-from beagle_linux_sdk.boards.pocketbeagle2 import TECHLAB_SEVEN_SEGMENT_LEFT, TECHLAB_SEVEN_SEGMENT_RIGHT
+from beagle_helper import SevenSegment
+from beagle_helper.boards.pocketbeagle2 import TECHLAB_SEVEN_SEGMENT_LEFT, TECHLAB_SEVEN_SEGMENT_RIGHT
 
 segment_left = SevenSegment(TECHLAB_SEVEN_SEGMENT_LEFT)
 segment_right = SevenSegment(TECHLAB_SEVEN_SEGMENT_RIGHT)

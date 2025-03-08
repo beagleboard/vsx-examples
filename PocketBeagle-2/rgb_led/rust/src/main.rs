@@ -1,6 +1,8 @@
-use std::{thread::sleep, time::Duration};
+use std::thread::sleep;
+use std::time::Duration;
 
-use beagle_linux_sdk::{boards::pocketbeagle2::techlab, RgbLed};
+use beagle_helper::boards::pocketbeagle2::techlab;
+use beagle_helper::RgbLed;
 
 const UPDATE_INTERVAL: Duration = Duration::from_millis(10);
 const BRIGHTNESS: usize = 255;

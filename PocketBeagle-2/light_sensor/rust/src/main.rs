@@ -1,8 +1,8 @@
 use std::thread::sleep;
 use std::time::Duration;
 
-use beagle_linux_sdk::boards::pocketbeagle2::P1_19;
-use beagle_linux_sdk::LightSensor;
+use beagle_helper::boards::pocketbeagle2::P1_19;
+use beagle_helper::LightSensor;
 
 fn main() {
     let mut ldr = LightSensor::new(P1_19, None).unwrap();

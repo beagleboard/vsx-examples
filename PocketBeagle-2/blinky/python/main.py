@@ -1,6 +1,6 @@
 import time
-from beagle_linux_sdk import Led
-from beagle_linux_sdk.boards.pocketbeagle2 import USR_LED4
+from beagle_helper import Led
+from beagle_helper.boards.pocketbeagle2 import USR_LED4
 
 led = Led(USR_LED4)
 

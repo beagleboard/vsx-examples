@@ -16,7 +16,7 @@ This folder provides multi-language examples for PocketBeagle 2. The primary lan
 Add python library folder to the path. Not sure if there is any other elegant way to do this:
 
 ```console
-export PYTHONPATH=$HOME/vsx-examples/Libraries/python/beagle_linux_sdk/src:$PYTHONPATH
+export PYTHONPATH=$HOME/vsx-examples/Libraries/python/beagle_helper/src:$PYTHONPATH
 ```
 
 # Run Examples

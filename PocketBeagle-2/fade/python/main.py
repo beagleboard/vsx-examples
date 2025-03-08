@@ -1,6 +1,6 @@
 import time
-from beagle_linux_sdk import PwmLed
-from beagle_linux_sdk.boards.pocketbeagle2 import P1_36
+from beagle_helper import PwmLed
+from beagle_helper.boards.pocketbeagle2 import P1_36
 
 PERIOD = 255
 DELAY = 0.05
