@@ -1,35 +1,13 @@
 # Light Sensor
 
-Simple example logging light sensor data. Uses `P1.19` which is connected to Light Sensor on TechLab cape.
+## Goal
 
-# Usage
+Using the light sensor to detect wheather the room is light or dark.
 
-## Python
+## Overview
 
-```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/light_sensor/python$ python main.py
-Light
-Light
-Light
-Light
-Dark
-Dark
-Dark
-Dark
-```
+[Photodiode](https://en.wikipedia.org/wiki/Photodiode) is a semiconductor diode sensitive to photon radiation. It produces an electrical current when it absorbs photons. This can be used to detect the amount of light in terms of voltage.
 
-## Rust
+## Challenges
 
-```console
-debian@pocketbeagle2:~/vsx-examples/PocketBeagle-2/light_sensor/rust$ cargo run
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.07s
-     Running `target/debug/rust`
-Light
-Light
-Light
-Light
-Dark
-Dark
-Dark
-Dark
-```
+1. Can you adjust threshold value in a way to be more suitable for detecting only direct light?
