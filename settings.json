@@ -5,5 +5,8 @@
 	"workbench.startupEditor": "README.md",
 	"window.menuBarVisibility": "classic",
 	"window.autoDetectColorScheme": true,
-	"security.workspace.trust.untrustedFiles": "open"
+	"security.workspace.trust.untrustedFiles": "open",
+	"terminal.integrated.env.linux": {
+		"PYTHONPATH": "${workspaceFolder}/Libraries/python/beagle_helper/src"
+	}
 }
