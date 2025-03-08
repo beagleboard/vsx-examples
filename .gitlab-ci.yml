@@ -15,12 +15,35 @@ rust-exampes:
         - rgb_led
   before_script:
     - rustup component add clippy
-  script:
     - rustc --version && cargo --version  # Print version info for debugging
+  script:
     - cd ${BOARD}/${EXAMPLE}/rust
     - cargo clippy --no-deps
     - cargo build
     - cargo test
+
+
+python-examples:
+  image: "python:alpine"
+  stage: test
+  parallel:
+    matrix:
+      - BOARD: PocketBeagle-2
+        EXAMPLE:
+        - blinky
+        - button
+        - fade
+        - eeprom
+        - light_sensor
+        - seven_segment
+        - tonal_buzzer
+        - rgb_led
+  before_script:
+    - export PYTHONPATH=$PWD/Libraries/python/beagle_helper/src:$PYTHONPATH
+  script:
+    - cd ${BOARD}/${EXAMPLE}/python
+    - python -m main.py
+
 
 python-library:
   image: "python:alpine"
@@ -28,7 +51,7 @@ python-library:
   before_script:
     - pip install build
   script:
-    - cd Libraries/python/beagle_linux_sdk
+    - cd Libraries/python/beagle_helper
     - python -m build
 
 pb2-techlab-workshop:
