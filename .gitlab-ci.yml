@@ -5,6 +5,8 @@ stages:
 rust-exampes:
   image: "rust:latest"
   stage: test
+  tags:
+    - docker-aarch64
   parallel:
     matrix:
       - BOARD: PocketBeagle-2
@@ -30,6 +32,8 @@ rust-exampes:
 python-examples:
   image: "debian:bookworm-slim"
   stage: test
+  tags:
+    - docker-aarch64
   parallel:
     matrix:
       - BOARD: PocketBeagle-2
@@ -55,6 +59,8 @@ python-examples:
 python-library:
   image: "python:alpine"
   stage: test
+  tags:
+    - docker-aarch64
   before_script:
     - pip install build
   script:
