@@ -22,4 +22,6 @@ pub mod techlab {
     pub const BUZZER: Pin = super::P2_30;
 
     pub const LED: &str = "/sys/devices/platform/techlab-led/leds/multi-led/";
+
+    pub const ACCELEROMETER: &str = "/sys/bus/iio/devices/iio:device1";
 }
