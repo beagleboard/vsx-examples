@@ -1,5 +1,5 @@
-from beagle_linux_sdk import Button
-from beagle_linux_sdk.boards.pocketbeagle2 import P2_33
+from beagle_helper import Button
+from beagle_helper.boards.pocketbeagle2 import P2_33
 
 btn = Button(P2_33)
 

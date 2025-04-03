@@ -2,9 +2,11 @@
 //!
 //! https://github.com/robsoncouto/arduino-songs/blob/master/harrypotter/harrypotter.ino
 
-use std::{thread::sleep, time::Duration};
+use std::thread::sleep;
+use std::time::Duration;
 
-use beagle_linux_sdk::{boards::pocketbeagle2::P2_30, tonal_buzzer::Tone, TonalBuzzer};
+use beagle_helper::boards::pocketbeagle2::P2_30;
+use beagle_helper::tonal_buzzer::{Tone, TonalBuzzer};
 
 // Hedwig's theme fromn the Harry Potter Movies
 // Score from https://musescore.com/user/3811306/scores/4906610

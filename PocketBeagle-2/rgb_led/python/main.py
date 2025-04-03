@@ -1,6 +1,6 @@
 import time
-from beagle_linux_sdk import RgbLed
-from beagle_linux_sdk.boards.pocketbeagle2 import TECHLAB_LED
+from beagle_helper import RgbLed
+from beagle_helper.boards.pocketbeagle2 import TECHLAB_LED
 
 
 def wheel(pos: int) -> tuple[int, int, int]:

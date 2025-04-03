@@ -14,6 +14,8 @@ pub mod seven_segment;
 pub mod tonal_buzzer;
 #[cfg(feature = "rgb_led")]
 pub mod rgb_led;
+#[cfg(feature = "accelerometer")]
+pub mod accelerometer;
 
 #[cfg(feature = "button")]
 pub use button::Button;
@@ -31,3 +33,5 @@ pub use seven_segment::SevenSegment;
 pub use tonal_buzzer::TonalBuzzer;
 #[cfg(feature = "rgb_led")]
 pub use rgb_led::RgbLed;
+#[cfg(feature = "accelerometer")]
+pub use accelerometer::Accel;

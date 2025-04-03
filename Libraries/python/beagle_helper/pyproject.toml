@@ -1,5 +1,5 @@
 [project]
-name = "beagle_linux_sdk"
+name = "beagle_helper"
 version = "0.1.0"
 authors = [
   { name="Ayush Singh", email="ayush@beagleboard.org" },

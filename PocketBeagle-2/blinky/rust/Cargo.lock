@@ -3,7 +3,7 @@
 version = 4
 
 [[package]]
-name = "beagle_linux_sdk"
+name = "beagle_helper"
 version = "0.1.0"
 dependencies = [
  "gpiod",
@@ -19,7 +19,7 @@ checksum = "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
 name = "blinky"
 version = "0.1.0"
 dependencies = [
- "beagle_linux_sdk",
+ "beagle_helper",
 ]
 
 [[package]]

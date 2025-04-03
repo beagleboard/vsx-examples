@@ -1,6 +1,12 @@
+stages:
+  - test
+  - docs
+
 rust-exampes:
   image: "rust:latest"
   stage: test
+  tags:
+    - docker-aarch64
   parallel:
     matrix:
       - BOARD: PocketBeagle-2
@@ -15,25 +21,55 @@ rust-exampes:
         - rgb_led
   before_script:
     - rustup component add clippy
-  script:
     - rustc --version && cargo --version  # Print version info for debugging
+  script:
     - cd ${BOARD}/${EXAMPLE}/rust
     - cargo clippy --no-deps
     - cargo build
     - cargo test
 
+
+python-examples:
+  image: "debian:bookworm-slim"
+  stage: test
+  tags:
+    - docker-aarch64
+  parallel:
+    matrix:
+      - BOARD: PocketBeagle-2
+        EXAMPLE:
+        - blinky
+        - button
+        - fade
+        - eeprom
+        - light_sensor
+        - seven_segment
+        - tonal_buzzer
+        - rgb_led
+  before_script:
+    - apt-get update -y
+    - apt-get upgrade -y
+    - apt-get install -y python3-libgpiod pylint
+    - export PYTHONPATH=$PWD/Libraries/python/beagle_helper/src:$PYTHONPATH
+  script:
+    - cd ${BOARD}/${EXAMPLE}/python
+    - pylint -E main.py
+
+
 python-library:
   image: "python:alpine"
   stage: test
+  tags:
+    - docker-aarch64
   before_script:
     - pip install build
   script:
-    - cd Libraries/python/beagle_linux_sdk
+    - cd Libraries/python/beagle_helper
     - python -m build
 
 pb2-techlab-workshop:
   image: "ubuntu:latest"
-  stage: test
+  stage: docs
   parallel:
     matrix:
       - BOARD: PocketBeagle-2

@@ -5,8 +5,8 @@ https://github.com/robsoncouto/arduino-songs/blob/master/harrypotter/harrypotter
 """
 
 import time
-from beagle_linux_sdk import TonalBuzzer
-from beagle_linux_sdk.devices.tonal_buzzer import (
+from beagle_helper import TonalBuzzer
+from beagle_helper.devices.tonal_buzzer import (
     NOTE_C,
     NOTE_C_SHARP,
     NOTE_D,
@@ -19,7 +19,7 @@ from beagle_linux_sdk.devices.tonal_buzzer import (
     NOTE_A_SHARP,
     NOTE_B,
 )
-from beagle_linux_sdk.boards.pocketbeagle2 import P2_30
+from beagle_helper.boards.pocketbeagle2 import P2_30
 
 
 # Hedwig's theme fromn the Harry Potter Movies
