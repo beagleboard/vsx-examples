@@ -29,3 +29,22 @@ jobs:
       - name: Run tests
         working-directory: ${{ matrix.board }}/${{ matrix.example }}/rust
         run: cargo test
+
+  python:
+    strategy:
+      matrix:
+        board: [ PocketBeagle-2 ]
+        example: [ blinky, button, fade, eeprom, light_sensor, seven_segment, tonal_buzzer, rgb_led ]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install pylint
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y python3-libgpiod pylint
+      - name: Run pylint
+        run: |
+          export PYTHONPATH=$PWD/Libraries/python/beagle_helper/src:$PYTHONPATH
+          cd ${{ matrix.board }}/${{ matrix.example }}/python
+          pylint -E main.py
