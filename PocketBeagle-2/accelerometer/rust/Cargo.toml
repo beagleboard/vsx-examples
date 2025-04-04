@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-beagle_helper = { path = "../../../Libraries/rust/beagle_helper", features = ["accelerometer", "pocketbeagle2"] }
+beagle_helper = { path = "../../../Libraries/rust/beagle_helper", features = ["sysfs"] }
