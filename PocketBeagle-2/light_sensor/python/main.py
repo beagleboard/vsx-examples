@@ -1,12 +1,22 @@
 from time import sleep
-from beagle_helper import LightSensor
-from beagle_helper.boards.pocketbeagle2 import P1_19
+from sysfs import Device
 
-ldr = LightSensor(P1_19)
+# Reading values from ADC directly
+DEV_NAME = "ad7291"
+
+THRESHOLD = 2000
+
+adc = Device(name=DEV_NAME)
+
+scale = adc.sysfs("in_voltage_scale").read_float()
+ldr_raw = adc.sysfs("in_voltage0_raw")
 
 while True:
-    if ldr.value():
+    scaled = ldr_raw.read_float() * scale
+
+    if scaled > THRESHOLD:
         print("Light")
     else:
         print("Dark")
+
     sleep(0.5)
