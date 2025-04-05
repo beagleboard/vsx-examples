@@ -1,6 +1,5 @@
 import gpiod
 
-from .abstractions.adc import Adc
 from .abstractions.pwm import PwmChip, PwmChannel
 from time import sleep
 from dataclasses import dataclass
@@ -36,20 +35,10 @@ class PwmPin:
         return chip.export(self.channel)
 
 
-@dataclass
-class AdcPin:
-    iio_device: int
-    channel: int
-
-    def adc_input(self) -> Adc:
-        return Adc(self.iio_device, self.channel)
-
-
 class Pin:
-    def __init__(self, gpio: GpioPin | None = None, pwm: PwmPin | None = None, adc: AdcPin | None = None) -> None:
+    def __init__(self, gpio: GpioPin | None = None, pwm: PwmPin | None = None) -> None:
         self.gpio = gpio
         self.pwm = pwm
-        self.adc = adc
 
     def gpio_output(self):
         if self.gpio == None:
@@ -74,9 +63,3 @@ class Pin:
         sleep(0.1)
 
         return chan
-
-    def adc_input(self) -> Adc:
-        if self.adc == None:
-            raise ValueError("Pin cannot be used as ADC")
-
-        return self.adc.adc_input()
