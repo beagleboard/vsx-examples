@@ -4,8 +4,6 @@ pub mod beagle_eeprom;
 pub mod button;
 #[cfg(feature = "led")]
 pub mod led;
-#[cfg(feature = "light_sensor")]
-pub mod light_sensor;
 #[cfg(feature = "pwm_led")]
 pub mod pwm_led;
 #[cfg(feature = "rgb_led")]
@@ -21,8 +19,6 @@ pub use beagle_eeprom::*;
 pub use button::Button;
 #[cfg(feature = "led")]
 pub use led::Led;
-#[cfg(feature = "light_sensor")]
-pub use light_sensor::LightSensor;
 #[cfg(feature = "pwm_led")]
 pub use pwm_led::PwmLed;
 #[cfg(feature = "rgb_led")]
