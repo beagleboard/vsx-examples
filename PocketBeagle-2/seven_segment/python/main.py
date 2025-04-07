@@ -1,18 +1,24 @@
 from time import sleep
-from beagle_helper import SevenSegment
-from beagle_helper.boards.pocketbeagle2 import TECHLAB_SEVEN_SEGMENT_LEFT, TECHLAB_SEVEN_SEGMENT_RIGHT
+from sysfs import Device
+from pathlib import Path
 
-segment_left = SevenSegment(TECHLAB_SEVEN_SEGMENT_LEFT)
-segment_right = SevenSegment(TECHLAB_SEVEN_SEGMENT_RIGHT)
+TECHLAB_SEVEN_SEGMENT_LEFT = Path("/sys/devices/platform/seven-segments-left/linedisp.1/")
+TECHLAB_SEVEN_SEGMENT_RIGHT = Path("/sys/devices/platform/seven-segments-right/linedisp.0/")
 
-print("Countdown Automatic on Right")
-segment_right.set_step(1000)
-segment_right.set_message("9876543210")
+segment_left = Device(path=TECHLAB_SEVEN_SEGMENT_LEFT)
+segment_right = Device(path=TECHLAB_SEVEN_SEGMENT_RIGHT)
 
-print("Countdown Manual on Left")
-for i in range(9, -1, -1):
-    segment_left.set_message(str(i))
-    sleep(1)
+left_msg = segment_left.sysfs('message')
+right_msg = segment_right.sysfs('message')
 
-segment_left.set_message(" ")
-segment_right.set_message(" ")
+segment_left.sysfs('scroll_step_ms').write(1000)
+segment_right.sysfs('scroll_step_ms').write(1000)
+
+print("Countdown")
+left_msg.write('10000000000')
+right_msg.write('09876543210')
+
+sleep(11)
+
+left_msg.write(' ')
+right_msg.write(' ')
