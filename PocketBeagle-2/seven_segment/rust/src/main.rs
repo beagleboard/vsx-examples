@@ -1,23 +1,35 @@
 use std::thread::sleep;
 use std::time::Duration;
 
-use beagle_helper::boards::pocketbeagle2::techlab::{SEVEN_SEGMENT_LEFT, SEVEN_SEGMENT_RIGHT};
-use beagle_helper::SevenSegment;
+use beagle_helper::sysfs::Device;
+
+pub const SEVEN_SEGMENT_LEFT: &str = "/sys/devices/platform/seven-segments-left/linedisp.1/";
+pub const SEVEN_SEGMENT_RIGHT: &str = "/sys/devices/platform/seven-segments-right/linedisp.0/";
 
 fn main() {
-    let mut segment_left = SevenSegment::new(SEVEN_SEGMENT_LEFT).unwrap();
-    let mut segment_right = SevenSegment::new(SEVEN_SEGMENT_RIGHT).unwrap();
+    let segment_left = Device::with_path(SEVEN_SEGMENT_LEFT).unwrap();
+    let segment_right = Device::with_path(SEVEN_SEGMENT_RIGHT).unwrap();
 
-    println!("Countdown Automatic on Right");
-    segment_right.set_step(Duration::from_secs(1)).unwrap();
-    segment_right.set_message("9876543210").unwrap();
+    let mut left_msg = segment_left.sysfs_w("message").unwrap();
+    let mut right_msg = segment_right.sysfs_w("message").unwrap();
 
-    println!("Countdown Manual on Left");
-    for i in (0..10).rev() {
-        segment_left.set_message(i.to_string().as_str()).unwrap();
-        sleep(Duration::from_secs(1));
-    }
+    segment_left
+        .sysfs_w("scroll_step_ms")
+        .unwrap()
+        .write(1000)
+        .unwrap();
+    segment_right
+        .sysfs_w("scroll_step_ms")
+        .unwrap()
+        .write(1000)
+        .unwrap();
 
-    segment_right.set_message(" ").unwrap();
-    segment_left.set_message(" ").unwrap();
+    println!("Countdown");
+    left_msg.write("10000000000").unwrap();
+    right_msg.write("09876543210").unwrap();
+
+    sleep(Duration::from_secs(11));
+
+    left_msg.write(" ").unwrap();
+    right_msg.write(" ").unwrap();
 }

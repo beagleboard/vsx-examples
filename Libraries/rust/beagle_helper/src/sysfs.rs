@@ -98,6 +98,10 @@ impl Entry {
         self.0.write_all(data.as_bytes())
     }
 
+    pub fn write<T: ToString>(&mut self, data: T) -> io::Result<()> {
+        self.0.write_all(data.to_string().as_bytes())
+    }
+
     fn read<T>(&mut self) -> io::Result<T>
     where
         T: FromStr,

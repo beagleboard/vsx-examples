@@ -20,6 +20,9 @@ class Entry:
         with open(self.path, "w") as f:
             f.write(data)
 
+    def write(self, data: str | int | float):
+        self.write_str(str(data))
+
 
 class Device:
     def __init__(self, name: str | None = None, path: Path | None = None) -> None:

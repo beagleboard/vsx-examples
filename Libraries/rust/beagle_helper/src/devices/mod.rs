@@ -6,8 +6,6 @@ pub mod button;
 pub mod pwm_led;
 #[cfg(feature = "rgb_led")]
 pub mod rgb_led;
-#[cfg(feature = "seven_segment")]
-pub mod seven_segment;
 #[cfg(feature = "tonal_buzzer")]
 pub mod tonal_buzzer;
 
@@ -19,7 +17,5 @@ pub use button::Button;
 pub use pwm_led::PwmLed;
 #[cfg(feature = "rgb_led")]
 pub use rgb_led::RgbLed;
-#[cfg(feature = "seven_segment")]
-pub use seven_segment::SevenSegment;
 #[cfg(feature = "tonal_buzzer")]
 pub use tonal_buzzer::TonalBuzzer;
