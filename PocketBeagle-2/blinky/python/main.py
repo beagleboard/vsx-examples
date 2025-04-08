@@ -1,14 +1,23 @@
 import time
-from beagle_helper import Led
-from beagle_helper.boards.pocketbeagle2 import USR_LED4
+from sysfs import Device
+from pathlib import Path
 
-led = Led(USR_LED4)
+LED = Path("/sys/class/leds/beaglebone:green:usr4")
+
+led = Device(path=LED)
+
+# Technically, max_brightness will be an unsigned integer value. However, since we never
+# actually parse it, and writing to the file needs conversion back to string anyway, it is
+# better to just keep it as string
+max_brightness = led.sysfs("max_brightness").read_str()
+
+brightness = led.sysfs("brightness")
 
 while True:
     print("ON")
-    led.on()
+    brightness.write_str(max_brightness)
     time.sleep(1)
 
     print("OFF")
-    led.off()
+    brightness.write_str("0")
     time.sleep(1)

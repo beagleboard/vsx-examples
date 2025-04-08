@@ -10,8 +10,18 @@ class Entry:
         self.path = path
 
     def read_float(self) -> float:
+        return float(self.read_str())
+
+    def read_str(self) -> str:
         with open(self.path, "r") as f:
-            return float(f.read())
+            return f.read().strip()
+
+    def write_str(self, data: str):
+        with open(self.path, "w") as f:
+            f.write(data)
+
+    def write(self, data: str | int | float):
+        self.write_str(str(data))
 
 
 class Device:

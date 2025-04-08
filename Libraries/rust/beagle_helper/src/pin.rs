@@ -10,13 +10,6 @@ impl GpioPin {
         Self { chip, offset }
     }
 
-    #[cfg(feature = "led")]
-    pub(crate) fn gpio_output(&self) -> std::io::Result<gpiod::Lines<gpiod::Output>> {
-        let chip = gpiod::Chip::new(self.chip)?;
-        let opts = gpiod::Options::output([self.offset]);
-        chip.request_lines(opts)
-    }
-
     #[cfg(feature = "button")]
     pub(crate) fn gpio_input(&self) -> std::io::Result<gpiod::Lines<gpiod::Input>> {
         let chip = gpiod::Chip::new(self.chip)?;
@@ -70,16 +63,6 @@ pub struct Pin {
 impl Pin {
     pub(crate) const fn new(gpio: Option<GpioPin>, pwm: Option<PwmPin>) -> Self {
         Self { gpio, pwm }
-    }
-
-    #[cfg(feature = "led")]
-    pub(crate) fn gpio_output(&self) -> std::io::Result<gpiod::Lines<gpiod::Output>> {
-        match &self.gpio {
-            Some(x) => x.gpio_output(),
-            None => Err(std::io::Error::other(
-                "Pin does not support GPIO Output functionality",
-            )),
-        }
     }
 
     #[cfg(feature = "button")]

@@ -2,14 +2,10 @@
 pub mod beagle_eeprom;
 #[cfg(feature = "button")]
 pub mod button;
-#[cfg(feature = "led")]
-pub mod led;
 #[cfg(feature = "pwm_led")]
 pub mod pwm_led;
 #[cfg(feature = "rgb_led")]
 pub mod rgb_led;
-#[cfg(feature = "seven_segment")]
-pub mod seven_segment;
 #[cfg(feature = "tonal_buzzer")]
 pub mod tonal_buzzer;
 
@@ -17,13 +13,9 @@ pub mod tonal_buzzer;
 pub use beagle_eeprom::*;
 #[cfg(feature = "button")]
 pub use button::Button;
-#[cfg(feature = "led")]
-pub use led::Led;
 #[cfg(feature = "pwm_led")]
 pub use pwm_led::PwmLed;
 #[cfg(feature = "rgb_led")]
 pub use rgb_led::RgbLed;
-#[cfg(feature = "seven_segment")]
-pub use seven_segment::SevenSegment;
 #[cfg(feature = "tonal_buzzer")]
 pub use tonal_buzzer::TonalBuzzer;

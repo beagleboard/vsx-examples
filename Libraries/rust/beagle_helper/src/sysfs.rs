@@ -2,7 +2,7 @@
 
 use std::{
     fs::{File, OpenOptions},
-    io::{self, Read, Seek},
+    io::{self, Read, Seek, Write},
     path::{Path, PathBuf},
     str::FromStr,
 };
@@ -14,11 +14,12 @@ pub struct Device(PathBuf);
 
 impl Device {
     /// Create a new [Device] from the path to the base directory.
-    pub fn with_path(path: PathBuf) -> io::Result<Self> {
-        if !path.is_dir() {
+    pub fn with_path<T: Into<PathBuf>>(path: T) -> io::Result<Self> {
+        let p = path.into();
+        if !p.is_dir() {
             Err(io::Error::other("Path should be a directory"))
         } else {
-            Ok(Self(path))
+            Ok(Self(p))
         }
     }
 
@@ -60,6 +61,11 @@ impl Device {
         self.sysfs(file_name, OpenOptions::new().read(true))
     }
 
+    /// Open a sysfs file in write-only mode
+    pub fn sysfs_w(&self, file_name: &str) -> io::Result<Entry> {
+        self.sysfs(file_name, OpenOptions::new().write(true))
+    }
+
     fn sysfs(&self, file_name: &str, opts: &mut OpenOptions) -> io::Result<Entry> {
         let fpath = self.0.join(file_name);
 
@@ -75,18 +81,25 @@ impl Device {
 pub struct Entry(File);
 
 impl Entry {
-    /// Read fload from sysfs
     pub fn read_f64(&mut self) -> io::Result<f64> {
         self.read()
     }
 
     /// Read a single line
-    fn read_string(&mut self) -> io::Result<String> {
+    pub fn read_string(&mut self) -> io::Result<String> {
         let mut data = String::with_capacity(10);
         self.0.seek(io::SeekFrom::Start(0))?;
         self.0.read_to_string(&mut data)?;
 
         Ok(data)
+    }
+
+    pub fn write_string(&mut self, data: &str) -> io::Result<()> {
+        self.0.write_all(data.as_bytes())
+    }
+
+    pub fn write<T: ToString>(&mut self, data: T) -> io::Result<()> {
+        self.0.write_all(data.to_string().as_bytes())
     }
 
     fn read<T>(&mut self) -> io::Result<T>

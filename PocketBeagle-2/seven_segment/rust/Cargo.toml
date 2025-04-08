@@ -7,4 +7,4 @@ authors = ["Ayush Singh <ayush@beagleboard.org>"]
 edition = "2021"
 
 [dependencies]
-beagle_helper = { path = "../../../Libraries/rust/beagle_helper", features = ["seven_segment", "pocketbeagle2"] }
+beagle_helper = { path = "../../../Libraries/rust/beagle_helper", features = ["sysfs"] }
