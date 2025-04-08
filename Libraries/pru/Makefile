@@ -93,6 +93,13 @@ define target-to-proc =
   CHIP=am57xx
   PROC=tidl
   EXE=.so
+ else ifeq ($(suffix $(basename $(1))),.am62_pru0)
+  CHIP=am62x
+  CHIP_REV=am62x
+  PRU_DIR=/sys/class/remoteproc/remoteproc0
+  PRUN=0
+  PROC=pru
+  EXE=.out
  else
   PROC=arm
   EXE=.out
