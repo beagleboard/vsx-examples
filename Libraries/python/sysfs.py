@@ -12,6 +12,9 @@ class Entry:
     def read_float(self) -> float:
         return float(self.read_str())
 
+    def read_int(self) -> int:
+        return int(self.read_str())
+
     def read_str(self) -> str:
         with open(self.path, "r") as f:
             return f.read().strip()
