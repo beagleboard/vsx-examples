@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         board: [ PocketBeagle-2 ]
-        example: [ blinky, button, fade, eeprom, light_sensor, seven_segment, tonal_buzzer, rgb_led ]
+        example: [ blinky, button, eeprom, light_sensor, seven_segment, tonal_buzzer, rgb_led, rgb_led/fade_brightness ]
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
@@ -34,7 +34,7 @@ jobs:
     strategy:
       matrix:
         board: [ PocketBeagle-2 ]
-        example: [ blinky, button, fade, eeprom, light_sensor, seven_segment, tonal_buzzer, rgb_led ]
+        example: [ blinky, button, eeprom, light_sensor, seven_segment, tonal_buzzer, rgb_led, rgb_led/fade_brightness ]
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout

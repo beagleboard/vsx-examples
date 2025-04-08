@@ -102,7 +102,7 @@ impl Entry {
         self.0.write_all(data.to_string().as_bytes())
     }
 
-    fn read<T>(&mut self) -> io::Result<T>
+    pub fn read<T>(&mut self) -> io::Result<T>
     where
         T: FromStr,
     {
