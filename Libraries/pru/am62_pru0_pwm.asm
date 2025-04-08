@@ -1,23 +1,20 @@
-;*
-;* Copyright (C) 2016 Zubeen Tolani <ZeekHuge - zeekhuge@gmail.com>
-;*
-;* This file is as an example to show how to develope
-;* and compile inline assembly code for PRUs
-;*
-;* From Jason: note, this is not "inline" assembly. This is just calling
-;* assembly from a C function. Also, does it make any sense to hold a
-;* copyright over a program by simply providing an example that is really
-;* very much known to those practiced in the art? How about a thanks in
-;* the comments rather than a copyright?
-;*
-;* This program is free software; you can redistribute it and/or modify
-;* it under the terms of the GNU General Public License version 2 as
-;* published by the Free Software Foundation.
+; Copyright (C) 2015, James Strawson
+; Copyright (C) 2016, Zubeen Tolani <ZeekHuge - zeekhuge@gmail.com>
+; Copyright (C) 2025, Jason Kridner <jkridner@beagleboard.org>
+;
+; This file is as an example to show how to develop assembly code for PRUs.
+;
+; This program uses shared memory to pass values used to generate
+; pulsewidth modulated (PWM) outputs from PRU0 general purpose outputs.
+;
+; The primary documentation files utilized for generating this program are:
+; * SPRUHV6C - PRU Assembly Language Tools v2.3 User's Guide
+;
+; This program is free software; you can redistribute it and/or modify
+; it under the terms of the GNU General Public License version 2 as
+; published by the Free Software Foundation.
 
-
-	.cdecls "main_pru.c"
-
-DELAY	.macro time, reg
+delay	.macro time, reg
 	LDI32	reg, time
 	QBEQ	$E?, reg, 0
 $M?:	SUB	reg, reg, 1
@@ -25,35 +22,23 @@ $M?:	SUB	reg, reg, 1
 $E?:
 	.endm
 
-
 	.clink
 	.global start
 start:
 	LDI 	R30, 0xFFFF
-	DELAY 	10000000, r11
-	LDI		R30, 0x0000
-	DELAY 	10000000, r11
+	delay 	10000000, r11
+	LDI	R30, 0x0000
+	delay 	10000000, r11
 ; 	JMP	start
 
 ; 	HALT
-
-
-; these pin definitions are specific to SD-101C Robotics Cape
-    .asg    r30.t16,     CH1BIT  ; P8_27
-	.asg    r30.t17,    CH2BIT	; P8_28
-	.asg    r30.t18,     CH3BIT	; P8_29
-	.asg	r30.t19,	CH4BIT	; P8_30
-	.asg	r30.t3,		CH5BIT	; P8_39
-	.asg	r30.t4,		CH6BIT	; P8_40
-	.asg	r30.t1,		CH7BIT	; P8_41
-	.asg	r30.t2,		CH8BIT	; P8_42
 
 	.asg    C4,     CONST_SYSCFG
 	.asg    C28,    CONST_PRUSHAREDRAM
 
 	.asg	0x22000,	PRU0_CTRL
-	.asg    0x24000,    PRU1_CTRL       ; page 19
-	.asg    0x28,       CTPPR0          ; page 75
+	.asg    0x24000,	PRU1_CTRL       ; page 19
+	.asg    0x28,		CTPPR0          ; page 75
 
 	.asg	0x000,	OWN_RAM
 	.asg	0x020,	OTHER_RAM
