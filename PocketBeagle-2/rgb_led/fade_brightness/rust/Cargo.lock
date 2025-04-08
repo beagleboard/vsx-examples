@@ -7,7 +7,7 @@ name = "beagle_helper"
 version = "0.1.0"
 
 [[package]]
-name = "fade"
+name = "rust"
 version = "0.1.0"
 dependencies = [
  "beagle_helper",
