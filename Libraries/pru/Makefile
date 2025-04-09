@@ -117,11 +117,15 @@ endef
 #   PRUN - identifier for target PRU core
 #   PRU_DIR - control directory for the PRU
 define proc-to-build-vars =
+ ifeq ("$(wildcard $(PRU_SUPPORT)/lib/rpmsg_lib.lib)","")
+   PRU_LIB=""
+ else
+   PRU_LIB="--library=$(PRU_SUPPORT)/lib/rpmsg_lib.lib"
+ endif
  ifeq ($(PROC),pru)
   LD=lnkpru -o
   LDFLAGS=--reread_libs --warn_sections --stack_size=0x100 --heap_size=0x100 -m $(basename $(1)).map \
-   -i$(PRU_CGT)/lib -i$(PRU_CGT)/include $(COMMON)/$(CHIP)_$(PROC).cmd --library=libc.a \
-   --library=$(PRU_SUPPORT)/lib/rpmsg_lib.lib
+   -i$(PRU_CGT)/lib -i$(PRU_CGT)/include $(COMMON)/$(CHIP)_$(PROC).cmd --library=libc.a $(PRU_LIB)
   CC=clpru -fe
   CFLAGS=--include_path=$(COMMON) --include_path=$(PRU_SUPPORT)/include \
    --include_path=$(PRU_SUPPORT)/include/$(CHIP_REV) \
