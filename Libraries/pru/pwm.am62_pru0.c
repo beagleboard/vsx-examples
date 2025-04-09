@@ -25,12 +25,13 @@ uint32_t count[NUM_GPO] = {
 volatile register unsigned int __R30; /* R30 directly outputs to PRU GPO */
 
 void main() {
-	int i;
+	int i, mask;
 	__R30 = 0;
 	while(1) {
+		mask = 0;
 		for(i=0; i<NUM_GPO; i++) {
 			if(count[i] == 1) {
-				__R30 ^= 1 << i;		/* Invert GPO i */
+				mask |= (1 << i);		/* Invert GPO i */
 				count[i] = duty[i];		/* Restart count */
 			}
 			else {
@@ -38,6 +39,7 @@ void main() {
 				if(count[i] > 0) count[i]--;	/* Decrement counter */
 			}
 		}
+		__R30 ^= mask;					/* Apply updates at once */
 	}
 }
 
