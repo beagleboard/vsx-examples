@@ -5,6 +5,6 @@
  * pwm.am62_pru0.c - Example PWM firmware for AM62
  */
 
- int main() {
-        return(0);
- }
+int main() {
+	return(0);
+}
