@@ -1,0 +1,10 @@
+[package]
+name = "rust"
+description = "Simple example using RGB Led using the multicolor LED Linux driver"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+authors = ["Ayush Singh <ayush@beagleboard.org>"]
+
+[dependencies]
+beagle_helper = { path = "../../../../Libraries/rust/beagle_helper", features = ["sysfs"] }
