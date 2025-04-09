@@ -117,4 +117,6 @@ SECTIONS {
 	.rofardata	>  PRU0_DMEM_0, PAGE 1
 	.farbss		>  PRU0_DMEM_0, PAGE 1
 	.fardata	>  PRU0_DMEM_0, PAGE 1
+
+	pru_sharedmem	>  PRU_SHAREDMEM, PAGE 2
 }
