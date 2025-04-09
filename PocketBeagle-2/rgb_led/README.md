@@ -1,23 +1,8 @@
-# RGB LED Example
+# RGB LED Examples
 
-## Goal
+The following examples help understand using RGB Leds using the Linux Kernel driver.
 
-Control RGB LED using PocketBeagle 2.
-
-## Overview
-
-An RGB LED is a combination of 3 LEDs in just one package:
-
-- 1x Red LED
-- 1x Green LED
-- 1x Blue LED
-
-You can produce almost any color by combining those three colors. Here is a simple color mixing chart:
-
-![Color Mixing Chart](assets/color_chart.jpg){width=50%}
-
-## Challenges
-
-- Can you modify the code to only produce Red, Blue and Green colors, one by one?
-- Can you modify the code to produce different brightness of each color
-- Can you modify the code to produce compound colors such as Yellow, Teal, etc?
+1. [fade_brightness](fade_brightness/): Demonstrate fading one color in an RGB LED in and out by manipulating the brightness.
+2. [fade_intensity](fade_intensity/): Demonstrate fading one color in an RGB LED in and out by manipulating the intensity.
+3. [color_circle](color_circle/): Demonstrate generating different colors in the color circle.
+4. [hue](hue/): Generate different color hues on the RGB LED.
