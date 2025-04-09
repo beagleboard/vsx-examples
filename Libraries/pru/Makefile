@@ -1,7 +1,7 @@
 #
 # Optional definitions
 #
-# TARGET - executable to create (currently supports single .c source)
+# TARGET - executable to create (currently supports single .c, .cpp or .asm source)
 #          should have .<proc>(<n>) extension (lower case, check below for valid options)
 #          without TARGET, as of now, we don't have any build targets
 #          TODO: work with a list of targets, rather than a single file

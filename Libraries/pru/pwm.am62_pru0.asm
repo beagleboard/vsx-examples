@@ -9,6 +9,7 @@
 ;
 ; The primary documentation files utilized for generating this program are:
 ; * SPRUHV6C - PRU Assembly Language Tools v2.3 User's Guide
+; * SPRUIJ2 - PRU Assembly Instruction User Guide
 ;
 ; This program is free software; you can redistribute it and/or modify
 ; it under the terms of the GNU General Public License version 2 as
