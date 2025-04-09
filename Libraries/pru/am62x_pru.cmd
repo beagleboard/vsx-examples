@@ -106,6 +106,10 @@ SECTIONS {
 	.text:_c_int00*	>  0x0, PAGE 0
 
 	.text		>  PRU_IMEM, PAGE 0
+
+	/* Using the beginning of PRU0 DMEM0 for commands, so this must be first */
+	.pru_dmem0	>  PRU0_DMEM_0, PAGE 1
+
 	.stack		>  PRU0_DMEM_0, PAGE 1
 	.bss		>  PRU0_DMEM_0, PAGE 1
 	.cio		>  PRU0_DMEM_0, PAGE 1
@@ -118,5 +122,5 @@ SECTIONS {
 	.farbss		>  PRU0_DMEM_0, PAGE 1
 	.fardata	>  PRU0_DMEM_0, PAGE 1
 
-	pru_sharedmem	>  PRU_SHAREDMEM, PAGE 2
+	.resource_table: type = COPY > 0
 }

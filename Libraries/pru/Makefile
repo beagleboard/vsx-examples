@@ -1,3 +1,6 @@
+# This Makefile tries to provide some defaults for building single-file programs on Beagle
+# platforms in part by adding an additional suffix ahead of the source file extension. The
+# original purpose was to provide ability to run these programs in the Cloud9 IDE environment.
 #
 # Optional definitions
 #
@@ -6,6 +9,8 @@
 #          without TARGET, as of now, we don't have any build targets
 #          TODO: work with a list of targets, rather than a single file
 # PRUN   - TBD
+# MODEL  - board model from the device tree
+#          if not provided, an attempt will be made to read it directly
 
 #
 # Directories (external packages, etc.)
@@ -153,7 +158,17 @@ endef
 #
 #
 
-ifneq ($(TARGET),)
+ifeq ($(TARGET),)
+#
+# Build default local firmware
+#
+
+all: $(patsubst %.c,%.out,$(wildcard *.c))
+
+else
+#
+# Original design for use in Cloud9 build environment with TARGET defined
+#
 $(eval $(call target-to-proc,$(TARGET).out))
 # $(warning GEN_DIR=$(GEN_DIR),CHIP=$(CHIP),PROC=$(PROC),PRUN=$(PRUN),PRU_DIR=$(PRU_DIR),EXE=$(EXE))
 
@@ -241,5 +256,6 @@ $(GEN_DIR)/%.o: %.cpp
 
 clean:
 	@echo 'CLEAN'
+	@rm *.out
 	@rm -rf $(GEN_DIR)
 
