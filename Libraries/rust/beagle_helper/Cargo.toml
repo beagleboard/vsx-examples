@@ -4,15 +4,11 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-gpiod = { version = "0.3.0", optional = true }
 
 [features]
 default_features = []
 pocketbeagle2 = []
-gpiod = ["dep:gpiod"]
-gpio = ["gpiod"]
 pwm = []
-button = ["gpio"]
 beagle_eeprom = []
 tonal_buzzer = ["pwm"]
 sysfs = []
