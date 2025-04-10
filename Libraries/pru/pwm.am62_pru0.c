@@ -7,6 +7,7 @@
  * References:
  * * SPRUHV6C - PRU Assembly Language Tools v2.3 User's Guide
  * * SPRUHV7C - PRU Optimizing C/C++ Compiler v2.3 User's Guide
+ * * SPRULV7B - AM62x Processors Silicon Revision 1.0 Texas Instruments Families of Products Technical Reference Manual
  * * https://git.ti.com/cgit/pru-software-support-package/pru-software-support-package/commit/?id=f3e3996c50b2c7bc7ed1f6f5374f3d8efb501a45
  */
 
