@@ -30,13 +30,15 @@ void main() {
 	while(1) {
 		mask = 0;
 		for(i=0; i<NUM_GPO; i++) {
-			if(count[i] == 1) {
-				mask |= (1 << i);		/* Invert GPO i */
-				count[i] = duty[i];		/* Restart count */
+			if(count[i] == 0) {
+				if(duty[i] > 0) {
+					mask |= (1 << i);	/* Invert GPO i */
+					count[i] = duty[i];	/* Start count */
+				}
 			}
 			else {
 				/* Need to make this the same number of cycles */
-				if(count[i] > 0) count[i]--;	/* Decrement counter */
+				count[i]--;			/* Decrement counter */
 			}
 		}
 		__R30 ^= mask;					/* Apply updates at once */
