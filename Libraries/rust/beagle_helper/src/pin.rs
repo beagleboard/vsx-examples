@@ -9,13 +9,6 @@ impl GpioPin {
     pub(crate) const fn new(chip: usize, offset: u32) -> Self {
         Self { chip, offset }
     }
-
-    #[cfg(feature = "button")]
-    pub(crate) fn gpio_input(&self) -> std::io::Result<gpiod::Lines<gpiod::Input>> {
-        let chip = gpiod::Chip::new(self.chip)?;
-        let opts = gpiod::Options::input([self.offset]).edge(gpiod::EdgeDetect::Both);
-        chip.request_lines(opts)
-    }
 }
 
 pub(crate) struct PwmPin {
@@ -63,16 +56,6 @@ pub struct Pin {
 impl Pin {
     pub(crate) const fn new(gpio: Option<GpioPin>, pwm: Option<PwmPin>) -> Self {
         Self { gpio, pwm }
-    }
-
-    #[cfg(feature = "button")]
-    pub(crate) fn gpio_input(&self) -> std::io::Result<gpiod::Lines<gpiod::Input>> {
-        match &self.gpio {
-            Some(x) => x.gpio_input(),
-            None => Err(std::io::Error::other(
-                "Pin does not support GPIO Input functionality",
-            )),
-        }
     }
 
     #[cfg(feature = "pwm")]

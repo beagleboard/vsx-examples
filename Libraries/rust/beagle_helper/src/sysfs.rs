@@ -81,10 +81,6 @@ impl Device {
 pub struct Entry(File);
 
 impl Entry {
-    pub fn read_f64(&mut self) -> io::Result<f64> {
-        self.read()
-    }
-
     /// Read a single line
     pub fn read_string(&mut self) -> io::Result<String> {
         let mut data = String::with_capacity(10);
@@ -94,15 +90,19 @@ impl Entry {
         Ok(data)
     }
 
-    pub fn write_string(&mut self, data: &str) -> io::Result<()> {
-        self.0.write_all(data.as_bytes())
+    pub fn read_f64(&mut self) -> io::Result<f64> {
+        self.read_parsed()
     }
 
-    pub fn write<T: ToString>(&mut self, data: T) -> io::Result<()> {
+    pub fn read_usize(&mut self) -> io::Result<usize> {
+        self.read_parsed()
+    }
+
+    pub fn write_string<T: ToString>(&mut self, data: T) -> io::Result<()> {
         self.0.write_all(data.to_string().as_bytes())
     }
 
-    pub fn read<T>(&mut self) -> io::Result<T>
+    pub fn read_parsed<T>(&mut self) -> io::Result<T>
     where
         T: FromStr,
     {
@@ -110,5 +110,21 @@ impl Entry {
             .trim()
             .parse()
             .map_err(|_| io::Error::other(format!("Failed to parse sysfs value")))
+    }
+}
+
+impl io::Write for Entry {
+    fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
+        self.0.write(buf)
+    }
+
+    fn flush(&mut self) -> io::Result<()> {
+        self.0.flush()
+    }
+}
+
+impl io::Read for Entry {
+    fn read(&mut self, buf: &mut [u8]) -> io::Result<usize> {
+        self.0.read(buf)
     }
 }

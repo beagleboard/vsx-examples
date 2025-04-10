@@ -1,3 +1,4 @@
+use std::io::Write;
 use std::thread::sleep;
 use std::time::Duration;
 
@@ -16,20 +17,20 @@ fn main() {
     segment_left
         .sysfs_w("scroll_step_ms")
         .unwrap()
-        .write(1000)
+        .write_string(1000)
         .unwrap();
     segment_right
         .sysfs_w("scroll_step_ms")
         .unwrap()
-        .write(1000)
+        .write_string(1000)
         .unwrap();
 
     println!("Countdown");
-    left_msg.write("10000000000").unwrap();
-    right_msg.write("09876543210").unwrap();
+    left_msg.write_all(b"10000000000").unwrap();
+    right_msg.write_all(b"09876543210").unwrap();
 
     sleep(Duration::from_secs(11));
 
-    left_msg.write(" ").unwrap();
-    right_msg.write(" ").unwrap();
+    left_msg.write_all(b" ").unwrap();
+    right_msg.write_all(b" ").unwrap();
 }
