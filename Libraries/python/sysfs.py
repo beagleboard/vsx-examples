@@ -19,6 +19,10 @@ class Entry:
         with open(self.path, "r") as f:
             return f.read().strip()
 
+    def read_binary(self, size: int) -> bytes:
+        with open(self.path, "rb") as f:
+            return f.read(size)
+
     def write_str(self, data: str):
         with open(self.path, "w") as f:
             f.write(data)
