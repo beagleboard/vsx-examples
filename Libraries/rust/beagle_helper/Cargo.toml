@@ -9,7 +9,6 @@ edition = "2021"
 default_features = []
 pocketbeagle2 = []
 pwm = []
-beagle_eeprom = []
 tonal_buzzer = ["pwm"]
 sysfs = []
 chardev = []
