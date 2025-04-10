@@ -1,7 +1,7 @@
 //! This example demonstrates fading a single color in and out in an RGB LED using the intensity
 //! setting.
 
-use std::{thread::sleep, time::Duration};
+use std::{io::Write, thread::sleep, time::Duration};
 
 use beagle_helper::sysfs::Device;
 
@@ -23,23 +23,27 @@ fn main() {
     // Set brightness to max from the start
     led.sysfs_w("brightness")
         .unwrap()
-        .write(max_brightness)
+        .write_all(max_brightness.as_bytes())
         .unwrap();
 
     // Set intensity to a single color
     led.sysfs_w("multi_intensity")
         .unwrap()
-        .write("255 0 0")
+        .write_all(b"255 0 0")
         .unwrap();
 
     loop {
         for i in (5..(MAX_INTENSITY + 1)).step_by(5) {
-            multi_intensity.write(format!("{i} 0 0")).unwrap();
+            multi_intensity
+                .write_all(format!("{i} 0 0").as_bytes())
+                .unwrap();
             sleep(DELAY);
         }
 
         for i in (0..(MAX_INTENSITY - 4)).step_by(5).rev() {
-            multi_intensity.write(format!("{i} 0 0")).unwrap();
+            multi_intensity
+                .write_all(format!("{i} 0 0").as_bytes())
+                .unwrap();
             sleep(DELAY);
         }
     }

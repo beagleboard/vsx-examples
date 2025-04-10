@@ -1,5 +1,6 @@
 //! This example generates different color hue on the RGB LED.
 
+use std::io::Write;
 use std::thread::sleep;
 use std::time::Duration;
 
@@ -33,14 +34,14 @@ fn main() {
     // Set brightness to max from the start.
     led.sysfs_w("brightness")
         .unwrap()
-        .write(max_brightness)
+        .write_all(max_brightness.as_bytes())
         .unwrap();
 
     loop {
         for i in 0..256 {
             let hue = wheel(i);
             multi_intensity
-                .write(format!("{} {} {}", hue.0, hue.1, hue.2))
+                .write_all(format!("{} {} {}", hue.0, hue.1, hue.2).as_bytes())
                 .unwrap();
             sleep(DELAY);
         }

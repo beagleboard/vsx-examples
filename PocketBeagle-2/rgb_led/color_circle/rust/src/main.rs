@@ -1,6 +1,6 @@
 //! This example cycles through all the base colors in the Color circle.
 
-use std::{thread::sleep, time::Duration};
+use std::{io::Write, thread::sleep, time::Duration};
 
 use beagle_helper::sysfs::Device;
 
@@ -19,32 +19,32 @@ fn main() {
     // Set brightness to max from the start.
     led.sysfs_w("brightness")
         .unwrap()
-        .write(max_brightness)
+        .write_all(max_brightness.as_bytes())
         .unwrap();
 
     loop {
-        multi_intensity.write("255 0 0").unwrap();
+        multi_intensity.write_all(b"255 0 0").unwrap();
         sleep(DELAY);
 
-        multi_intensity.write("255 255 0").unwrap();
+        multi_intensity.write_all(b"255 255 0").unwrap();
         sleep(DELAY);
 
-        multi_intensity.write("0 255 0").unwrap();
+        multi_intensity.write_all(b"0 255 0").unwrap();
         sleep(DELAY);
 
-        multi_intensity.write("0 255 255").unwrap();
+        multi_intensity.write_all(b"0 255 255").unwrap();
         sleep(DELAY);
 
-        multi_intensity.write("0 0 255").unwrap();
+        multi_intensity.write_all(b"0 0 255").unwrap();
         sleep(DELAY);
 
-        multi_intensity.write("255 0 255").unwrap();
+        multi_intensity.write_all(b"255 0 255").unwrap();
         sleep(DELAY);
 
-        multi_intensity.write("255 255 255").unwrap();
+        multi_intensity.write_all(b"255 255 255").unwrap();
         sleep(DELAY);
 
-        multi_intensity.write("0 0 0").unwrap();
+        multi_intensity.write_all(b"0 0 0").unwrap();
         sleep(DELAY);
     }
 }
