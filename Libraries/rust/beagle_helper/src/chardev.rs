@@ -59,11 +59,11 @@ impl CharDev {
         let bin: [u8; std::mem::size_of::<InputEvent>()] = unsafe { std::mem::transmute(evt) };
         self.0.write_all(&bin)
     }
-}
 
-impl io::Read for CharDev {
-    fn read(&mut self, buf: &mut [u8]) -> io::Result<usize> {
-        self.0.read(buf)
+    pub fn read_evt(&mut self) -> io::Result<InputEvent> {
+        let mut data = [0u8; std::mem::size_of::<InputEvent>()];
+        self.0.read_exact(&mut data)?;
+        Ok(unsafe { std::mem::transmute(data) })
     }
 }
 
