@@ -73,9 +73,10 @@ class CharDev:
 
         raise ValueError("Device not found")
 
-    def read_binary(self, size: int):
+    def read_evt(self) -> InputKey:
         with open(self.path, "rb") as f:
-            return f.read(size)
+            data =  f.read(InputKey.data_format().size)
+            return InputKey.from_binary(data)
 
     def write_evt(self, data: InputKey):
         with open(self.path, "wb") as f:
