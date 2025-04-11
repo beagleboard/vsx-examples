@@ -7,8 +7,6 @@ edition = "2021"
 
 [features]
 default_features = []
-pocketbeagle2 = []
-pwm = []
-tonal_buzzer = ["pwm"]
 sysfs = []
 chardev = []
+tone = []

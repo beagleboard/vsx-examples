@@ -1,7 +1,7 @@
 //! This example demonstrates reading button inputs using GPIO Keys driver.
 
 use beagle_helper::chardev::CharDev;
-use std::{ffi, io::Read};
+use std::{ffi, fs::OpenOptions, io::Read};
 
 const BUTTONS_NAME: &str = "buttons";
 
@@ -31,7 +31,8 @@ impl InputEvent {
 }
 
 fn main() {
-    let mut evt = CharDev::open_input_with_name(BUTTONS_NAME).unwrap();
+    let mut evt =
+        CharDev::open_input_with_name(BUTTONS_NAME, OpenOptions::new().read(true)).unwrap();
 
     loop {
         let inp = InputEvent::read(&mut evt).unwrap();
