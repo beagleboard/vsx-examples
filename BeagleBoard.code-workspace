@@ -3,10 +3,5 @@
 		{
 			"path": "."
 		}
-	],
-	"settings": {
-		"terminal.integrated.env.linux": {
-			"PYTHONPATH": "${workspaceFolder}/Libraries/python/beagle_helper/src"
-		}
-	}
+	]
 }
