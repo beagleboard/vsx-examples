@@ -1,5 +1,5 @@
 """
-This example cycles through all the base colors in the Color circle.
+This example cycles through the base colors in the Color circle.
 """
 
 from sysfs import Device
@@ -21,23 +21,8 @@ while True:
     multi_intensity.write('255 0 0')
     sleep(DELAY)
 
-    multi_intensity.write('255 255 0')
-    sleep(DELAY)
-
     multi_intensity.write('0 255 0')
     sleep(DELAY)
 
-    multi_intensity.write('0 255 255')
-    sleep(DELAY)
-
     multi_intensity.write('0 0 255')
-    sleep(DELAY)
-
-    multi_intensity.write('255 0 255')
-    sleep(DELAY)
-
-    multi_intensity.write('255 255 255')
-    sleep(DELAY)
-
-    multi_intensity.write('0 0 0')
     sleep(DELAY)

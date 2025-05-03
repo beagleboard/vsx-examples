@@ -1,4 +1,4 @@
-//! This example cycles through all the base colors in the Color circle.
+//! This example cycles through the base colors in the Color circle.
 
 use std::{io::Write, thread::sleep, time::Duration};
 
@@ -26,25 +26,10 @@ fn main() {
         multi_intensity.write_all(b"255 0 0").unwrap();
         sleep(DELAY);
 
-        multi_intensity.write_all(b"255 255 0").unwrap();
-        sleep(DELAY);
-
         multi_intensity.write_all(b"0 255 0").unwrap();
         sleep(DELAY);
 
-        multi_intensity.write_all(b"0 255 255").unwrap();
-        sleep(DELAY);
-
         multi_intensity.write_all(b"0 0 255").unwrap();
-        sleep(DELAY);
-
-        multi_intensity.write_all(b"255 0 255").unwrap();
-        sleep(DELAY);
-
-        multi_intensity.write_all(b"255 255 255").unwrap();
-        sleep(DELAY);
-
-        multi_intensity.write_all(b"0 0 0").unwrap();
         sleep(DELAY);
     }
 }
