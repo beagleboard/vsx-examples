@@ -8,4 +8,5 @@ Demonstrate generating different colors in the color circle.
 
 ## Challenges
 
-1. Can you try out creating other colors?
+1. Can you try out creating other colors such as Teal, etc?
+2. Can you try out creating white?
