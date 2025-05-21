@@ -68,7 +68,7 @@ impl CharDev {
 }
 
 #[repr(C)]
-#[derive(Default, Clone, Copy)]
+#[derive(Default, Clone, Copy, Debug)]
 pub struct Timeval {
     pub tv_sec: i64,
     pub tv_usec: i64,
@@ -76,7 +76,7 @@ pub struct Timeval {
 
 /// Defined in [Event Interface](https://docs.kernel.org/input/input.html#event-interface)
 #[repr(C)]
-#[derive(Default, Clone, Copy)]
+#[derive(Default, Clone, Copy, Debug)]
 pub struct InputEvent {
     pub time: Timeval,
     pub r#type: std::ffi::c_ushort,
