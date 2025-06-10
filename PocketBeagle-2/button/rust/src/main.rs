@@ -1,7 +1,7 @@
 //! This example demonstrates reading button inputs using GPIO Keys driver.
 
-use beagle_helper::chardev::{CharDev, InputEvent};
-use std::{fs::OpenOptions, io::Read};
+use beagle_helper::chardev::CharDev;
+use std::fs::OpenOptions;
 
 const BUTTONS_NAME: &str = "buttons";
 
