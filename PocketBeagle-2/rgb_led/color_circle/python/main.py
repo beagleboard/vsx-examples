@@ -6,7 +6,7 @@ from sysfs import Device
 from pathlib import Path
 from time import sleep
 
-LED = Path("/sys/devices/platform/techlab-led/leds/multi-led/")
+LED = Path("/sys/devices/platform/techlab-led/leds/rgb:/")
 DELAY = 1
 
 led = Device(path=LED)
