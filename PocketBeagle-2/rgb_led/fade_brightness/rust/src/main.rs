@@ -5,7 +5,7 @@ use std::{io::Write, thread::sleep, time::Duration};
 
 use beagle_helper::sysfs::Device;
 
-const LED: &str = "/sys/devices/platform/techlab-led/leds/rgb:/";
+const LED: &str = "/sys/devices/platform/techlab-led/leds/multi-led/";
 const DELAY: Duration = Duration::from_millis(50);
 
 fn main() {

@@ -6,7 +6,7 @@ use std::time::Duration;
 
 use beagle_helper::sysfs::Device;
 
-const LED: &str = "/sys/devices/platform/techlab-led/leds/rgb:/";
+const LED: &str = "/sys/devices/platform/techlab-led/leds/multi-led/";
 const DELAY: Duration = Duration::from_millis(10);
 
 /// Helper function to convert hue to RGB
