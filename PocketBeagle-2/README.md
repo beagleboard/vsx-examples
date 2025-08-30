@@ -11,13 +11,9 @@ This folder provides multi-language examples for PocketBeagle 2. The primary lan
 7. [tonal_buzzer](tonal_buzzer): Simple example to play Harry Potter meoldy on a buzzer.
 8. [rgb_led](rgb_led): Simple example using RGB Led using the multicolor LED Linux driver.
 
-# Initial Prep
+# Resources
 
-Add python library folder to the path. Not sure if there is any other elegant way to do this:
-
-```console
-export PYTHONPATH=$HOME/vsx-examples/Libraries/python/beagle_helper/src:$PYTHONPATH
-```
+Please check out the resources listed on the [TechLab Workshop page](https://www.beagleboard.org/projects/techlab-workshop) regarding how to use the examples. More specifically, checout the instructions for [Initial Prep](https://www.canva.com/design/DAGqzbOajz4/UB5KYVGbHDfSOG3nwgbCng/edit) and [Workshop handouts](https://www.canva.com/design/DAGqzfXeGcw/306LvbQdimMzPBiZfNhbpQ/edit).
 
 # Run Examples
 
