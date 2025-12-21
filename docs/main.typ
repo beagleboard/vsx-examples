@@ -100,9 +100,9 @@
 )
 
 // Custom heading rendering with background
-#show heading.where(level: 2): it => block(fill: beagle_background_color, radius: 4pt, inset: 8pt)[
+#show heading.where(level: 2): it => block(fill: beagle_background_color, radius: 4pt, inset: (x: 6pt, y: 3pt))[
   #set text(white)
-  #text(it.body)
+  #it.body
 ]
 
 // Do not render heading level 1. They signify chapters and will be part of header.
@@ -152,17 +152,27 @@
   ]
 }
 
+#let beagle_heading(img: str, ..body) = {
+  grid(
+    columns: (auto, auto),
+    column-gutter: 2pt,
+    grid.cell(align: horizon)[#image(img, height: 12pt)],
+    grid.cell(align: horizon, ..body)
+  )
+}
+
 // Current normal column does not maintain height properly. So using grid instead.
 #let grid_column(..body) = grid(columns: (1fr, 1fr), column-gutter: 8pt, ..body)
 
 = Your First Blinky Light
 
-== This part of the workshop introduces you to
+
+== #beagle_heading(img: "images/chapter1/heading1.webp")[This part of the workshop introduces you to]
 - #strong("Powering") - Learn how to power your PocketBeagle 2 single-board computer.
 - #strong("Connecting") - Learn how to connect the PocketBeagle 2 to another computer for programming.
 - #strong("Programming") - Make your PocketBeagle 2 blink an LED using a Python program.
 
-== Hardware used in this exercise
+== #beagle_heading(img: "images/chapter1/heading2.webp")[Hardware used in this exercise]
 #beagle_box_1(img: "images/pocketbeagle_2_back.webp")[
   #strong("PocketBeagle 2 computer")
   - A tiny computer without a display, keyboard, or disk drive.
@@ -191,7 +201,7 @@
   - USB-C connects to PocketBeagle 2, other end to laptop
 ]
 
-== Software used in this exercise
+== #beagle_heading(img: "images/chapter1/heading3.webp")[Software used in this exercise]
 
 #beagle_box_3(
   grid.cell(align: center + horizon, image("images/safari_logo.svg", width: 55pt)),
