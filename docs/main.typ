@@ -282,7 +282,7 @@
         
     grid.cell(
       colspan: 2,
-      text(size: 7pt)[✅ Yes! You’re connecting directly to your own PocketBeagle 2, not the internet. It’s like talking to a classmate in the same room—no strangers involved.]
+      beagle_heading(img: "images/checkmark.svg")[#text(size: 7pt)[Yes! You’re connecting directly to your own PocketBeagle 2, not the internet. It’s like talking to a classmate in the same room—no strangers involved.]]
     ),
         
     grid.cell(
