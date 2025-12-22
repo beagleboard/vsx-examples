@@ -1,3 +1,5 @@
+#import "helpers.typ" as bh
+
 // Basic color define
 #let box_border_color = rgb("#8c6a39")
 #let beagle_background_color = rgb("#f26935")
@@ -24,32 +26,21 @@
 #show link: set text(beagle_text_color)
 #show title: set text(size: 22pt, weight: 340)
 
-// Helper to know if a new chapter starts at the current page.
-#let is_chapter_start() = query(heading.where(level: 1)).map(h => h.location().page()).contains(here().page())
-/* Helper to know if a new chapter starts at the next page.
- * Also handles last page since that is also considered chapter end.
- */
-#let is_chapter_end() = query(heading.where(level: 1)).map(h => h.location().page()).contains(here().page() + 1) or here().page() == counter(page).final().first()
-// Return the next heading
-#let next_heading() = query(heading.where(level: 1).after(here())).first().body
-// Return the last heading
-#let last_heading() = query(heading.where(level: 1).before(here())).last().body
-
 /* Function to get header for current page. Currently 2 types of headers.
  * 1. Pages where new chapter starts.
  * 2. Pages part of an already started chapter.
  */
 #let beagle_header() = context {
-  if is_chapter_start() {
+  if bh.is_chapter_start() {
     align(center + horizon)[
       #block(radius: (top: 0pt, bottom: 27pt), stroke:  (top: 0pt, rest: 3pt + rgb("#5a5b5d")), height: 100%, width: 100%, fill: rgb("#d9d9d9"))[
         #title() 
-        #text(size: 12pt, weight: 340)[Chapter #chapter_num.display(). #next_heading()]
+        #text(size: 12pt, weight: 340)[Chapter #chapter_num.display(). #bh.next_heading()]
       ]
     ]
   } else [
     #align(center + horizon)[
-      #text(size: 10pt, weight: 340)[Chapter #chapter_num.display(). #last_heading(), Continued...] 
+      #text(size: 10pt, weight: 340)[Chapter #chapter_num.display(). #bh.last_heading(), Continued...] 
     ]
   ]
 }
@@ -57,13 +48,13 @@
 /* Function to get footer for current page. Currently footer is only rendered at the first page of any chapter.
  */
 #let beagle_footer() = context {
-  if is_chapter_start() [
+  if bh.is_chapter_start() [
     #block(fill: beagle_background_color, width: 100%, height: 100%, outset: (x: page_margin_x, y: 0pt))[
       #align(center + horizon)[
         #text(white, weight: "bold", size: 14pt)["The BeagleBoard.org Foundation is a 501(c)(3) non-profit corporation existing to provide education in and collaboration around the design and use of open-source software and hardware in embedded computing."]
       ]
     ]
-  ] else if is_chapter_end() [
+  ] else if bh.is_chapter_end() [
     #align(center)[
       #grid(
         columns: (auto, auto),
@@ -81,7 +72,7 @@
         ),
         grid.cell(
           align: center + horizon, 
-          text(rgb("#5a5b5d"), size: 9pt, weight: 340)[You have successfully completed Chapter #chapter_num.display(). #last_heading() Lab with PocketBeagle 2 :)]
+          text(rgb("#5a5b5d"), size: 9pt, weight: 340)[You have successfully completed Chapter #chapter_num.display(). #bh.last_heading() Lab with PocketBeagle 2 :)]
         ),
       )
     ]
@@ -152,27 +143,14 @@
   ]
 }
 
-#let beagle_heading(img: str, ..body) = {
-  grid(
-    columns: (auto, auto),
-    column-gutter: 2pt,
-    grid.cell(align: horizon)[#image(img, height: 12pt)],
-    grid.cell(align: horizon, ..body)
-  )
-}
-
-// Current normal column does not maintain height properly. So using grid instead.
-#let grid_column(..body) = grid(columns: (1fr, 1fr), column-gutter: 8pt, ..body)
-
 = Your First Blinky Light
 
-
-== #beagle_heading(img: "images/chapter1/heading1.webp")[This part of the workshop introduces you to]
+== #bh.beagle_heading(img: "images/chapter1/heading1.webp")[This part of the workshop introduces you to]
 - #strong("Powering") - Learn how to power your PocketBeagle 2 single-board computer.
 - #strong("Connecting") - Learn how to connect the PocketBeagle 2 to another computer for programming.
 - #strong("Programming") - Make your PocketBeagle 2 blink an LED using a Python program.
 
-== #beagle_heading(img: "images/chapter1/heading2.webp")[Hardware used in this exercise]
+== #bh.beagle_heading(img: "images/chapter1/heading2.webp")[Hardware used in this exercise]
 #beagle_box_1(img: "images/pocketbeagle_2_back.webp")[
   #strong("PocketBeagle 2 computer")
   - A tiny computer without a display, keyboard, or disk drive.
@@ -201,7 +179,7 @@
   - USB-C connects to PocketBeagle 2, other end to laptop
 ]
 
-== #beagle_heading(img: "images/chapter1/heading3.webp")[Software used in this exercise]
+== #bh.beagle_heading(img: "images/chapter1/heading3.webp")[Software used in this exercise]
 
 #beagle_box_3(
   grid.cell(align: center + horizon, image("images/safari_logo.svg", width: 55pt)),
@@ -233,7 +211,7 @@
 #pagebreak()
 #set page(margin: (x: page_margin_x, y: 30pt))
 
-#grid_column(
+#bh.grid_column(
   beagle_box_4(img: "images/chapter1/step1.webp", img_height: 120pt)[Start with fresh ingredients, nothing plugged in.],
   beagle_box_4(img: "images/chapter1/step2.webp", img_height: 120pt)[Insert your pre-flashed Micro SD Card provided by your instructor into PocketBeagle 2 MicroSD slot.],
 )
@@ -250,7 +228,7 @@
   )
 ]
 
-#grid_column(
+#bh.grid_column(
   beagle_box_4(img: "images/chapter1/step4.webp", img_height: 100pt)[USB connection provides powers to your PocketBeagle 2, you should see a Red LED light marked ‘P’ lit up.],
   beagle_box_4(img: "images/chapter1/step5.webp", img_height: 100pt)[Wait for 2 minutes while your PocketBeagle 2 computer boots up to start a network connection.],
 )
@@ -259,12 +237,12 @@
 
 #pagebreak()
 
-#grid_column(
+#bh.grid_column(
   beagle_box_4(img: "images/chapter1/step7.webp", img_height: 150pt)[If a warning like this is shown on your screen then click on Advanced button to open up an option to access 192.168.7.2],
   beagle_box_4(img: "images/chapter1/step8.webp", img_height: 150pt)[Click on Proceed to 192.168.7.2 (unsafe) button to access Visual Studio Code Server, this is a one time process only.],
 )
 
-#block(width: 100%, fill: beagle_text_color.lighten(93%), inset: 8pt, radius: 7pt)[
+#block(width: 100%, fill: beagle_text_color.lighten(93%), inset: 7pt, radius: 7pt)[
   #grid(
     columns: (auto, auto),
     row-gutter: 7pt,
@@ -282,7 +260,7 @@
         
     grid.cell(
       colspan: 2,
-      beagle_heading(img: "images/checkmark.svg")[#text(size: 7pt)[Yes! You’re connecting directly to your own PocketBeagle 2, not the internet. It’s like talking to a classmate in the same room—no strangers involved.]]
+      bh.beagle_heading(img: "images/checkmark.svg", img_height: 8pt)[#text(size: 7pt)[Yes! You’re connecting directly to your own PocketBeagle 2, not the internet. It’s like talking to a classmate in the same room—no strangers involved.]]
     ),
         
     grid.cell(
