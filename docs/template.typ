@@ -14,8 +14,6 @@
 #let last_heading() = query(heading.where(level: 1).before(here())).last().body
 
 #let conf(doc) = {
-  let page_margin_x = 15pt
-  
   // Chapter counter
   let chapter_num = counter("chapter_num")
   
@@ -33,10 +31,12 @@
    */
   let beagle_header() = context {
     if is_chapter_start() {
+      // Since header is rendered before the actual heading, we need to add 1 to get the actual chapter number
+      let chap = chapter_num.get().first() + 1
       align(center + horizon)[
         #block(radius: (top: 0pt, bottom: 27pt), stroke:  (top: 0pt, rest: 3pt + rgb("#5a5b5d")), height: 100%, width: 100%, fill: rgb("#d9d9d9"))[
           #title() 
-          #text(size: 12pt, weight: 340)[Chapter #chapter_num.display(). #next_heading()]
+          #text(size: 12pt, weight: 340)[Chapter #chap. #next_heading()]
         ]
       ]
     } else [
@@ -50,9 +50,9 @@
    */
   let beagle_footer() = context {
     if is_chapter_start() [
-      #block(fill: bc.tongue_orange, width: 100%, height: 100%, outset: (x: page_margin_x, y: 0pt))[
+      #block(fill: bc.tongue_orange, width: 100%, height: 100%, outset: (x: bh.page_margin_x, y: 0pt))[
         #align(center + horizon)[
-          #text(white, weight: "bold", size: 14pt)["The BeagleBoard.org Foundation is a 501(c)(3) non-profit corporation existing to provide education in and collaboration around the design and use of open-source software and hardware in embedded computing."]
+          #text(white, weight: "bold")[The BeagleBoard.org Foundation is a 501(c)(3) non-profit corporation existing to provide education in and collaboration around the design and use of open-source software and hardware in embedded computing.]
         ]
       ]
     ] else if is_chapter_end() [
@@ -77,10 +77,10 @@
   
   // Basic doc setup
   set page(
-    margin: (x: page_margin_x),
+    margin: (x: bh.page_margin_x),
     header-ascent: 10%,
     header: beagle_header(),
-    footer-descent: 10%,
+    footer-descent: 0%,
     footer: beagle_footer(),
   )
   
@@ -93,7 +93,7 @@
   // Do not render heading level 1. They signify chapters and will be part of header.
   show heading.where(level: 1): it => {
     chapter_num.step()
-    set page(margin: (x: page_margin_x, y: auto))
+    none
   }
 
   doc

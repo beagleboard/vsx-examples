@@ -61,3 +61,6 @@
 
 // Current normal column does not maintain height properly. So using grid instead.
 #let grid_column(..body) = grid(columns: (1fr, 1fr), column-gutter: 8pt, ..body)
+
+// Bit of a hack. But need this in both template and chapters.
+#let page_margin_x = 15pt

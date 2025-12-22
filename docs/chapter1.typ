@@ -1,11 +1,9 @@
 #import "helpers.typ" as bh
 #import "colors.typ" as bc
 
-#let page_margin_x = 15pt
-
 // Steps counter. Should start at 1.
 #let step_num = counter("step_num")
-#step_num.step()
+#step_num.update(1)
 
 // A boxed counter. Used by steps in chapter 1
 #let step_type_1 = context {
@@ -79,7 +77,7 @@
 
 // Change margins from 2nd chapter page.
 #pagebreak()
-#set page(margin: (x: page_margin_x, y: 30pt))
+#set page(margin: (x: bh.page_margin_x, y: 30pt))
 
 #bh.grid_column(
   bh.beagle_box_4(img: "images/chapter1/step1.webp", img_height: 120pt, col1: step_type_1)[Start with fresh ingredients, nothing plugged in.],
