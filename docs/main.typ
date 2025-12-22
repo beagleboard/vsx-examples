@@ -1,10 +1,5 @@
 #import "helpers.typ" as bh
-
-// Basic color define
-#let box_border_color = rgb("#8c6a39")
-#let beagle_background_color = rgb("#f26935")
-#let beagle_text_color = rgb("#dd5a28")
-#let box_border_color3 = beagle_text_color.lighten(60%)
+#import "colors.typ" as bc
 
 #let page_margin_x = 15pt
 
@@ -22,8 +17,8 @@
 #set text(font: "Gotham Rounded", weight: 330, size: 10pt)
 
 // Set different color for bold and link text
-#show strong: set text(beagle_text_color)
-#show link: set text(beagle_text_color)
+#show strong: set text(bc.dark_orange)
+#show link: set text(bc.dark_orange)
 #show title: set text(size: 22pt, weight: 340)
 
 /* Function to get header for current page. Currently 2 types of headers.
@@ -49,7 +44,7 @@
  */
 #let beagle_footer() = context {
   if bh.is_chapter_start() [
-    #block(fill: beagle_background_color, width: 100%, height: 100%, outset: (x: page_margin_x, y: 0pt))[
+    #block(fill: bc.tongue_orange, width: 100%, height: 100%, outset: (x: page_margin_x, y: 0pt))[
       #align(center + horizon)[
         #text(white, weight: "bold", size: 14pt)["The BeagleBoard.org Foundation is a 501(c)(3) non-profit corporation existing to provide education in and collaboration around the design and use of open-source software and hardware in embedded computing."]
       ]
@@ -61,18 +56,11 @@
         column-gutter: 4pt,
         grid.cell(
           align: center + horizon, 
-          block(fill: rgb("#5a5b5d"), radius: 4pt, inset: 5pt)[
-            #grid(
-              columns: (auto, auto),
-              column-gutter: 2pt,
-              image("images/star.svg", height: 10pt),
-              text(white, size: 9pt, weight: 350)[Congratulations!]
-            )
-          ]
+          block(fill: bc.dark_grey, radius: 4pt, inset: 5pt)[#bh.beagle_heading(img: "images/star.svg")[#text(white, size: 9pt, weight: 350)[Congratulations!]]]
         ),
         grid.cell(
           align: center + horizon, 
-          text(rgb("#5a5b5d"), size: 9pt, weight: 340)[You have successfully completed Chapter #chapter_num.display(). #bh.last_heading() Lab with PocketBeagle 2 :)]
+          text(bc.dark_grey, size: 9pt, weight: 340)[You have successfully completed Chapter #chapter_num.display(). #bh.last_heading() Lab with PocketBeagle 2 :)]
         ),
       )
     ]
@@ -91,7 +79,7 @@
 )
 
 // Custom heading rendering with background
-#show heading.where(level: 2): it => block(fill: beagle_background_color, radius: 4pt, inset: (x: 6pt, y: 3pt))[
+#show heading.where(level: 2): it => block(fill: bc.tongue_orange, radius: 4pt, inset: (x: 6pt, y: 3pt))[
   #set text(white)
   #it.body
 ]
@@ -118,20 +106,20 @@
     ..body)
 }
 
-#let beagle_box_1(img: str, ..body) = beagle_box_12_base(img: img, stroke: box_border_color, ..body)
+#let beagle_box_1(img: str, ..body) = beagle_box_12_base(img: img, stroke: bc.hair_dark_brown.lighten(60%), ..body)
 
-#let beagle_box_2(img: str, ..body) = beagle_box_12_base(img: img, stroke: rgb("#23b0e6"), ..body)
+#let beagle_box_2(img: str, ..body) = beagle_box_12_base(img: img, stroke: bc.blue.lighten(60%), ..body)
 
-#let beagle_box_3(..body) = beagle_box_123_base(stroke: rgb("#23b0e6"), cols: (12.5%, 12.5%, auto), ..body)
+#let beagle_box_3(..body) = beagle_box_123_base(stroke: bc.blue.lighten(60%), cols: (12.5%, 12.5%, auto), ..body)
 
 // A boxed counter. Used by steps in chapter 1
 #let step_type_1 = context {
   step_num.step()
-  block(fill: beagle_text_color, inset: 4pt, radius: 4pt)[#text(white, size: 18pt, weight: "bold")[#step_num.display()]]
+  block(fill: bc.dark_orange, inset: 4pt, radius: 4pt)[#text(white, size: 18pt, weight: "bold")[#step_num.display()]]
 }
 
 #let beagle_box_4(img: str, img_height: auto, ..body) = {
-  block(width: 100%, stroke: box_border_color3 + 1pt, radius: 6pt, inset: 8pt)[
+  block(width: 100%, stroke: bc.dark_orange.lighten(60%) + 1pt, radius: 6pt, inset: 8pt)[
     #grid(
       columns: (auto, auto),
       row-gutter: 4pt,
@@ -216,7 +204,7 @@
   beagle_box_4(img: "images/chapter1/step2.webp", img_height: 120pt)[Insert your pre-flashed Micro SD Card provided by your instructor into PocketBeagle 2 MicroSD slot.],
 )
 
-#block(width: 100%, stroke: box_border_color3 + 1pt, radius: 6pt, inset: 8pt)[
+#block(width: 100%, stroke: bc.dark_orange.lighten(60%) + 1pt, radius: 6pt, inset: 8pt)[
   #grid(
     columns: (auto, auto, auto),
     row-gutter: 4pt,
@@ -224,7 +212,7 @@
     grid.cell(colspan: 3, align: center + horizon)[#image("images/chapter1/step3.webp")],
     grid.cell(align: horizon, step_type_1),
     grid.cell(align: horizon)[#text(size: 8pt)[Plug in the USB-C on PocketBeagle 2 and USB-C/USB-A to your Chromebook or Macbook laptop]],
-    grid.cell(align: center)[#text(beagle_text_color, size: 8pt)[NOTE: USB-C to USB-A can also be used if your Chromebook doesn’t have a USB-C port]]
+    grid.cell(align: center)[#text(bc.dark_orange, size: 8pt)[NOTE: USB-C to USB-A can also be used if your Chromebook doesn’t have a USB-C port]]
   )
 ]
 
@@ -242,7 +230,7 @@
   beagle_box_4(img: "images/chapter1/step8.webp", img_height: 150pt)[Click on Proceed to 192.168.7.2 (unsafe) button to access Visual Studio Code Server, this is a one time process only.],
 )
 
-#block(width: 100%, fill: beagle_text_color.lighten(93%), inset: 7pt, radius: 7pt)[
+#block(width: 100%, fill: bc.dark_orange.lighten(93%), inset: 7pt, radius: 7pt)[
   #grid(
     columns: (auto, auto),
     row-gutter: 7pt,
@@ -270,7 +258,7 @@
   )
 ]
 
-#block(width: 100%, stroke: box_border_color3 + 1pt, radius: 6pt, inset: 8pt)[
+#block(width: 100%, stroke: bc.dark_orange.lighten(60%) + 1pt, radius: 6pt, inset: 8pt)[
   #grid(
     columns: (auto, auto, 68%),
     rows: (60pt, auto),
@@ -282,7 +270,7 @@
     grid.cell(
       colspan: 2,
       align: bottom,
-      block(width: 100%, fill: beagle_text_color.lighten(93%), inset: 8pt, radius: 7pt)[
+      block(width: 100%, fill: bc.dark_orange.lighten(93%), inset: 8pt, radius: 7pt)[
         #text(weight: "medium")[Why are we doing this?]
         
         #text(size: 7pt)[This just verifies the files are from your teacher/classroom device, you should trust it to safely start coding!]
@@ -303,8 +291,8 @@
       columns: (auto, auto, auto),
       column-gutter: (4pt, 0pt),
       grid.cell(align: horizon, step_type_1),
-      block(fill: rgb("#ffed00"), inset: 4pt, radius: (left: 4pt, right: 0pt), outset: (right: 4pt))[Get to know your tool:],
-      block(fill: rgb("#23b0e6"), inset: 4pt, radius: 4pt)[Visual Studio Code Server],
+      block(fill: rgb("#ffed00"), inset: (x: 4pt, y: 2.5pt), radius: (left: 4pt, right: 0pt), outset: (right: 4pt))[#bh.beagle_heading(img: "images/lightbulb.svg")[Get to know your tool:]],
+      block(fill: bc.blue, inset: 5pt, radius: 4pt)[#text(white)[Visual Studio Code Server]],
     )
   ),
 )
@@ -320,7 +308,7 @@
   beagle_box_4(img: "images/chapter1/step12.webp", img_height: 180pt)[Click on RUN button to run the Blinky example code],
 )
 
-#block(width: 100%, stroke: box_border_color3 + 1pt, radius: 6pt, inset: 8pt)[
+#block(width: 100%, stroke: bc.dark_orange.lighten(60%) + 1pt, radius: 6pt, inset: 8pt)[
     #place()[#image("images/chapter1/step13.webp")]
     #v(140pt)
     #grid(
