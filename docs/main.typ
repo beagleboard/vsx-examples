@@ -90,45 +90,10 @@
   set page(margin: (x: page_margin_x, y: auto))
 }
 
-// Common base for box type 1,2,3
-#let beagle_box_123_base(stroke: color, cols: array, ..body) = {
-  block(radius: 7pt, stroke: stroke + 1pt, width: 100%, inset: 6pt)[
-    #grid(columns: cols, align: horizon, ..body)
-  ]
-}
-
-// Common base for box type 1, 2 since they only have a single image.
-#let beagle_box_12_base(stroke: color, img: str, ..body) = {
-  beagle_box_123_base(
-    stroke: stroke, 
-    cols: (25%, auto), 
-    grid.cell(align: center + horizon, image(img, height: 55pt)),
-    ..body)
-}
-
-#let beagle_box_1(img: str, ..body) = beagle_box_12_base(img: img, stroke: bc.hair_dark_brown.lighten(60%), ..body)
-
-#let beagle_box_2(img: str, ..body) = beagle_box_12_base(img: img, stroke: bc.blue.lighten(60%), ..body)
-
-#let beagle_box_3(..body) = beagle_box_123_base(stroke: bc.blue.lighten(60%), cols: (12.5%, 12.5%, auto), ..body)
-
 // A boxed counter. Used by steps in chapter 1
 #let step_type_1 = context {
   step_num.step()
   block(fill: bc.dark_orange, inset: 4pt, radius: 4pt)[#text(white, size: 18pt, weight: "bold")[#step_num.display()]]
-}
-
-#let beagle_box_4(img: str, img_height: auto, ..body) = {
-  block(width: 100%, stroke: bc.dark_orange.lighten(60%) + 1pt, radius: 6pt, inset: 8pt)[
-    #grid(
-      columns: (auto, auto),
-      row-gutter: 4pt,
-      column-gutter: 4pt,
-      grid.cell(colspan: 2, align: center + horizon)[#image(img, height: img_height)],
-      grid.cell(align: horizon, step_type_1),
-      grid.cell(align: horizon, text(size: 8pt, ..body))
-    )
-  ]
 }
 
 = Your First Blinky Light
@@ -139,28 +104,28 @@
 - #strong("Programming") - Make your PocketBeagle 2 blink an LED using a Python program.
 
 == #bh.beagle_heading(img: "images/chapter1/heading2.webp")[Hardware used in this exercise]
-#beagle_box_1(img: "images/pocketbeagle_2_back.webp")[
+#bh.beagle_box_1(img: "images/pocketbeagle_2_back.webp")[
   #strong("PocketBeagle 2 computer")
   - A tiny computer without a display, keyboard, or disk drive.
   - Expandable with add-on boards called capes
   - Can be powered and accessed over USB
 ]
 
-#beagle_box_1(img: "images/chapter1/hardware2.webp")[
+#bh.beagle_box_1(img: "images/chapter1/hardware2.webp")[
   #strong("Pre-programmed microSD card")
   - A removable storage card pre-programmed for the workshop.
   - Pre-programmed by your workshop instructor
   - It provides software starting point for workshop
 ]
 
-#beagle_box_1(img: "images/chapter1/hardware3.webp")[
+#bh.beagle_box_1(img: "images/chapter1/hardware3.webp")[
   #strong("Chromebook or Macbook laptop ")
   - A computer with screen, keyboard, USB port, etc.
   - Required to access the PocketBeagle 2 computer
   - Provides power to PocketBeagle 2 computer over USB
 ]
 
-#beagle_box_1(img: "images/chapter1/hardware4.webp")[
+#bh.beagle_box_1(img: "images/chapter1/hardware4.webp")[
   #strong("USB-C cable")
   - It should be USB-C to USB-C / USB-C to USB-A cable
   - Required to power and access PocketBeagle 2 computer
@@ -169,7 +134,7 @@
 
 == #bh.beagle_heading(img: "images/chapter1/heading3.webp")[Software used in this exercise]
 
-#beagle_box_3(
+#bh.beagle_box_3(
   grid.cell(align: center + horizon, image("images/safari_logo.svg", width: 55pt)),
   grid.cell(align: center + horizon, image("images/chrome_logo.svg", width: 50pt))
 )[
@@ -179,14 +144,14 @@
   - Also required to access the Visual Studio Code Server application
 ]
 
-#beagle_box_2(img: "images/chapter1/software2.webp")[
+#bh.beagle_box_2(img: "images/chapter1/software2.webp")[
   #strong("Visual Studio Code Server")
   - Provides a way to program your PocketBeagle 2 computer
   - Accessed via Safari or Chrome browser on your laptop
   - It is installed on the Linux image and runs on PocketBeagle 2 computer
 ]
 
-#beagle_box_3(
+#bh.beagle_box_3(
   grid.cell(align: center + horizon, image("images/linux_logo.svg", height: 55pt)),
   grid.cell(align: center + horizon, image("images/debian_logo.svg", height: 55pt))
 )[
@@ -200,8 +165,8 @@
 #set page(margin: (x: page_margin_x, y: 30pt))
 
 #bh.grid_column(
-  beagle_box_4(img: "images/chapter1/step1.webp", img_height: 120pt)[Start with fresh ingredients, nothing plugged in.],
-  beagle_box_4(img: "images/chapter1/step2.webp", img_height: 120pt)[Insert your pre-flashed Micro SD Card provided by your instructor into PocketBeagle 2 MicroSD slot.],
+  bh.beagle_box_4(img: "images/chapter1/step1.webp", img_height: 120pt, col1: step_type_1)[Start with fresh ingredients, nothing plugged in.],
+  bh.beagle_box_4(img: "images/chapter1/step2.webp", img_height: 120pt, col1: step_type_1)[Insert your pre-flashed Micro SD Card provided by your instructor into PocketBeagle 2 MicroSD slot.],
 )
 
 #block(width: 100%, stroke: bc.dark_orange.lighten(60%) + 1pt, radius: 6pt, inset: 8pt)[
@@ -217,17 +182,17 @@
 ]
 
 #bh.grid_column(
-  beagle_box_4(img: "images/chapter1/step4.webp", img_height: 100pt)[USB connection provides powers to your PocketBeagle 2, you should see a Red LED light marked ‘P’ lit up.],
-  beagle_box_4(img: "images/chapter1/step5.webp", img_height: 100pt)[Wait for 2 minutes while your PocketBeagle 2 computer boots up to start a network connection.],
+  bh.beagle_box_4(img: "images/chapter1/step4.webp", img_height: 100pt, col1: step_type_1)[USB connection provides powers to your PocketBeagle 2, you should see a Red LED light marked ‘P’ lit up.],
+  bh.beagle_box_4(img: "images/chapter1/step5.webp", img_height: 100pt, col1: step_type_1)[Wait for 2 minutes while your PocketBeagle 2 computer boots up to start a network connection.],
 )
 
-#beagle_box_4(img: "images/chapter1/step6.webp")[To access PocketBeagle 2 computer using your MacBook computer open Safari or Chrome browser on your Macbook or Chromebook computer and in search bar type address 192.168.7.2 and then click on VSCode-examples.html]
+#bh.beagle_box_4(img: "images/chapter1/step6.webp", col1: step_type_1)[To access PocketBeagle 2 computer using your MacBook computer open Safari or Chrome browser on your Macbook or Chromebook computer and in search bar type address 192.168.7.2 and then click on VSCode-examples.html]
 
 #pagebreak()
 
 #bh.grid_column(
-  beagle_box_4(img: "images/chapter1/step7.webp", img_height: 150pt)[If a warning like this is shown on your screen then click on Advanced button to open up an option to access 192.168.7.2],
-  beagle_box_4(img: "images/chapter1/step8.webp", img_height: 150pt)[Click on Proceed to 192.168.7.2 (unsafe) button to access Visual Studio Code Server, this is a one time process only.],
+  bh.beagle_box_4(img: "images/chapter1/step7.webp", img_height: 150pt, col1: step_type_1)[If a warning like this is shown on your screen then click on Advanced button to open up an option to access 192.168.7.2],
+  bh.beagle_box_4(img: "images/chapter1/step8.webp", img_height: 150pt, col1: step_type_1)[Click on Proceed to 192.168.7.2 (unsafe) button to access Visual Studio Code Server, this is a one time process only.],
 )
 
 #block(width: 100%, fill: bc.dark_orange.lighten(93%), inset: 7pt, radius: 7pt)[
@@ -302,10 +267,10 @@
 #grid(
   columns: (70%, 30%),
   column-gutter: 8pt,
-  beagle_box_4(img: "images/chapter1/step11.webp", img_height: 180pt)[
+  bh.beagle_box_4(img: "images/chapter1/step11.webp", img_height: 180pt, col1: step_type_1)[
     Navigate to the blinky example present at location shown below: #strong[vsx-examples/PocketBeagle-2/blinky/python/main.py]
   ],
-  beagle_box_4(img: "images/chapter1/step12.webp", img_height: 180pt)[Click on RUN button to run the Blinky example code],
+  bh.beagle_box_4(img: "images/chapter1/step12.webp", img_height: 180pt, col1: step_type_1)[Click on RUN button to run the Blinky example code],
 )
 
 #block(width: 100%, stroke: bc.dark_orange.lighten(60%) + 1pt, radius: 6pt, inset: 8pt)[
@@ -319,6 +284,6 @@
     )
 ]
 
-#beagle_box_4(img: "images/chapter1/step14.webp")[
+#bh.beagle_box_4(img: "images/chapter1/step14.webp", col1: step_type_1)[
   On line 5 change the path to blink any other light of your choice, to test let’s replace usr4 at the end with usr1 to blink light 1 Updated code on line 5 for Blinking the light 1 should look like this: LED = Path("/sys/class/leds/beaglebone:green:usr1") On line 6 update number_of_blinks from 5 to 10 as well, hit RUN button and observe Light 1 blinking for 10 times.
 ]

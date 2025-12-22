@@ -2,6 +2,8 @@
  * cohesive theme.
  */
 
+#import "colors.typ" as bc
+
 /// Chapter helpers
 
 // Check if a new chapter starts at the current page.
@@ -13,6 +15,52 @@
 #let next_heading() = query(heading.where(level: 1).after(here())).first().body
 // Return the last heading
 #let last_heading() = query(heading.where(level: 1).before(here())).last().body
+
+
+/// Bordered boxes with various styles
+
+// Box that lays out elements in a grid
+#let beagle_box_123_base(stroke: color, cols: array, ..body) = {
+  block(radius: 7pt, stroke: stroke + 1pt, width: 100%, inset: 6pt)[
+    #grid(columns: cols, align: horizon, ..body)
+  ]
+}
+
+// Box with 2 columns: 1st for image and 2nd for content
+#let beagle_box_12_base(stroke: color, img: str, ..body) = {
+  beagle_box_123_base(
+    stroke: stroke, 
+    cols: (25%, auto), 
+    grid.cell(align: center + horizon, image(img, height: 55pt)),
+    ..body)
+}
+
+// 2 column box with a hair_dark_brown border
+#let beagle_box_1(img: str, ..body) = beagle_box_12_base(img: img, stroke: bc.hair_dark_brown.lighten(60%), ..body)
+
+// 2 column box with blue border
+#let beagle_box_2(img: str, ..body) = beagle_box_12_base(img: img, stroke: bc.blue.lighten(60%), ..body)
+
+// 3 column box with blue border
+#let beagle_box_3(..body) = beagle_box_123_base(stroke: bc.blue.lighten(60%), cols: (12.5%, 12.5%, auto), ..body)
+
+// 2 column box with 1st row of image and 2nd row 2 content columns.
+#let beagle_box_4(img: str, img_height: auto, col1: content, ..body) = {
+  set text(size: 8pt)
+  block(width: 100%, stroke: bc.dark_orange.lighten(60%) + 1pt, radius: 6pt, inset: 8pt)[
+    #grid(
+      columns: (auto, auto),
+      row-gutter: 4pt,
+      column-gutter: 4pt,
+      grid.cell(colspan: 2, align: center + horizon)[#image(img, height: img_height)],
+      grid.cell(align: horizon, col1),
+      grid.cell(align: horizon, ..body)
+    )
+  ]
+}
+
+
+/// Misc
 
 // A simple helper to have an image followed by some content.
 #let beagle_heading(img: str, img_height: 12pt, ..body) = {
