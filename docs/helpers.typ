@@ -52,6 +52,18 @@
   block(fill: bc.dark_orange, inset: 4pt, radius: 4pt)[#text(white, size: 18pt, weight: "bold")[#cnt.display()]]
 }
 
+// A box with floating top image
+#let beagle_box_6(img: str, v_height: auto, col_width: auto, col1: content, ..body) = block(width: 100%, stroke: bc.dark_orange.lighten(60%) + 1pt, radius: 6pt, inset: 8pt)[
+    #place[#image(img)]
+    #v(v_height)
+    #grid(
+      columns: (auto, col_width),
+      column-gutter: 4pt,
+      grid.cell(align: horizon, col1),
+      grid.cell(align: horizon, text(size: 8pt, ..body))
+    )
+]
+
 
 /// Misc
 
@@ -66,7 +78,7 @@
 }
 
 // Current normal column does not maintain height properly. So using grid instead.
-#let grid_column(..body) = grid(columns: (1fr, 1fr), gutter: 8pt, ..body)
+#let grid_column(columns: (1fr, 1fr),..body) = grid(columns: columns, gutter: 8pt, ..body)
 
 // Bit of a hack. But need this in both template and chapters.
 #let page_margin_x = 15pt

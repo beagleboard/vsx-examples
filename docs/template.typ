@@ -23,6 +23,7 @@
   // Set different color for bold and link text
   show strong: set text(bc.dark_orange)
   show link: set text(bc.dark_orange)
+  show link: underline
   show title: set text(size: 22pt, weight: 340)
   
   /* Function to get header for current page. Currently 2 types of headers.
@@ -94,6 +95,12 @@
   show heading.where(level: 1): it => {
     chapter_num.step()
     none
+  }
+
+  // Custom heading color
+  show heading.where(level: 3): it => {
+    set text(bc.hair_dark_brown)
+    it
   }
 
   doc

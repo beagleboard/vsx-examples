@@ -6,7 +6,7 @@
 #step_num.update(1)
 
 // A boxed counter. Used by steps in chapter 1
-#let step_type_1 = context bh.beagle_box_5(cnt: step_num)
+#let step_box = context bh.beagle_box_5(cnt: step_num)
 
 = Introduction to TechLab Cape
 
@@ -18,7 +18,7 @@
 == #bh.beagle_heading(img: "images/chapter1/heading2.webp")[Additional hardware used in this exercise]
 
 #bh.beagle_box_1(img: "images/chapter2/hardware1.webp")[
-  #strong("TechLab Cape")
+  === TechLab Cape
   - Add-on board for your PocketBeagle 2 to expand its capabilities.
   - It’s perfect for learning and experimenting with PocketBeagle 2.
   - It has Buttons, LEDs, a USB port, a Buzzer, an Accelerometer etc
@@ -30,12 +30,12 @@
 == #bh.beagle_heading(img: "images/chapter2/heading3.svg")[Prepare your hardware]
 
 #bh.grid_column(
-  bh.beagle_box_4(img: "images/chapter1/step1.webp", img_height: 110pt, col1: step_type_1)[Make sure you have all the hardware from Chapter 1. Your First Blinky Light],
-  bh.beagle_box_4(img: "images/chapter1/step2.webp", img_height: 110pt, col1: step_type_1)[Insert your pre-flashed Micro SD Card provided by your instructor into PocketBeagle 2 MicroSD slot.],
-  bh.beagle_box_4(img: "images/chapter2/step3.webp", img_height: 110pt, col1: step_type_1)[Prepare to join your PocketBeagle 2 computer and TechLab Cape.],
-  bh.beagle_box_4(img: "images/chapter2/step4.webp", img_height: 110pt, col1: step_type_1)[Align the board so that the header pins align and make sure the USB is on the correct sidel],
-  bh.beagle_box_4(img: "images/chapter2/step5.webp", img_height: 110pt, col1: step_type_1)[Once the pins are aligned and USB is on the correct side press both the boards to attach.],
-  bh.beagle_box_4(img: "images/chapter2/step6.webp", img_height: 110pt, col1: step_type_1)[A completed setup should look like this, see the orientation of the board carefully.],
+  bh.beagle_box_4(img: "images/chapter1/step1.webp", img_height: 110pt, col1: step_box)[Make sure you have all the hardware from #strong[Chapter 1. Your First Blinky Light]],
+  bh.beagle_box_4(img: "images/chapter1/step2.webp", img_height: 110pt, col1: step_box)[Insert your pre-flashed Micro SD Card provided by your instructor into PocketBeagle 2 MicroSD slot.],
+  bh.beagle_box_4(img: "images/chapter2/step3.webp", img_height: 110pt, col1: step_box)[Prepare to join your PocketBeagle 2 computer and TechLab Cape.],
+  bh.beagle_box_4(img: "images/chapter2/step4.webp", img_height: 110pt, col1: step_box)[Align the board so that the header pins align and make sure the USB is on the correct sidel],
+  bh.beagle_box_4(img: "images/chapter2/step5.webp", img_height: 110pt, col1: step_box)[Once the pins are aligned and USB is on the correct side press both the boards to attach.],
+  bh.beagle_box_4(img: "images/chapter2/step6.webp", img_height: 110pt, col1: step_box)[A completed setup should look like this, see the orientation of the board carefully.],
 )
 
 // Change margins from 2nd chapter page.
@@ -50,23 +50,22 @@
 #block(width: 100%, stroke: bc.dark_orange.lighten(60%) + 1pt, radius: 6pt, inset: 8pt)[
   #grid(
     columns: (auto, auto, auto),
-    row-gutter: 4pt,
-    column-gutter: 4pt,
+    gutter: 4pt,
     grid.cell(colspan: 3, align: center + horizon)[#image("images/chapter2/step7.webp", height: 200pt)],
-    grid.cell(align: horizon, step_type_1),
+    grid.cell(align: horizon, step_box),
     grid.cell(align: horizon)[#text(size: 8pt)[To start with the exercise you have to connect your PocketBeagle 2 computer + TechLab cape setup to your MacBook computer as shown in the connection diagram shown above.]],
     grid.cell(align: center)[#text(bc.dark_orange, size: 8pt)[NOTE: USB-C to USB-A can also be used if your Chromebook doesn’t have a USB-C port]]
   )
 ]
 
 #bh.grid_column(
-  bh.beagle_box_4(img: "images/chapter2/step8.webp", img_height: 110pt, col1: step_type_1)[USB connection provides powers to your PocketBeagle 2, you should see a Red LED light marked ‘P’ lit up.],
-  bh.beagle_box_4(img: "images/chapter2/step9.webp", img_height: 110pt, col1: step_type_1)[On successful boot-up, you should see an LED pattern on the seven-segment display of the TechLab cape.],
+  bh.beagle_box_4(img: "images/chapter1/step4.webp", img_height: 110pt, col1: step_box)[USB connection provides powers to your PocketBeagle 2, you should see a Red LED light marked ‘P’ lit up.],
+  bh.beagle_box_4(img: "images/chapter2/step9.webp", img_height: 110pt, col1: step_box)[On successful boot-up, you should see an LED pattern on the seven-segment display of the TechLab cape.],
 )
 
 #pagebreak()
 
-#bh.beagle_box_4(img: "images/chapter1/step6.webp", col1: step_type_1)[To access PocketBeagle 2 computer using your MacBook computer open Safari or Chrome browser on your Macbook or Chromebook computer and in search bar type address 192.168.7.2 and then click on VSCode-examples.html]
+#bh.beagle_box_4(img: "images/chapter1/step6.webp", col1: step_box)[To access PocketBeagle 2 computer using your MacBook computer open Safari or Chrome browser on your Macbook or Chromebook computer and in search bar type address #strong[192.168.7.2] and then click on #strong[VSCode-examples.html]]
 
 #block(width: 100%, stroke: bc.dark_orange.lighten(60%) + 1pt, radius: 6pt, inset: 12pt)[
   #grid(
@@ -77,25 +76,15 @@
   )
 ]
 
-#grid(
+#bh.grid_column(
   columns: (70%, 30%),
-  column-gutter: 8pt,
-  bh.beagle_box_4(img: "images/chapter2/step11.webp", img_height: 180pt, col1: step_type_1)[
+  bh.beagle_box_4(img: "images/chapter2/step11.webp", img_height: 180pt, col1: step_box)[
     Navigate to the button example present at location shown below: #strong[vsx-examples/PocketBeagle-2/button/python/main.py]
   ],
-  bh.beagle_box_4(img: "images/chapter1/step12.webp", img_height: 180pt, col1: step_type_1)[Click on RUN button to run the Blinky example code],
+  bh.beagle_box_4(img: "images/chapter1/step12.webp", img_height: 180pt, col1: step_box)[Click on #strong[RUN] button to run the Button example code],
 )
 
-#block(width: 100%, stroke: bc.dark_orange.lighten(60%) + 1pt, radius: 6pt, inset: 8pt)[
-    #place()[#image("images/chapter2/step13.webp")]
-    #v(174pt)
-    #grid(
-      columns: (auto, 250pt),
-      column-gutter: 4pt,
-      grid.cell(align: horizon, step_type_1),
-      grid.cell(align: horizon, text(size: 8pt)[Observe the text ON & OFF printed in the terminal and the green Light marked with text 4 blinking in sync with the text!])
-    )
-]
+#bh.beagle_box_6(img: "images/chapter2/step13.webp", v_height: 174pt, col_width: 250pt, col1: step_box)[Observe the text #strong[“Right”] printed in the terminal when you press the button with marking R (see image).]
 
 #pagebreak()
 
@@ -106,16 +95,14 @@
     row-gutter: 8pt,
     grid.cell[== #bh.beagle_heading(img: "images/chapter2/heading5.webp")[Know your setup]],
     grid.cell(rowspan: 2, align: bottom)[#image("images/chapter2/keys_as_numbers.webp", height: 80pt)],
-    grid.cell[
-      #text(size: 8pt)[
-        In Linux, every key on a keyboard is assigned a unique number called a key code. When you press a key, Linux doesn’t see “left” or “right”—it sees numbers. For example, the left arrow key is 105, and the right arrow key is 106. These numbers are defined in the Linux kernel so that all programs and devices can understand key presses in a standard way. When a key is pressed or released, the system sends this number along with the action (press or release), and the software determines what to do, such as moving a cursor or scrolling a page.
-      ]
+    text(size: 8pt)[
+      In Linux, every key on a keyboard is assigned a unique number called a key code. When you press a key, Linux doesn’t see #strong[“left”] or #strong[“right”], it sees numbers. For example, the left arrow key is 105, and the right arrow key is 106. These numbers are defined in the Linux kernel so that all programs and devices can understand key presses in a standard way. When a key is pressed or released, the system sends this number along with the action (press or release), and the software determines what to do, such as moving a cursor or scrolling a page.
     ],
     grid.cell(colspan: 2, align: center)[#text(bc.dark_orange)[Reference: https://elixir.bootlin.com/linux/v6.15.7/source/include/uapi/linux/input-event-codes.h#L180-L181]]
   )
 ]
 
-#bh.beagle_box_4(img: "images/chapter2/step14.webp", col1: step_type_1)[Edit line 8 to change the button code to 105 (for the left button). Update line 19 to print "Left" when it is pressed. Click Run to test. If everything is set correctly, you’ll see "Left" printed in the terminal when the left button is pressed.]
+#bh.beagle_box_4(img: "images/chapter2/step14.webp", col1: step_box)[Edit line 8 to change the button code to 105 (for the left button). Update line 19 to print "Left" when it is pressed. Click Run to test. If everything is set correctly, you’ll see "Left" printed in the terminal when the left button is pressed.]
 
 #block(width: 100%, stroke: bc.dark_orange.lighten(60%) + 1pt, radius: 6pt, inset: 8pt)[
     == #bh.beagle_heading(img: "images/chapter2/heading6.webp")[Coding Challenges]
