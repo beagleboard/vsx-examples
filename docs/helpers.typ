@@ -46,6 +46,12 @@
   ]
 }
 
+// An orange box that prints a counter.
+#let beagle_box_5(cnt: counter) = {
+  cnt.step()
+  block(fill: bc.dark_orange, inset: 4pt, radius: 4pt)[#text(white, size: 18pt, weight: "bold")[#cnt.display()]]
+}
+
 
 /// Misc
 
@@ -60,7 +66,7 @@
 }
 
 // Current normal column does not maintain height properly. So using grid instead.
-#let grid_column(..body) = grid(columns: (1fr, 1fr), column-gutter: 8pt, ..body)
+#let grid_column(..body) = grid(columns: (1fr, 1fr), gutter: 8pt, ..body)
 
 // Bit of a hack. But need this in both template and chapters.
 #let page_margin_x = 15pt

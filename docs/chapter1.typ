@@ -6,10 +6,7 @@
 #step_num.update(1)
 
 // A boxed counter. Used by steps in chapter 1
-#let step_type_1 = context {
-  step_num.step()
-  block(fill: bc.dark_orange, inset: 4pt, radius: 4pt)[#text(white, size: 18pt, weight: "bold")[#step_num.display()]]
-}
+#let step_type_1 = context bh.beagle_box_5(cnt: step_num)
 
 = Your First Blinky Light
 
@@ -19,6 +16,7 @@
 - #strong("Programming") - Make your PocketBeagle 2 blink an LED using a Python program.
 
 == #bh.beagle_heading(img: "images/chapter1/heading2.webp")[Hardware used in this exercise]
+
 #bh.beagle_box_1(img: "images/pocketbeagle_2_back.webp")[
   #strong("PocketBeagle 2 computer")
   - A tiny computer without a display, keyboard, or disk drive.
