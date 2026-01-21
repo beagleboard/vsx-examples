@@ -2,7 +2,7 @@
 #import "template.typ": conf
 
 // Basic document Properties
-#set document(title: "PocketBeagle® 2 Coding Workshop")
+#set document(title: [PocketBeagle 2 Coding Workshop])
 
 // Use template
 #show: conf.with()

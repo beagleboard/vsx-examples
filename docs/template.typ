@@ -18,13 +18,13 @@
   let chapter_num = counter("chapter_num")
   
   // Use Gotham Rounded Font. The weird weight is required to use the Book variant as default.
-  set text(font: "Gotham Rounded", weight: 330, size: 10pt)
+  set text(font: "Nunito", weight: 330, size: 10pt)
   
   // Set different color for bold and link text
-  show strong: set text(bc.dark_orange)
+  show strong: set text(bc.dark_orange, weight: "medium")
   show link: set text(bc.dark_orange)
   show link: underline
-  show title: set text(size: 22pt, weight: 340)
+  show title: set text(size: 22pt, weight: "bold")
   
   /* Function to get header for current page. Currently 2 types of headers.
    * 1. Pages where new chapter starts.
@@ -37,12 +37,12 @@
       align(center + horizon)[
         #block(radius: (top: 0pt, bottom: 27pt), stroke:  (top: 0pt, rest: 3pt + rgb("#5a5b5d")), height: 100%, width: 100%, fill: rgb("#d9d9d9"))[
           #title() 
-          #text(size: 12pt, weight: 340)[Chapter #chap. #next_heading()]
+          #text(size: 12pt, weight: "bold")[Chapter #chap. #next_heading()]
         ]
       ]
     } else [
       #align(center + horizon)[
-        #text(size: 10pt, weight: 340)[Chapter #chapter_num.display(). #last_heading(), Continued...] 
+        #text(size: 10pt, weight: "bold")[Chapter #chapter_num.display(). #last_heading(), Continued...] 
       ]
     ]
   }
@@ -63,11 +63,11 @@
           column-gutter: 4pt,
           grid.cell(
             align: center + horizon, 
-            block(fill: bc.dark_grey, radius: 4pt, inset: 5pt)[#bh.beagle_heading(img: "images/star.svg")[#text(white, size: 9pt, weight: 350)[Congratulations!]]]
+            block(fill: bc.dark_grey, radius: 4pt, inset: 5pt)[#bh.beagle_heading(img: "images/star.svg")[#text(white, size: 9pt, weight: "bold")[Congratulations!]]]
           ),
           grid.cell(
             align: center + horizon, 
-            text(bc.dark_grey, size: 9pt, weight: 340)[You have successfully completed Chapter #chapter_num.display(). #last_heading() Lab with PocketBeagle 2 :)]
+            text(bc.dark_grey, size: 9pt, weight: "bold")[You have successfully completed Chapter #chapter_num.display(). #last_heading() Lab with PocketBeagle 2 :)]
           ),
         )
       ]
