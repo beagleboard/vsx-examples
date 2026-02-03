@@ -18,7 +18,7 @@ def wheel(pos: int) -> tuple[int, int, int]:
         return (pos * 3, 255 - pos * 3, 0)
 
 
-LED = Path("/sys/devices/platform/techlab-led/leds/multi-led/")
+LED = Path("/sys/devices/platform/techlab-led/leds/rgb:/")
 DELAY = 0.01
 
 led = Device(path=LED)
