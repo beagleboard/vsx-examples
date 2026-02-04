@@ -1,0 +1,31 @@
+name: Build docs
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs: 
+  build-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          lfs: true
+
+      - name: Install typst
+        run: sudo snap install typst
+
+      - name: Build
+        working-directory: docs
+        run: typst compile --font-path fonts main.typ main.pdf
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          path: |
+            docs/*.pdf
